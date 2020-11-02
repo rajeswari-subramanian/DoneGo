@@ -1,0 +1,37 @@
+[
+    {
+        "cardName": "Food Outlets",
+        "cardItems": [
+            {
+                "restaurentName": "abc",
+                "foodItems": [
+                    {
+                        "itemName": "Veg Burger Combo",
+                        "itemPrice": 670,
+                        "itemWeight": "400 gms"
+                    },
+                    {
+                        "itemName": "Popular Kheer Rice",
+                        "itemPrice": 120,
+                        "itemWeight": "1.2 kg"
+                    }
+                ]
+            },
+            {
+                "restaurentName": "abc123",
+                "foodItems": [
+                    {
+                        "itemName": "Veg Burger Combo",
+                        "itemPrice": 670,
+                        "itemWeight": "400 gms"
+                    },
+                    {
+                        "itemName": "Popular Kheer Rice",
+                        "itemPrice": 120,
+                        "itemWeight": "1.2 kg"
+                    }
+                ]
+            }
+        ]
+    }
+]
