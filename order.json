@@ -1,0 +1,12 @@
+[
+    {
+        "orderId": 123,
+        "userId": 125,
+        "dateOfOrder": "25-02-2020",
+        "restaurentName":"abc",
+        "place": "kormangala",
+        "itemName": "Veg Burger Combo",
+        "itemPrice": 670,
+        "totalAmount": 500
+    }
+]

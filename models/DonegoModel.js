@@ -4,24 +4,25 @@ const Schema = mongoose.Schema;
 const donegoSchema = new Schema({
     id: Number,
     type: String,
-    cardName: String,
-        cardItems: [
-            {
-                restaurentName: String,
-                foodItems: [
-                    {
-                        itemName: String,
-                        itemPrice: Number,
-                        itemWeight: String
-                    },
-                    {
-                        itemName: String,
-                        itemPrice: Number,
-                        itemWeight: String
-                    }
-                ]
-            }
-        ]
+    restaurentName: String,
+    longitude: Number,
+    latitude: Number ,
+    avatar: String,
+    foodType: String,
+    distance: String,
+    place: String,
+    deliveryTime: String,
+    foodCategory: String,
+    foodItems: [
+        {
+            itemName: String,
+            itemPrice: Number
+        },
+        {
+            itemName: String,
+            itemPrice: Number
+        }
+    ]
 });
 
 module.exports = mongoose.model("DonegoModel", donegoSchema);

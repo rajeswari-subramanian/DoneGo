@@ -1,36 +1,211 @@
 [
     {
-        "cardName": "Food Outlets",
-        "cardItems": [
+        "restaurentName": "Le Burger Seigneur",
+        "longitude": 77.7055725,
+        "latitude": 12.9591902 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/MW5zWmlmVE1iZkRGTWpkOTBNQXpQUT09-1586361274591-store_image.jpg",
+        "foodType":"North Indian",
+        "distance":"1.3 km",
+        "place": "Koramangala",
+        "deliveryTime": "23 min",
+        "foodCategory": "veg",
+        "foodItems": [
             {
-                "restaurentName": "abc",
-                "foodItems": [
-                    {
-                        "itemName": "Veg Burger Combo",
-                        "itemPrice": 670,
-                        "itemWeight": "400 gms"
-                    },
-                    {
-                        "itemName": "Popular Kheer Rice",
-                        "itemPrice": 120,
-                        "itemWeight": "1.2 kg"
-                    }
-                ]
+                "itemName": "Veg Burger Combo",
+                "itemPrice": 670
             },
             {
-                "restaurentName": "abc123",
-                "foodItems": [
-                    {
-                        "itemName": "Veg Burger Combo",
-                        "itemPrice": 670,
-                        "itemWeight": "400 gms"
-                    },
-                    {
-                        "itemName": "Popular Kheer Rice",
-                        "itemPrice": 120,
-                        "itemWeight": "1.2 kg"
-                    }
-                ]
+                "itemName": "Popular Kheer Rice",
+                "itemPrice": 120
+            }
+        ]
+    },
+    {
+        "restaurentName": "Empire Restaurant",
+        "longitude": 77.7055725,
+        "latitude": 12.9591902 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/MW5zWmlmVE1iZkRGTWpkOTBNQXpQUT09-1586361274591-store_image.jpg",
+        "foodType":"North Indian",
+        "distance":"1.2 km",
+        "place": "btm",
+        "deliveryTime": "26 min",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Paneer Tikka Dry",
+                "itemPrice": 110
+            },
+            {
+                "itemName": "Paneer Burji",
+                "itemPrice": 120
+            }
+        ]
+    },
+    {
+        "restaurentName": "Leon Grill",
+        "longitude": 77.7055728,
+        "latitude": 12.9591905 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/MW5zWmlmVE1iZkRGTWpkOTBNQXpQUT09-1586361274591-store_image.jpg",
+        "foodType":"North Indian",
+        "distance":"2.3 km",
+        "place": "Koramangala",
+        "deliveryTime": "25 min",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Fries With Chilli Garlic Sauce",
+                "itemPrice": 110
+            },
+            {
+                "itemName": "Veg Cheesy House Fries",
+                "itemPrice": 130
+            }
+        ]
+    },
+    {
+        "restaurentName": "Bhagathram Sweets",
+        "longitude": 77.7055715,
+        "latitude": 12.9591906 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/c516620a-5a20-441e-82e8-28d4626a609d-1559642944132-store_image.jpg",
+        "foodType":"South Indian",
+        "distance":"3.5 km",
+        "place": "Mg Road",
+        "deliveryTime": "35 min",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Aloo Samosa",
+                "itemPrice": 16
+            },
+            {
+                "itemName": "Chana Bhatura",
+                "itemPrice": 70
+            }
+        ]
+    },
+    {
+        "restaurentName": "Parijata Pure Veg",
+        "longitude": 77.7055712,
+        "latitude": 12.9591908 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/ZzhWcGlZN01BTUlIeXJ1dWdDeDFFQT09-1596197570899-store_image.jpg",
+        "foodType":"South Indian",
+        "distance":"2.8 km",
+        "place": "Ashok Nagar",
+        "deliveryTime": "28 min",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Idli",
+                "itemPrice": 18
+            },
+            {
+                "itemName": "Idli (2 Pcs) + Vada (1 Pc)",
+                "itemPrice": 57
+            }
+        ]
+    },
+    {
+        "restaurentName": "Meghana Foods",
+        "longitude": 77.7055728,
+        "latitude": 12.9591904 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/da0a06aa-1c63-43e8-86fa-13523037c00c-1574940298330-store_image.jpg",
+        "foodType":"North Indian",
+        "distance":"2.7 km",
+        "place": "Koramangala",
+        "deliveryTime": "35 min",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Meghana Special Biryani",
+                "itemPrice": 258
+            },
+            {
+                "itemName": "Chicken Boneless Biryani",
+                "itemPrice": 248
+            }
+        ]
+    },
+    {
+        "restaurentName": "Chaitanya Veg Fast Food",
+        "longitude": 77.7055712,
+        "latitude": 12.9591908 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/7c9660a5-0fbf-4e3e-953c-1d9176ca6860-1552917497827-store_image.jpg",
+        "foodType":"South Indian",
+        "distance":"1.6 km",
+        "place": "Shivaji Nagar",
+        "deliveryTime": "45 min",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Parotta (2 Pcs)",
+                "itemPrice": 50
+            },
+            {
+                "itemName": "Chapati (2 Pcs)",
+                "itemPrice": 40
+            }
+        ]
+    },
+    {
+        "restaurentName": "Savera Lassi Shop",
+        "longitude": 77.7055710,
+        "latitude": 12.9591907 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/65bfc2ef-d3b1-4367-bc14-c268aca85d41-1547799970654-store_image.jpg",
+        "foodType":"North Indian",
+        "distance":"2.4 km",
+        "place": "Shivajinagar",
+        "deliveryTime": "23 min",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Chocolate Fudge Ice Cream",
+                "itemPrice": 90
+            },
+            {
+                "itemName": "Fruit Salad With Ice Cream",
+                "itemPrice": 90
+            }
+        ]
+    },
+    {
+        "restaurentName": "Sweet Chariot Cafe",
+        "longitude": 77.7055716,
+        "latitude": 12.9591908 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/7a258919-962d-452e-8bf8-c17a4195d5c3-1574658972638-store_image.jpg",
+        "foodType":"South Indian",
+        "distance":"1.3 km",
+        "place": "Residency Road",
+        "deliveryTime": "23 min",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Milk Bread (400 Gms)",
+                "itemPrice": 40
+            },
+            {
+                "itemName": "Brown Bread (400 Gms)",
+                "itemPrice": 45
+            }
+        ]
+    },
+    {
+        "restaurentName": "Hakkachow UB City",
+        "longitude": 77.7055705,
+        "latitude": 12.9591906 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/SmM4UktMY2I5alBlZ09RREFFSENsdz09-1596022663997-store_image.jpg",
+        "foodType":"North Indian",
+        "distance":"4.5 km",
+        "place": "UB City",
+        "deliveryTime": "45 min",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Thai Red Curry Chicken & Basmati Rice",
+                "itemPrice": 305
+            },
+            {
+                "itemName": "Thai Green Curry Chicken & Basmati Rice",
+                "itemPrice": 305
             }
         ]
     }
