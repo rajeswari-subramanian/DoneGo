@@ -12,8 +12,10 @@ import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined';
 import { Grid } from '@material-ui/core'
 import SmallCards from '../Components/SmallCards';
 import TopPickCards from '../Components/TopPickCards'
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
+
     root: {
         flexGrow: 1,
     },
@@ -65,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -73,6 +74,13 @@ const useStyles = makeStyles((theme) => ({
             width: '20ch',
         },
     },
+    MobilePic: {
+        width: '176px',
+        boxSizing: 'content-box',
+        height: '240px',
+        marginLeft: '35%',
+        backgroundImage: `url('https://ik.imagekit.io/dunzo/web-assets/images/dunzo-app-be5ce8c58d3ad0b183757f34179879b4.png?tr=w-352,h-480,cm-pad_resize)`
+    }
 }));
 
 export default function MenuAppBar() {
@@ -81,11 +89,11 @@ export default function MenuAppBar() {
 
     return (
         <>
-            <AppBar variant="outlined" style={{ border: 'none' }} className={classes.color} position="static">
+            <AppBar variant="outlined" style={{ border: 'none', zIndex: '999', transition: '0.3s linear' }} className={classes.color} position="fixed">
                 <Toolbar>
-                    <IconButton style={{ marginLeft: "280px", fontWeight: '1000', fontSize: '27px' }} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton style={{ marginLeft: "280px", fontWeight: '1000', fontSize: '27px', fontFamily: 'Rubik' }} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         DoneGo
-      </IconButton>
+                        </IconButton>
                     <div className={classes.search}>
                         <div style={{ color: "rgb(0, 210, 144)" }} className={classes.searchIcon}>
                             <LocationOnIcon />
@@ -93,15 +101,18 @@ export default function MenuAppBar() {
 
                     </div>
                     <Button style={{ marginLeft: '20px', textTransform: 'none' }}>Set Location
-          <ExpandMoreOutlinedIcon />
+                    <div style={{ color: "rgb(0, 210, 144)" }}>
+
+                            <ExpandMoreOutlinedIcon />
+                        </div>
                     </Button>
 
 
                     <Typography variant="h6" className={classes.title}>
 
                     </Typography>
-                    <Button style={{ textTransform: "none", fontFamily: 'Gilroy' }} color="inherit">Donego for Partners </Button>
-                    <Button style={{ fontFamily: "Gilroy", textTransform: "none" }} > Donego for Business</Button>
+                    <Button style={{ textTransform: "none", fontFamily: 'Rubik' }} color="inherit">Donego for Partners </Button>
+                    <Button style={{ fontFamily: "Gilroy", textTransform: "none", fontFamily: 'Rubik' }} > Donego for Business</Button>
                     <IconButton color="black" aria-label="add to shopping cart">
                         <ShoppingCartOutlinedIcon />
                     </IconButton>
@@ -109,8 +120,10 @@ export default function MenuAppBar() {
                 </Toolbar>
             </AppBar>
 
-            <Grid container direction="column" style={{marginTop:'70px'}}>
-                <Grid item style={{ marginLeft: '320px', fontSize: '36px', fontWeight: '600', marginBottom: '16px', fontFamily: 'Gilroy' }}> Instant delivery at your doorstep</Grid>
+
+            // Fist card
+            <Grid container direction="column" style={{ marginTop: '70px', background: ' rgb(247, 253, 250)', fontFamily: `Rubik` }}>
+                <Grid item style={{ marginLeft: '320px', fontSize: '36px', fontWeight: '300', marginBottom: '16px', fontFamily: 'Rubik' }}> Instant delivery at your doorstep</Grid>
                 <Grid item container>
                     <Grid item xs={0} sm={2} />
                     <Grid item xs={12} sm={8}>
@@ -141,7 +154,7 @@ export default function MenuAppBar() {
                     <Grid item xs={0} sm={2} />
                 </Grid>
             </Grid>
-            <Grid container direction="column">
+            <Grid container direction="column" style={{ background: ' rgb(247, 253, 250)', fontFamily: 'Rubik' }}>
                 <Grid item container>
                     <Grid item xs={0} sm={2} />
                     <Grid item xs={12} sm={8}>
@@ -188,8 +201,16 @@ export default function MenuAppBar() {
                     <Grid item xs={0} sm={2} />
                 </Grid>
             </Grid>
-            <Grid container direction="column" style={{marginTop:'80px'}}>
-                <Grid item style={{ marginLeft: '320px', fontSize: '36px', fontWeight: '600', marginBottom: '16px', fontFamily: 'Gilroy' }}> Top picks for you</Grid>
+            <Grid container direction="column" style={{ marginTop: '80px' }}>
+                <Grid item style={{ marginLeft: '320px', fontSize: '36px', fontWeight: '400', marginBottom: '16px', fontFamily: 'Rubik' }}>
+                    Top picks for you
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+
+                        <Box style={{ backgroundColor: 'rgb(37, 211, 102)', width: '60px', height: '6px', marginTop: '10px', borderRadius: '25px', marginRight: '5px' }} />
+                        <Box style={{ backgroundColor: 'rgb(37, 211, 102)', width: '17px', height: '6         px', marginTop: '10px', borderRadius: '25px' }} />
+                    </div>
+
+                </Grid>
                 <Grid item container>
                     <Grid item xs={0} sm={2} />
                     <Grid item xs={12} sm={8}>
@@ -220,9 +241,69 @@ export default function MenuAppBar() {
                     <Grid item xs={0} sm={2} />
                 </Grid>
             </Grid>
+            <Box style={{
+                width: "100%",
+                backgroundImage: 'linear-gradient(-180deg, rgb(255, 255, 255), rgb(255, 255, 255) 30%, rgb(240, 242, 247) 15%, rgb(240, 242, 247) 85%)',
+                height: 'auto', display: 'flex', boxSizing: 'border-box',
+                marginTop: '48px',
+            }}>
+                <Box className={classes.MobilePic}>
+                    <img style={{ height: '270px', weidth: '40px' }} src="https://ik.imagekit.io/dunzo/web-assets/images/dunzo-app-be5ce8c58d3ad0b183757f34179879b4.png?tr=w-352,h-480,cm-pad_resize" alt="mobile" />
+                </Box>
+
+                <div style={{ marginTop: '100px', fontFamily: 'cursive', fontSize: '25px', fontWeight: 'bold', marginLeft: '50px' }} >
+                    <p>
+                        All this from the convenience of your phone.
+                    </p>
+                    <p>
+                        Download the Dunzo mobile app.
+                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'row', padding: '5px', marginTop: 0 }}>
+                        <img src="https://ik.imagekit.io/dunzo/web-assets/images/playstore-fe053d8036d653fed3955cd2c2a1e7e2.svg" alt="mobile" />
+                        <img src="https://ik.imagekit.io/dunzo/web-assets/images/appstore-43cd8d3a00a6ed32c485951de9b3af63.svg" alt="mobile" />
+                    </div>
+                </div>
+            </Box>
+            <Box style={{
+                backgroundColor: "rgb(23, 30, 48)",
+                width: '100%',
+                height: '400px'
+            }}>
+                <Box style={{
+                    border: 'none',
+                    width: '1000px',
+                    height: '140px',
+                    marginLeft: '25%',
+                    marginTop: '0px',
+                    paddingTop:'20px',
+                   marginDown:'30px'
+
+
+                }}>
+                    <p style={{ fontSize: '19px', fontFamily: 'Rubik', color: "white", fontWeight: '500', textAlign: 'left' }}>
+                        You can’t stop time, but you can save it!
+                    </p>
+                    <p style={{color:'white', fontFamily:'Rubik', textAlign:'left',fontSize:'15px'}}>
+                        Living in the city, there is never enough time to shop for groceries, pick-up supplies, 
+                        grab food and wade through traffic on the way back home. How about we take care of all of the above for you? 
+                        What if we can give you all that time back? Send packages across the city and get everything from food, groceries, medicines and pet supplies delivered right to your doorstep. From any store to your door, just make a list and we’ll make it disappear. Just Dunzo It!
+
+                    </p>
+                    <br/>
+                    <br/>
+                    
+                    <hr/>
+
+                </Box>
+               
+
+                <Box style={{border: '1px solid white',
+            
+            
+            }}>
+
+                </Box>
+            </Box>
         </>
-
-
-
     );
 }

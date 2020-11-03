@@ -7,7 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 
 const useStyles = makeStyles({
   root: {
-    
+
   },
   bullet: {
     display: 'inline-block',
@@ -24,24 +24,29 @@ const useStyles = makeStyles({
 
 const SmallCards = (props) => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-  const {imgSrc,text} = props;
+  const { imgSrc, text } = props;
 
   return (
-    <Card variant='elevation'>
-      <CardContent>
+    <Card variant='elevation' style={{boxShadow: 'rgba(0, 0, 0, 0.06) 0px 4px 7px', fontFamily:'sans-serif', fontWeight:'900', paddingLeft:'10px',fontSize:'13px' }}>
+      <CardContent >
         <CardMedia
-        style={{ background:'rgb(255, 255, 255) none repeat scroll 0% 0%;',height: "40px", width:'40px',borderRadius:'4px', cursor:'pointer',padding:'20px 16px 16px', position:'relative',boxSizing:'content-box',zIndex:'auto',boxShadow:'rgba(0, 0, 0, 0.06) 0px 4px 7px;'}}
-        image={imgSrc}
+          style={{ background: 'rgb(255, 255, 255) none repeat scroll 0% 0%;',
+           height: "10px", 
+           width: '10px', 
+           borderRadius: '4px', 
+           cursor: 'pointer', 
+           padding: '20px 16px 16px',
+           position: 'relative', 
+           boxSizing: 'content-box', 
+           zIndex: 'auto',
+          fontSize:'10px'}}
+          image={imgSrc}
         />
 
       </CardContent>
-      <CardActions
-      
+      <CardActions style={{marginTop:'0px'}}
       />
       {text}
-    
-      
     </Card>
   );
 }
