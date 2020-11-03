@@ -34,6 +34,10 @@ mongoose.connect(
 
 app.use('/api', donegoRoute)
 
+const authRoute = require("./routes/auth");
+
+app.use("/user", authRoute);
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
