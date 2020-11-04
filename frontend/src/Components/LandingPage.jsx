@@ -251,7 +251,7 @@ export default function MenuAppBar() {
                     <img style={{ height: '270px', weidth: '40px' }} src="https://ik.imagekit.io/dunzo/web-assets/images/dunzo-app-be5ce8c58d3ad0b183757f34179879b4.png?tr=w-352,h-480,cm-pad_resize" alt="mobile" />
                 </Box>
 
-                <div style={{ marginTop: '100px', fontFamily: 'cursive', fontSize: '25px', fontWeight: 'bold', marginLeft: '50px' }} >
+                <div style={{ marginTop: '100px', fontFamily: 'Rubik', fontSize: '25px', fontWeight: '400', marginLeft: '50px' }} >
                     <p>
                         All this from the convenience of your phone.
                     </p>
@@ -264,26 +264,29 @@ export default function MenuAppBar() {
                     </div>
                 </div>
             </Box>
+
+            {/* footer */}
+            
             <Box style={{
                 backgroundColor: "rgb(23, 30, 48)",
-                width: '100%',
-                height: '400px'
+                minWidth:'720px',
+                height: 'auto'
             }}>
                 <Box style={{
                     border: 'none',
-                    width: '1000px',
+                    width: '1150px',
                     height: '140px',
-                    marginLeft: '25%',
+                    marginLeft: '19%',
                     marginTop: '0px',
                     paddingTop:'20px',
                    marginDown:'30px'
 
 
                 }}>
-                    <p style={{ fontSize: '19px', fontFamily: 'Rubik', color: "white", fontWeight: '500', textAlign: 'left' }}>
+                    <p style={{ fontSize: '16px', fontFamily: 'Rubik', color: "white", fontWeight: '600', textAlign: 'left' }}>
                         You can’t stop time, but you can save it!
                     </p>
-                    <p style={{color:'white', fontFamily:'Rubik', textAlign:'left',fontSize:'15px'}}>
+                    <p style={{color:'rgb(183, 186, 195)', fontFamily:'Rubik', textAlign:'left',fontSize:'14px', fontWeight:'600', letterSpacing:'normal', lineHeight:'18px'}}>
                         Living in the city, there is never enough time to shop for groceries, pick-up supplies, 
                         grab food and wade through traffic on the way back home. How about we take care of all of the above for you? 
                         What if we can give you all that time back? Send packages across the city and get everything from food, groceries, medicines and pet supplies delivered right to your doorstep. From any store to your door, just make a list and we’ll make it disappear. Just Dunzo It!
@@ -297,10 +300,78 @@ export default function MenuAppBar() {
                 </Box>
                
 
-                <Box style={{border: '1px solid white',
-            
+                <Box style={{border: 'none',
+                width:'1150px',
+                marginTop:'100px',
+                marginLeft:'19%',
+                height:'400px',
+
+
             
             }}>
+                <div style={{display: 'flex', flexDirection:'row'}}>
+
+                <Box style={{
+                    border:'none',
+                    height: '80px',
+                    width:'80px'
+                }}>
+                    <img style={{height:'70px', width:'70px', cursor:'pointer'}} src ="https://ik.imagekit.io/dunzo/web-assets/images/logo-footer-2530fc0589c6b1f7c5e76c618e230276.png?tr=w-140,h-140,cm-pad_resize" alt="logo"/>
+
+                </Box>
+                <Box style={{border:'none',
+            width:'210px',
+            height: 'auto',
+            marginLeft:'90px'}}>
+                <p style={{color:'white', textAlign:'left', fontSize:'16px', color:'rgb(102, 115, 242)', fontWeight:'700',letterSpacing:'0.2px',fontFamily:'Rubik'}}>DUNGO</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>About</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Jobs</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Contact</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Term and Conditions</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Privacy and Policy</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Dungo for partner</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Dungo for business</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Grow with Google</p>
+
+
+                </Box>
+                <Box style={{border:'none',
+            width:'210px',
+            height: 'auto',
+            marginLeft:'20px'}}>
+                <p style={{color:'white', textAlign:'left', fontSize:'16px', color:'rgb(102, 115, 242)', fontWeight:'700',letterSpacing:'0.2px',fontFamily:'Rubik'}}>SERVICEABLE CITIES</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Bangalore</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Pune</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Gurgaon</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Hydrabad</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>New Delhi</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Chennai</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Jaipur</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Mumbai</p>
+
+
+                </Box>
+                <Box style={{border:'none',
+            width:'210px',
+            height: 'auto',
+            marginLeft:'20px'}}>
+                <p style={{color:'white', textAlign:'left', fontSize:'16px', color:'rgb(102, 115, 242)', fontWeight:'700',letterSpacing:'0.2px',fontFamily:'Rubik'}}>GET IN TOUCH</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Email</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Twitter</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>Facebook</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'}}>instagram</p>
+                <p style={{color:'white', textAlign:'left',style:'none',cursor:'pointer',fontWeight:'500',fontSize:'14px', textDecoration:'none'    }}>Linkdin</p>
+               
+                </Box>
+                <Box style={{border:'none',
+            width:'274px',
+            height: '200px',
+            marginLeft:'20px'}}>
+                <img style={{height:'140px', width:'260px'}} src="https://ik.imagekit.io/dunzo/web-assets/images/scooter-b23bc83b7ede14d87083594908ec3101.png?tr=w-520,h-280,cm-pad_resize" alt="logo"/>
+
+
+                </Box>
+                </div>
 
                 </Box>
             </Box>
