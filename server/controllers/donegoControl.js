@@ -13,4 +13,4 @@ const getRestaurent = (req, res) => {
 }
 
 
-module.exports = {getDonegoitems, getRestaurent};
+module.exports = {getDonegoitems, getRestaurent}

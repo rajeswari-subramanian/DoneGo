@@ -11,20 +11,19 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined';
 import { Grid } from '@material-ui/core'
 import { Box } from "@material-ui/core";
-import { BodyCard, SmallCards, TopPickCards } from './components'
+import { BodyCard, SmallCards, TopPickCards, Modal } from './components'
 import { getRestaurent } from '../../redux/actions/getRestaurentAction'
 
 const useStyles = makeStyles((theme) => ({
-
     root: {
         flexGrow: 1,
     },
     ButtonBackground: {
         backgroundColor: 'rgb(0, 210, 144)',
-        borderRadius: '30px',
+        borderRadius: '20px',
         padding: '8px 20px',
         fontWeight: 'bold',
-        fontSize: '14px',
+        fontSize: '12px',
         cursor: 'pointer',
         color: 'white',
     },
@@ -32,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     title: {
-        flexGrow: 1,
+        flexGrow: 2,
     },
     color: {
         backgroundColor: "white",
@@ -49,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
+            marginLeft: theme.spacing(1),
             width: 'auto',
         },
     },
@@ -78,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
         width: '176px',
         boxSizing: 'content-box',
         height: '240px',
-        marginLeft: '35%',
+        marginLeft: '32%',
         backgroundImage: `url('https://ik.imagekit.io/dunzo/web-assets/images/dunzo-app-be5ce8c58d3ad0b183757f34179879b4.png?tr=w-352,h-480,cm-pad_resize)`
     },
 }));
@@ -92,7 +91,7 @@ export default function MenuAppBar() {
         dispatch(getRestaurent())
     }, [])
 
-    const resturantData = useSelector(state=>state.getRestaurent.restaurentsData)
+    const resturantData = useSelector(state => state.getRestaurent.restaurentsData)
     console.log(resturantData)
 
 
@@ -100,156 +99,123 @@ export default function MenuAppBar() {
         <>
             <AppBar variant="outlined" style={{ border: 'none', zIndex: '999', transition: '0.3s linear' }} className={classes.color} position="fixed">
                 <Toolbar>
-                    <IconButton style={{ marginLeft: "280px", fontWeight: '1000', fontSize: '27px' }} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton style={{ marginLeft: "100px", fontWeight: '1000', fontSize: '27px' }} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         DoneGo
-                        </IconButton>
-                    <div className={classes.search}>
-                        <div style={{ color: "rgb(0, 210, 144)" }} className={classes.searchIcon}>
-                            <LocationOnIcon />
-                        </div>
-
-                    </div>
-                    <Button style={{ marginLeft: '20px', textTransform: 'none' }}>Set Location
-                    <div style={{ color: "rgb(0, 210, 144)" }}>
-
-                            <ExpandMoreOutlinedIcon />
-                        </div>
-                    </Button>
-
+                    </IconButton>
+                    <Modal />
 
                     <Typography variant="h6" className={classes.title}>
 
                     </Typography>
-                    <Button style={{ textTransform: "none", fontFamily: 'Gilroy' }} color="inherit">Donego for Partners </Button>
-                    <Button style={{ fontFamily: "Gilroy", textTransform: "none" }} > Donego for Business</Button>
+                    {/* <div style={{}}> */}
+                    <Button style={{ marginLeft: "2.5em", textTransform: "none", fontFamily: 'Ubuntu' }} color="inherit">Donego for Partners </Button>
+                    <Button style={{ fontFamily: "Ubuntu", textTransform: "none" }} > Donego for Business</Button>
                     <IconButton color="black" aria-label="add to shopping cart">
                         <ShoppingCartOutlinedIcon />
                     </IconButton>
-                    <Button style={{ marginRight: '300px' }} className={classes.ButtonBackground} color="inherit">Sign In</Button>
+                    <Button style={{ marginRight: '100px', textTransform: "none" }} className={classes.ButtonBackground} color="inherit">Sign In</Button>
+                    {/* </div> */}
                 </Toolbar>
             </AppBar>
 
 
             // Fist card
-            <Grid container direction="column" style={{ marginTop: '70px', background: ' rgb(247, 253, 250)', fontFamily: `Raleway', sans-serif` }}>
-                <Grid item style={{ marginLeft: '320px', fontSize: '36px', fontWeight: '600', marginBottom: '16px', fontFamily: 'Ubuntu' }}> Instant delivery at your doorstep</Grid>
-                <Grid item container>
-                    <Grid item xs={0} sm={2} />
-                    <Grid item xs={12} sm={8}>
-                        <Grid container spacing={2}>
-
-                            <Grid item xs={12} sm={3}>
-                                <BodyCard
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_grocery_secondary2_1602495207383.png"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={3}>
-                                <BodyCard
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_pnd_secondary2_1598257809885.png"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={3}>
-                                <BodyCard
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_food_secondary2_1598017573106.png"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={3}>
-                                <BodyCard
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_fnv_secondary2_1598016020169.png"
-                                />
-                            </Grid>
-                        </Grid>
+            <Grid container direction="column" style={{ paddingTop: '90px', background: ' rgb(247, 253, 250)', fontFamily: `Raleway', sans-serif` }}>
+                <Grid item style={{ marginLeft: '135px', fontSize: '28px', fontWeight: '100', marginBottom: '16px', fontFamily: 'Ubuntu' }}> Instant delivery at your doorstep</Grid>
+                <Grid item container spacing={2} justify="space-between" alignItems="center" style={{ margin: "auto", width: "1030px" }}>
+                    <Grid item xs={12} sm={3}>
+                        <BodyCard
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_grocery_secondary2_1602495207383.png"
+                        />
                     </Grid>
-                    <Grid item xs={0} sm={2} />
+                    <Grid item xs={12} sm={3}>
+                        <BodyCard
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_pnd_secondary2_1598257809885.png"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <BodyCard
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_food_secondary2_1598017573106.png"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <BodyCard
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_fnv_secondary2_1598016020169.png"
+                        />
+                    </Grid>
                 </Grid>
             </Grid>
             <Grid container direction="column" style={{ background: ' rgb(247, 253, 250)', }}>
-                <Grid item container>
-                    <Grid item xs={0} sm={2} />
-                    <Grid item xs={12} sm={8}>
-                        <Grid container spacing={2}>
-
-                            <Grid item xs={12} sm={2}>
-                                <SmallCards
-                                    text="Meat and Fish"
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_meat_tertiary_grid_1597822164502.png"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={2}>
-                                <SmallCards
-                                    text="Pet Supplies"
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_pets_tertiary_grid_1597822149867.png"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={2}>
-                                <SmallCards
-                                    text="Paan Shop"
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/paan_grid_1597823647322.png"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={2}>
-                                <SmallCards
-                                    text="Gift and Lifestyle"
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_gifts_tertiary_grid_1597821878795.png"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={2}>
-                                <SmallCards
-                                    text="Medicines"
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_medical_tertiary_grid_1597821896720.png"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={2}>
-                                <SmallCards
-                                    text="Health and wellness"
-                                    imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_wellness_tertiary_grid_1597821915084.png"
-                                />
-                            </Grid>
-                        </Grid>
+                <Grid item container spacing={2} justify="space-between" alignItems="center" style={{ margin: "auto", width: "1030px" }}>
+                    <Grid item xs={12} sm={2}>
+                        <SmallCards
+                            text="Meat and Fish"
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_meat_tertiary_grid_1597822164502.png"
+                        />
                     </Grid>
-                    <Grid item xs={0} sm={2} />
+                    <Grid item xs={12} sm={2}>
+                        <SmallCards
+                            text="Pet Supplies"
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_pets_tertiary_grid_1597822149867.png"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+                        <SmallCards
+                            text="Paan Shop"
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/paan_grid_1597823647322.png"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+                        <SmallCards
+                            text="Gift and Lifestyle"
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_gifts_tertiary_grid_1597821878795.png"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+                        <SmallCards
+                            text="Medicines"
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_medical_tertiary_grid_1597821896720.png"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+                        <SmallCards
+                            text="Health and wellness"
+                            imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_wellness_tertiary_grid_1597821915084.png"
+                        />
+                    </Grid>
                 </Grid>
+                <br/><br/>
             </Grid>
             <Grid container direction="column" style={{ marginTop: '80px' }}>
-                <Grid item style={{ marginLeft: '320px', fontSize: '36px', fontWeight: '600', marginBottom: '16px', fontFamily: 'Gilroy' }}>
+                <Grid item style={{ marginLeft: '135px', fontSize: '28px', fontWeight: '600', marginBottom: '16px', fontFamily: 'Ubuntu' }}>
                     Top picks for you
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-
                         <Box style={{ backgroundColor: 'rgb(37, 211, 102)', width: '60px', height: '6px', marginTop: '10px', borderRadius: '25px', marginRight: '5px' }} />
-                        <Box style={{ backgroundColor: 'rgb(37, 211, 102)', width: '17px', height: '6         px', marginTop: '10px', borderRadius: '25px' }} />
+                        <Box style={{ backgroundColor: 'rgb(37, 211, 102)', width: '17px', height: '6px', marginTop: '10px', borderRadius: '25px' }} />
                     </div>
-
-
-
                 </Grid>
-                <Grid item container>
-                    <Grid item xs={0} sm={2} />
-                    <Grid item xs={12} sm={8}>
-                        <Grid container spacing={2}>
-
-                            <Grid item xs={12} sm={3}>
-                                <TopPickCards
-                                    imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/d4b.jpg?tr=w-488,h-326,cm-pad_resize"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={3}>
-                                <TopPickCards
-                                    imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/grocery.jpg?tr=w-488,h-326,cm-pad_resize"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={3}>
-                                <TopPickCards
-                                    imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/restaurants.jpg?tr=w-488,h-326,cm-pad_resize"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={3}>
-                                <TopPickCards
-                                    imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/send-packages.jpg?tr=w-488,h-326,cm-pad_resize"
-                                />
-                            </Grid>
-                        </Grid>
+                <Grid item container justify="space-between" alignItems="center" style={{ padding: "0px", margin: "auto", width: "1060px" }}>
+                    
+                    <Grid item xs={12} sm={3}>
+                        <TopPickCards
+                        imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/d4b.jpg?tr=w-488,h-326,cm-pad_resize" 
+                        />
                     </Grid>
-                    <Grid item xs={0} sm={2} />
+                    <Grid item xs={12} sm={3}>
+                        <TopPickCards
+                            imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/grocery.jpg?tr=w-488,h-326,cm-pad_resize"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <TopPickCards
+                            imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/restaurants.jpg?tr=w-488,h-326,cm-pad_resize"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <TopPickCards
+                            imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/send-packages.jpg?tr=w-488,h-326,cm-pad_resize"
+                        />
+                    </Grid>
                 </Grid>
             </Grid>
             <Box style={{
@@ -259,7 +225,7 @@ export default function MenuAppBar() {
                 marginTop: '48px',
             }}>
                 <Box className={classes.MobilePic}>
-                    <img style={{ height: '270px', weidth: '40px' }} src="https://ik.imagekit.io/dunzo/web-assets/images/dunzo-app-be5ce8c58d3ad0b183757f34179879b4.png?tr=w-352,h-480,cm-pad_resize" alt="mobile" />
+                    <img style={{ height: '270px' }} src="https://ik.imagekit.io/dunzo/web-assets/images/dunzo-app-be5ce8c58d3ad0b183757f34179879b4.png?tr=w-352,h-480,cm-pad_resize" alt="mobile" />
                 </Box>
 
                 <div style={{ marginTop: '100px', fontFamily: 'cursive', fontSize: '25px', fontWeight: 'bold', marginLeft: '50px' }} >
@@ -275,7 +241,7 @@ export default function MenuAppBar() {
                     </div>
                 </div>
             </Box>
-            <Box style={{
+            {/* <Box style={{
                 backgroundColor: "rgb(23, 30, 48)",
                 minWidth:'720px',
                 height: 'auto'
@@ -382,7 +348,7 @@ export default function MenuAppBar() {
                 </div>
 
                 </Box>
-            </Box>
+            </Box> */}
         </>
     );
 }

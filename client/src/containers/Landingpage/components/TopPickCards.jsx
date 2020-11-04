@@ -30,7 +30,7 @@ const TopPickCards = (props) => {
     <Card style={{border:'none'}} variant="outlined">
       <CardContent>
         <CardMedia
-        style={{height: "180px", borderRadius:'8px'}}
+        style={{height: "180px",width:"250px", borderRadius:'8px'}}
         image={imgSrc}
         />
 

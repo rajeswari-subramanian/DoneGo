@@ -14,10 +14,10 @@ const useStyles = makeStyles({
     transform: 'scale(0.8)',
   },
   title: {
-    fontSize: 14,
+    fontSize: 15,
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 16,
   },
 });
 
@@ -28,9 +28,9 @@ const LandingCard = (props) => {
 
   return (
     <Card style={{border:'none'}} variant="outlined">
-      <CardContent>
+      <CardContent style={{padding:'0px'}}>
         <CardMedia
-        style={{height: "180px", borderRadius:'8px'}}
+        style={{height: "180px",borderRadius:'8px'}}
         image={imgSrc}
         />
       </CardContent>
