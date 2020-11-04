@@ -27,7 +27,7 @@ const SmallCards = (props) => {
   const { imgSrc, text } = props;
 
   return (
-    <Card variant='elevation' style={{boxShadow: 'rgba(0, 0, 0, 0.06) 0px 4px 7px', fontFamily:'sans-serif', fontWeight:'900', paddingLeft:'10px',fontSize:'13px' }}>
+    <Card variant='elevation' style={{boxShadow: 'rgba(0, 0, 0, 0.06) 0px 4px 7px', fontFamily:'sans-serif', fontWeight:'900', paddingLeft:'5px',fontSize:'12px',cursor:'pointer',marginLeft:'20px'}}>
       <CardContent >
         <CardMedia
           style={{ background: 'rgb(255, 255, 255) none repeat scroll 0% 0%;',
@@ -35,18 +35,18 @@ const SmallCards = (props) => {
            width: '10px', 
            borderRadius: '4px', 
            cursor: 'pointer', 
-           padding: '20px 16px 16px',
+           padding: '20px 16px 10px 16px',
            position: 'relative', 
            boxSizing: 'content-box', 
            zIndex: 'auto',
-          fontSize:'10px'}}
+          }}
           image={imgSrc}
         />
+        <br/>
+        {text}
 
       </CardContent>
-      <CardActions style={{marginTop:'0px'}}
-      />
-      {text}
+      
     </Card>
   );
 }

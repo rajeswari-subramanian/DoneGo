@@ -256,7 +256,7 @@ export default function MenuAppBar() {
                         All this from the convenience of your phone.
                     </p>
                     <p>
-                        Download the Dunzo mobile app.
+                        Download the DoneGo mobile app.
                     </p>
                     <div style={{ display: 'flex', flexDirection: 'row', padding: '5px', marginTop: 0 }}>
                         <img src="https://ik.imagekit.io/dunzo/web-assets/images/playstore-fe053d8036d653fed3955cd2c2a1e7e2.svg" alt="mobile" />
@@ -280,8 +280,6 @@ export default function MenuAppBar() {
                     marginTop: '0px',
                     paddingTop:'20px',
                    marginDown:'30px'
-
-
                 }}>
                     <p style={{ fontSize: '16px', fontFamily: 'Rubik', color: "white", fontWeight: '600', textAlign: 'left' }}>
                         You can’t stop time, but you can save it!
@@ -294,20 +292,14 @@ export default function MenuAppBar() {
                     </p>
                     <br/>
                     <br/>
-                    
                     <hr/>
 
                 </Box>
-               
-
                 <Box style={{border: 'none',
                 width:'1150px',
                 marginTop:'100px',
                 marginLeft:'19%',
                 height:'400px',
-
-
-            
             }}>
                 <div style={{display: 'flex', flexDirection:'row'}}>
 
