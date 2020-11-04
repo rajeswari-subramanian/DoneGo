@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { getDonegoitems, getRestaurent} = require('../controllers/donegoControl')
 
-router.get('/donegoitems', getDonegoitems)
-router.get('/donegresturant', getRestaurent)
+router.get('/donegoItems', getDonegoitems)
+router.get('/donegoRestaurant', getRestaurent)
 
 module.exports = router

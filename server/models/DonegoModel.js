@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const donegoSchema = new Schema({
-    id: Number,
     type: String,
     restaurentName: String,
     longitude: Number,
