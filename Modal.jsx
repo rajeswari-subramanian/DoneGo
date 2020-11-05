@@ -52,9 +52,7 @@ export default function Modal() {
   const [lang, setLang] = useState("");
   const [lat, setLat] = useState("");
   const [curr, setCurr] = useState("Set Location");
-  const [place, setPlace] = useState([]);
-  const [centerLang, setCenterLang] = useState(0);
-  const [centerLat, setCenterLat] = useState(0);
+  const [place, setPlace] = useState([]);  
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState("paper");
 
@@ -139,7 +137,7 @@ export default function Modal() {
     e.target.style.background = "#ffffff";
   }
 
-  //SELECTED PLACE LANG LAT PLACENAME-Variables are centerLang,centerLat,curr
+  //SELECTED PLACE LANG LAT PLACENAME - Variables are lang, lat,curr
   function handlePlace(e) {
     setName(e.target.value);
     axios(config2)
@@ -152,8 +150,8 @@ export default function Modal() {
               name: `${temp1[0]},${temp1[1]}`,
             },
           ]);
-          setCenterLang(item.center[0]);
-          setCenterLat(item.center[1]);
+          setLang(item.center[0]);
+          setLat(item.center[1]);
         });
       })
       .catch(function (error) {
@@ -161,7 +159,7 @@ export default function Modal() {
       });
   }
 
-  console.log("current", lang, lat, curr, "place", centerLang, centerLat);
+  console.log("current", lang, lat, curr);
 
   return (
     <>
