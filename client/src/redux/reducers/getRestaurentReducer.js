@@ -1,14 +1,13 @@
 import { GET_RESTAURENT } from "../../core/constants/actionTypes";
   
-  export const initState = {
+  const initState = {
     isLoading: false,
     restaurentsData: [],
     isError: false
   }
+
   
-  // console.log(initState)
-  
-  export default (state = initState, { type, payload }) => {
+  const getRestaurentReducer = (state = initState, { type, payload }) => {
     // console.log(type, payload);
     switch (type) {
       case GET_RESTAURENT.REQUEST:
@@ -33,4 +32,6 @@ import { GET_RESTAURENT } from "../../core/constants/actionTypes";
         return state;
     }
   };
+
+  export default getRestaurentReducer;
   

@@ -4,12 +4,12 @@ import { API } from '../../core/constants/apiConstants'
 
 const GET_RESTAURENT_API = API.ENDPOINTS.GET_ITEMS
 
-export function getRestaurent(){
+export function getRestaurent(payload){
+    console.log(payload)
     return dispatch =>{
         dispatch(request())
-        return http.get(GET_RESTAURENT_API)
+        return http.get(GET_RESTAURENT_API,{headers:payload})
             .then(res=>{
-                console.log(res)
                 dispatch(success(res.data))
             })
             .catch(err=>{
