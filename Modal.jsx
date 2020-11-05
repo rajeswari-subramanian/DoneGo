@@ -18,6 +18,21 @@ import { useThrottle } from "use-throttle";
 //import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const useStyles = makeStyles((theme) => ({
+  search: {
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  },
   searchIcon: {
     padding: theme.spacing(0, 1),
     height: "100%",
@@ -32,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Modal() {
   const [name, setName] = useState("");
-  const throttledText = useThrottle(name, 500);
+  const throttledText = useThrottle(name, 200);
   //const [showmap, setShowMap] = useState("false");
   const [lang, setLang] = useState("");
   const [lat, setLat] = useState("");
@@ -146,38 +161,27 @@ export default function Modal() {
       });
   }
 
-  //console.log("current", lang, lat, "place", centerLang, centerLat);
+  console.log("current", lang, lat, curr, "place", centerLang, centerLat);
 
   return (
     <>
-      {" "}
-      <div
-        className={classes.search}
-        style={{
-          width: "200px",
-          height: "50px",
-          border: "2px solid red",
-          textOverflow: "ellipsis",
-        }}
-      >
+      <div className={classes.search}>
         <div
           style={{ color: "rgb(0, 210, 144)" }}
           className={classes.searchIcon}
         >
           <LocationOnIcon />
         </div>
-        <span>{curr}</span>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={handleClickOpen("paper")}
-          style={{ marginLeft: "5px", textTransform: "none", border: "0px" }}
-        >
-          <div style={{ color: "rgb(0, 210, 144)" }}>
-            <ExpandMoreOutlinedIcon />
-          </div>
-        </Button>
       </div>
+      <Button
+        onClick={handleClickOpen("paper")}
+        style={{ marginLeft: "20px", textTransform: "none" }}
+      >
+        <span>{curr}</span>
+        <div style={{ color: "rgb(0, 210, 144)" }}>
+          <ExpandMoreOutlinedIcon />
+        </div>
+      </Button>
       <Dialog
         open={open}
         style={{ padding: "30px" }}
