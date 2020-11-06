@@ -61,8 +61,8 @@ const getDonegoitems = (req, res) => {
             }
             console.log(resturantData);
             // Here We Set Grid Based on Distance
-            let gridDistance = 50  // 50 KM
-            let filterdRes = resturantData.filter(item => parseInt(item.distance) <= gridDistance)
+            let gridDistance = 5  // 50 KM
+            let filterdRes = resturantData.filter(item => parseInt(item.distance) <= gridDistance).sort((a,b)=>(parseInt(a.distance) - parseInt(b.distance)))
             // filterdRes = filterdRes.filter(item => item.place == curr)
             res.json(filterdRes)
 
