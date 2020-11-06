@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LandingCard = (props) => {
+const BodyCard = (props) => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   const {imgSrc} = props;
@@ -38,4 +38,4 @@ const LandingCard = (props) => {
     </Card>
   );
 }
-export default LandingCard;
+export default BodyCard;
