@@ -20,21 +20,21 @@ import { useThrottle } from "use-throttle";
 //import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const useStyles = makeStyles((theme) => ({
-    search: {
-        position: "relative",
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        "&:hover": {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: "100%",
-        [theme.breakpoints.up("sm")]: {
-            marginLeft: theme.spacing(1),
-            width: "auto",
-        },
+  search: {
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
     },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  },
   searchIcon: {
     padding: theme.spacing(0, 1),
     height: "100%",
@@ -60,8 +60,8 @@ export default function Modal() {
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState("paper");
 
-    const dispatch = useDispatch()
-    const resturantData = useSelector(state => state.getRestaurent.restaurentsData)
+  const dispatch = useDispatch()
+  const resturantData = useSelector(state => state.getRestaurent.restaurentsData)
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -84,13 +84,9 @@ export default function Modal() {
     }
   }, [open]);
 
-//   React.useEffect(()=>{
-//     let payload = { 
-//         lang:lang,
-//         lat: lat
-//     }
-//     dispatch(getRestaurent(payload))
-// },[lang, lat, curr])
+  React.useEffect(() => {
+    handleCurrent()
+  }, [])
 
 
   var options = {
@@ -99,11 +95,11 @@ export default function Modal() {
     maximumAge: 0,
   };
 
-  var config1 = {
-    method: "get",
-    url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lang},${lat}.json?types=locality&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`,
-    headers: {},
-  };
+  // var config1 = {
+  //   method: "get",
+  //   url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lang},${lat}.json?types=locality&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`,
+  //   headers: {},
+  // };
 
   var config2 = {
     method: "get",
@@ -118,22 +114,22 @@ export default function Modal() {
   //   headers: {},
   // };
 
-  function success(pos) {
-    var crd = pos.coords;
-    setLang(crd.longitude);
-    setLat(crd.latitude);
+  // function success(pos) {
+  //   var crd = pos.coords;
+  //   setLang(crd.longitude);
+  //   setLat(crd.latitude);
 
-    let payload = {
-        lang: crd.longitude,
-        lat: crd.latitude
-    }
-    dispatch(getRestaurent(payload))
-    
-    console.log("Your current position is:");
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-  }
+  //   let payload = {
+  //     lang: crd.longitude,
+  //     lat: crd.latitude
+  //   }
+  //   dispatch(getRestaurent(payload))
+
+  //   console.log("Your current position is:");
+  //   console.log(`Longitude: ${crd.longitude}`);
+  //   console.log(`Latitude : ${crd.latitude}`);
+  //   console.log(`More or less ${crd.accuracy} meters.`);
+  // }
 
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -141,15 +137,27 @@ export default function Modal() {
 
   //CURRENT LOCATION LANG LAT PLACENAME - Variables are lang, lat,curr
   function handleCurrent() {
-    navigator.geolocation.getCurrentPosition(success, error, options);
-    axios(config1)
-      .then(function (response) {
-        let temp = response.data.features[0].place_name.split(",");
-        setCurr(`${temp[0]},${temp[1]}`);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    console.log('Hello Current');
+    navigator.geolocation.getCurrentPosition(function success(pos) {
+      var crd = pos.coords;
+      axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${crd.longitude},${crd.latitude}.json?types=locality&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`)
+        .then(function (response) {
+          console.log(response);
+          let temp = response.data.features[0].place_name.split(",");
+          setCurr(`${temp[0]},${temp[1]}`);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      setLang(crd.longitude);
+      setLat(crd.latitude);
+      let payload = {
+        lang: crd.longitude,
+        lat: crd.latitude
+      }
+      dispatch(getRestaurent(payload))
+    }, error, options);
     setOpen(false);
   }
 
@@ -174,12 +182,12 @@ export default function Modal() {
               name: `${temp1[0]},${temp1[1]}`,
             },
           ]);
-          
-        let payload = {
+
+          let payload = {
             lang: item.center[0],
             lat: item.center[1]
-        }
-        dispatch(getRestaurent(payload))
+          }
+          dispatch(getRestaurent(payload))
 
           setCenterLang(item.center[0]);
           setCenterLat(item.center[1]);
@@ -190,21 +198,21 @@ export default function Modal() {
       });
   }
 
-  console.log("current", lang, lat,curr, "place", centerLang, centerLat);
+  console.log("current", lang, lat, curr, "place", centerLang, centerLat);
 
   return (
     <>
-    <div className={classes.search}>
-                <div style={{ color: "rgb(0, 210, 144)" }} className={classes.searchIcon}>
-                    <LocationOnIcon />
-                </div>
-            </div>
-            <Button  onClick={handleClickOpen("paper")} style={{ marginLeft: '20px', textTransform: 'none' }}>
-                <span >{curr}</span>
-                <div style={{ color: "rgb(0, 210, 144)" }}>
-                    <ExpandMoreOutlinedIcon />
-                </div>
-            </Button>
+      <div className={classes.search}>
+        <div style={{ color: "rgb(0, 210, 144)" }} className={classes.searchIcon}>
+          <LocationOnIcon />
+        </div>
+      </div>
+      <Button onClick={handleClickOpen("paper")} style={{ marginLeft: '20px', textTransform: 'none' }}>
+        <span >{curr}</span>
+        <div style={{ color: "rgb(0, 210, 144)" }}>
+          <ExpandMoreOutlinedIcon />
+        </div>
+      </Button>
       <Dialog
         open={open}
         style={{ padding: "30px" }}

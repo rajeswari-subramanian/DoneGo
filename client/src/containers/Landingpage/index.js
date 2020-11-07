@@ -11,7 +11,7 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined';
 import { Grid } from '@material-ui/core'
 import { Box } from "@material-ui/core";
-import { BodyCard, SmallCards, TopPickCards, Modal } from './components'
+import { BodyCard, SmallCards, TopPickCards, Modal, SignIn } from './components'
 import { getRestaurent } from '../../redux/actions/getRestaurentAction'
 import axios from 'axios';
 
@@ -88,28 +88,12 @@ export default function MenuAppBar() {
     const dispatch = useDispatch()
     const classes = useStyles();
 
-    const [number, phoneNumber] = useState("")
-
     useEffect(() => {
         dispatch(getRestaurent())
     }, [])
 
     const resturantData = useSelector(state => state.getRestaurent.restaurentsData)
     console.log(resturantData)
-
-    useEffect(() => {
-        axios.get("http://localhost:5000/user/loginOtp",{
-            headers:{
-                phonenumber: phonenumber
-            }          
-        })
-        .then(res =>{})
-    }, [])
-
-    const handleSubmit = () =>{
-        
-    }
-
 
     return (
         <>
@@ -129,7 +113,7 @@ export default function MenuAppBar() {
                     <IconButton color="black" aria-label="add to shopping cart">
                         <ShoppingCartOutlinedIcon />
                     </IconButton>
-                    <Button style={{ marginRight: '100px', textTransform: "none" }} className={classes.ButtonBackground} color="inherit">Sign In</Button>
+                    <SignIn />
                     {/* </div> */}
                 </Toolbar>
             </AppBar>

@@ -110,20 +110,23 @@ router.get('/verify', (req, res) => {
 })
 
 router.get('/userDetails', (req, res) => {
-    DonegoUserModel.find()
-    .then((donego) => res.json(donego))
+    DonegoUserModel.find({ _id: req.headers.id })
+    .then((donego) => {
+            res.status(200).json(donego)
+        })
     .catch((err) => res.status(400).json("Error: " + err));
 })
 
-router.post('/userDetails', (req, res) => {
 
-    // const userExist = DonegoUserModel.filter(item => item.mobile === req.body.mobile)
-    // if(userExist){
+// router.post('/userDetails', (req, res) => {
 
-    // }
-    DonegoUserModel.find()
-    .then((donego) => res.json(donego))
-    .catch((err) => res.status(400).json("Error: " + err));
-})
+//     const userExist = DonegoUserModel.filter(item => item.mobile === req.body.mobile)
+//     if(userExist){
+
+//     }
+//     DonegoUserModel.find()
+//     .then((donego) => res.json(donego))
+//     .catch((err) => res.status(400).json("Error: " + err));
+// })
 
 module.exports = router;
