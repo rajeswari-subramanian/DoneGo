@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Navbar from '../Components/Navbar'
 import LandingPage from '../Components/LandingPage'
 import RestaurantList from '../Pages/RestaurantList'
+import Checkout from '../Pages/Checkout'
 
 
 export default function Routes() {
@@ -9,9 +9,9 @@ export default function Routes() {
         <>
             <Router>
                 <Switch>
-                    <Route path="/" exact component={LandingPage} />
-                    {/* <Route path="/login" render={(props) => <Login {...props} />} /> */}
-                    <Route path="/order/restaurant" render={(props) => <RestaurantList {...props} />} />
+                    <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/order/restaurant" render={(props) => <RestaurantList {...props} />} />
+                    <Route path="/order/restaurant/checkout" render={(props) => <Checkout {...props} />} />
                 </Switch>
             </Router>
         </>

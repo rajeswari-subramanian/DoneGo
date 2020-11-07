@@ -14,10 +14,8 @@ export default function Footer() {
       >
         <Box
           style={{
-            border: "none",
-            width: "1020px",
-            height: "140px",
-            marginLeft: "240px",
+            border: "none",           
+            height: "140px",           
             marginTop: "0px",
             paddingTop: "40px",
             marginDown: "30px",
@@ -60,10 +58,8 @@ export default function Footer() {
         </Box>
         <Box
           style={{
-            border: "none",
-            width: "1020px",
-            marginTop: "100px",
-            marginLeft: "240px",
+            border: "none",        
+            marginTop: "100px",          
             height: "400px",
           }}
         >
@@ -84,9 +80,9 @@ export default function Footer() {
             <Box
               style={{
                 border: "none",
+                marginLeft:"60px",
                 width: "210px",
-                height: "auto",
-                marginLeft: "90px",
+                height: "auto",               
               }}
             >
               <p
@@ -209,9 +205,9 @@ export default function Footer() {
             <Box
               style={{
                 border: "none",
-                width: "210px",
+                width: "240px",
                 height: "auto",
-                marginLeft: "20px",
+                marginLeft:"60px",
               }}
             >
               <p
@@ -336,7 +332,7 @@ export default function Footer() {
                 border: "none",
                 width: "210px",
                 height: "auto",
-                marginLeft: "20px",
+                marginLeft:"60px",
               }}
             >
               <p
@@ -422,7 +418,7 @@ export default function Footer() {
                 border: "none",
                 width: "274px",
                 height: "200px",
-                marginLeft: "20px",
+                marginLeft:"40px",                
               }}
             >
               <img

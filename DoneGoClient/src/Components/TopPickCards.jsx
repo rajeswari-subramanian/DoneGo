@@ -5,37 +5,23 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles({
-  root: {
-    
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
+  cardmedia: {
+    height: "180px",width:"100%",borderRadius:'10px'
+  }, 
 });
 
 const TopPickCards = (props) => {
-  const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  const classes = useStyles();  
   const {imgSrc} = props;
 
   return (
     <Card style={{border:'none'}} variant="outlined">
-      <CardContent>
+      <CardContent style={{padding:"0px"}}>
         <CardMedia
-        style={{height: "180px",width:"250px", borderRadius:'8px'}}
+        className={classes.cardmedia}      
         image={imgSrc}
         />
-
-      </CardContent>
-    
+      </CardContent>    
     </Card>
   );
 }

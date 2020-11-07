@@ -2,23 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
-import { Grid } from "@material-ui/core";
-import { Box } from "@material-ui/core";
-import BodyCard from "./BodyCard";
-import SmallCards from "./SmallCards";
-import TopPickCards from "./TopPickCards";
-import Modal from "./Modal";
-import Footer from "./Footer";
-import { restaurantList } from "../Redux/Restaurant/action";
-import RestaurantList from "../Pages/RestaurantList";
 import Routes from '../Routes/Routes'
+import Modal from './Modal'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,10 +77,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar() {
-  //const dispatch = useDispatch()
+export default function Navbar() { 
   const classes = useStyles();
-
   const restaurantData = useSelector((state) => state.app.restaurantData);
   console.log("restaurantData", restaurantData.length);
 
@@ -99,14 +86,14 @@ export default function Navbar() {
     <>
       <AppBar
         variant="outlined"
-        style={{ border: "none", zIndex: "999", transition: "0.3s linear",maxHeight:"100px" }}
+        style={{ border: "none", zIndex: "999", transition: "0.3s linear",maxHeight:"80px",minHeight:"80px" }}
         className={classes.color}
         position="fixed"
       >
         <Toolbar>
           <IconButton
             style={{
-              marginLeft: "200px",
+              marginLeft: "13%",
               fontWeight: "1000",
               fontSize: "27px",
             }}
@@ -120,15 +107,15 @@ export default function Navbar() {
           <Modal />
           <Button
             style={{
-              marginLeft: "220px",
+              marginLeft: "18%",
               textTransform: "none",
-              fontFamily: "Ubuntu",
+              fontFamily: "sans-serif",
             }}
             color="inherit"
           >
             Donego for Partners{" "}
           </Button>
-          <Button style={{ fontFamily: "Ubuntu", textTransform: "none" }}>
+          <Button style={{  fontFamily: "sans-serif", textTransform: "none" }}>
             {" "}
             Donego for Business
           </Button>
@@ -136,7 +123,7 @@ export default function Navbar() {
             <ShoppingCartOutlinedIcon />
           </IconButton>
           <Button
-            style={{ marginRight: "100px", textTransform: "none" }}
+            style={{ textTransform: "none" }}
             className={classes.ButtonBackground}
             color="inherit"
           >

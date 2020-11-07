@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
@@ -26,7 +26,8 @@ function handleClick(event) {
 
 export default function RestaurantList() {
   const classes = useStyles();
-  const restaurantData = useSelector((state) => state.app.restaurantData);
+  const [restaurantData,setData] =useState(useSelector(state => state.app.restaurantData)) 
+  
   return (
     <>
       <div
@@ -42,6 +43,7 @@ export default function RestaurantList() {
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
+              fontFamily: "sans-serif",
             }}
             to="/"
           >
@@ -54,6 +56,7 @@ export default function RestaurantList() {
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
+              fontFamily: "sans-serif",
             }}
             to="/"
           >
@@ -65,6 +68,7 @@ export default function RestaurantList() {
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
+              fontFamily: "sans-serif",
             }}
             color="inherit"
           >
@@ -114,6 +118,7 @@ export default function RestaurantList() {
               height: "88px",
               lineHeight: "normal",
               letterSpacing: "normal",
+              fontFamily: "sans-serif",
             }}
           >
             <p
@@ -124,6 +129,7 @@ export default function RestaurantList() {
                 letterSpacing: "normal",
                 fontWeight: "700",
                 lineHeight: "0",
+                fontFamily: "sans-serif",
               }}
             >
               Order from Restaurants
@@ -134,6 +140,7 @@ export default function RestaurantList() {
                 fontWeight: 600,
                 opacity: "0.6",
                 textAlign: "left",
+                fontFamily: "sans-serif",
               }}
             >
               {restaurantData.length} Restaurants

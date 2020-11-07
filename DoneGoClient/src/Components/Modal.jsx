@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -182,6 +182,13 @@ export default function Modal() {
 
 console.log("current", lang, lat, curr);
 //console.log("restdata",restaurantData)
+useEffect(() => {
+  let payload={
+    lang: lang,
+    lat: lat
+  }
+  dispatch(restaurantList(payload))
+}, [curr],[lang],[lat])
   return (
     <>
       <div className={classes.search}>

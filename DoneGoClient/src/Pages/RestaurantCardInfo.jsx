@@ -35,10 +35,11 @@ const useStyles = makeStyles((theme) => ({
 export default function RestaurantCardInfo() {
   const classes = useStyles();
   const restaurantData = useSelector((state) => state.app.restaurantData);
+  console.log("rescard",restaurantData)
   return (
     <>
       <div className={classes.root}>
-      <Grid container spacing={1} justify="center" alignItems="center"  style={{ fontFamily: `Rubik` }}>     
+      <Grid container spacing={1} justify="center" alignItems="center"  style={{ fontFamily: "sans-serif" }}>     
         {restaurantData.map((items) => (
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6} key={items.restaurentName} >          
               <Paper className={classes.paper} style={{margin:"auto"}}  elevation={1}  >

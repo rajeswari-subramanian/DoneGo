@@ -8,9 +8,9 @@ const useStyles = makeStyles({
   root: {
     boxShadow: 'rgba(0, 0, 0, 0.06) 0px 4px 7px',
     fontFamily:'sans-serif',
-    fontWeight:'900',
-    paddingLeft:'5px',
-    fontSize:'10px' 
+    fontWeight:'900',    
+    textAlign:"left",   
+    fontSize:'11px' 
   },
   bullet: {
     display: 'inline-block',
@@ -26,8 +26,7 @@ const useStyles = makeStyles({
 });
 
 const SmallCards = (props) => {
-  const classes = useStyles();
-  //const bull = <span className={classes.bullet}>•</span>;
+  const classes = useStyles();  
   const { imgSrc, text } = props;
 
   return (
