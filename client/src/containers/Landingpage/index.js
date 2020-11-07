@@ -13,6 +13,7 @@ import { Grid } from '@material-ui/core'
 import { Box } from "@material-ui/core";
 import { BodyCard, SmallCards, TopPickCards, Modal } from './components'
 import { getRestaurent } from '../../redux/actions/getRestaurentAction'
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -87,12 +88,27 @@ export default function MenuAppBar() {
     const dispatch = useDispatch()
     const classes = useStyles();
 
+    const [number, phoneNumber] = useState("")
+
     useEffect(() => {
         dispatch(getRestaurent())
     }, [])
 
     const resturantData = useSelector(state => state.getRestaurent.restaurentsData)
     console.log(resturantData)
+
+    useEffect(() => {
+        axios.get("http://localhost:5000/user/loginOtp",{
+            headers:{
+                phonenumber: phonenumber
+            }          
+        })
+        .then(res =>{})
+    }, [])
+
+    const handleSubmit = () =>{
+        
+    }
 
 
     return (

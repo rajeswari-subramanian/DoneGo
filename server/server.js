@@ -5,10 +5,12 @@ const cors = require('cors')
 
 
 let donego = require('./donegoitems.json')
+let users = require('./userDetail.json')
 
 dotenv.config();
 const donegoRoute = require("./routes/DonegoRoutes")
 const donegoModel = require("./models/DonegoModel");
+const userModel = require("./models/userDetailModel")
 
 const app = express();
 app.use(cors())
@@ -23,6 +25,15 @@ mongoose.connect(
         if (donegoModel.collection.countDocuments(function (err, count) {
             if (!err && count === 0) {
                 donegoModel.insertMany(donego).then(() => {
+                    console.log("Data inserted")
+                }).catch((error) => {
+                    console.log(error)
+                });
+            }
+        }));
+        if (userModel.collection.countDocuments(function (err, count) {
+            if (!err && count === 0) {
+                userModel.insertMany(users).then(() => {
                     console.log("Data inserted")
                 }).catch((error) => {
                     console.log(error)

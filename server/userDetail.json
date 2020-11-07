@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Madhurendra",
+        "mobile": 8709181793,
+        "email": "kmadhu1311@gmail.com",
+        "address": [
+            {
+                "street": "#34 sai baba nilya",
+                "landmark": "near grand city hot and cold bakery",
+                "longitude": 77.609745,
+                "latitude": 12.916653 ,
+                "contactPerson": "Madhurendra",
+                "contactDetail": 8709181793,
+                "addressType": "Home"
+            }
+        ],
+        "orderDetails": [
+            {
+                "orderId": 123,
+                "userId": 125,
+                "dateOfOrder": "25-02-2020",
+                "restaurentName":"abc",
+                "place": "kormangala",
+                "itemName": "Veg Burger Combo",
+                "itemPrice": 670,
+                "totalAmount": 500
+            }
+        ]
+    }
+]

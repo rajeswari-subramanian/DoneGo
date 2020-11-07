@@ -205,34 +205,6 @@ export default function Modal() {
                     <ExpandMoreOutlinedIcon />
                 </div>
             </Button>
-
-      {/* <div
-        className={classes.search}
-        style={{
-          width: "200px",
-          height: "50px",
-          border: "2px solid red",
-          textOverflow: "ellipsis",
-        }}
-      >
-        <div
-          style={{ color: "rgb(0, 210, 144)" }}
-          className={classes.searchIcon}
-        >
-          <LocationOnIcon />
-        </div>
-        <span>{curr}</span>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={handleClickOpen("paper")}
-          style={{ marginLeft: "5px", textTransform: "none", border: "0px" }}
-        >
-          <div style={{ color: "rgb(0, 210, 144)" }}>
-            <ExpandMoreOutlinedIcon />
-          </div>
-        </Button> */}
-      {/* </div> */}
       <Dialog
         open={open}
         style={{ padding: "30px" }}
