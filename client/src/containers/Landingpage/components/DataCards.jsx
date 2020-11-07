@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import data from  "./ResturantList";
+import data from  "./ResturantList"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 500,
     transition: 'box-shadow .3s',
   },
-  // paper:hover: {
+  // paper:hover : {
   //   boxShadow:'0 0 11px rgba(33,33,33,.2)',
   // },
   image: {

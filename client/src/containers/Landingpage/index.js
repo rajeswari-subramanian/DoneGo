@@ -15,6 +15,7 @@ import { BodyCard, SmallCards, TopPickCards, Modal } from './components'
 import { getRestaurent } from '../../redux/actions/getRestaurentAction'
 import MediaCard from './components/MapCard';
 import LandingCard from './components/BodyCard'
+import ResturentDetailsHeader from './components/ResturentDetailsHeader';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -380,9 +381,12 @@ export default function MenuAppBar() {
             </Box>
            
 
-            {/* <Footer/> */}
-            {/* <MediaCard/>
-            <BodyCard/> */}
+            {/* RESTURENT CARDS */}
+            <MediaCard/>
+            <BodyCard/>
+
+            {/* RESTURENT DETAILS CARD */}
+            <ResturentDetailsHeader/>
 
         </>
     );
