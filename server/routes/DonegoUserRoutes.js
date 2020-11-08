@@ -108,4 +108,37 @@ router.put('/addAddress', (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 })
 
+
+router.put('/updateProfile', (req, res) => {
+    DonegoUserModel.update({ _id: req.body.id }, { $set:{
+        name: req.body.name,
+        email: req.body.email
+    }})
+    .then((donego) => {
+            res.status(200).json(donego)
+        })
+    .catch((err) => res.status(400).json("Error: " + err));
+})
+
+router.put('/placeOrder', (req, res) => {
+    DonegoUserModel.update({ _id: req.body.id }, { $push:{
+        orderDetails: { 
+                dateOfOrder: req.body.dateOfOrder,
+                restaurentName: req.body.restaurentName,
+                restaurentAddress: req.body.restaurentAddress,
+                userAddress: req.body.userAddress,
+                userAddressType: req.body.userAddressType,
+                userMobileNumber:req.body.userMobileNumber,
+                items: req.body.items,
+                totalAmount: req.body.totalAmount,
+                status: req.body.status
+         }
+    }})
+    .then((donego) => {
+            res.status(200).json(donego)
+        })
+    .catch((err) => res.status(400).json("Error: " + err));
+})
+
+
 module.exports = router;
