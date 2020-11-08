@@ -1,6 +1,7 @@
 [
     {
         "restaurentName": "Adyar Ananda Bhavan (A2B)",
+        "restaurentAddress": " BPCL. Petrol Bunk, #3, 100 Feet Road, I Stage, 16th Main Rd, I Phase, BTM Layout, Bengaluru, Karnataka 560068",
         "longitude": 77.609745,
         "latitude": 12.916653 ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/MW5zWmlmVE1iZkRGTWpkOTBNQXpQUT09-1586361274591-store_image.jpg",
@@ -20,6 +21,7 @@
     },
     {
         "restaurentName": "Chung Wah ",
+        "restaurentAddress": "770,16th Main Road, 2nd Stage, BTM Layout, near IAS Officers Colony, Bengaluru, Karnataka 560076",
         "longitude": 77.610022,
         "latitude": 12.913428 ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/MW5zWmlmVE1iZkRGTWpkOTBNQXpQUT09-1586361274591-store_image.jpg",
@@ -39,6 +41,7 @@
     },
     {
         "restaurentName": "Momoz ",
+        "restaurentAddress": "No.805/A, 16th Main, 7th Cross Rd, near Icici Bank, Stage 2, BTM Layout, Bengaluru, Karnataka 560076",
         "longitude": 77.608928,
         "latitude": 12.913854 ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/MW5zWmlmVE1iZkRGTWpkOTBNQXpQUT09-1586361274591-store_image.jpg",
@@ -58,6 +61,7 @@
     },
     {
         "restaurentName": "FRIENDS ",
+        "restaurentAddress": "Door No:12/11,20th Main Rd, BTM Layout, Bengaluru, Karnataka 560028",
         "longitude": 77.612342,
         "latitude": 12.91671 ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/c516620a-5a20-441e-82e8-28d4626a609d-1559642944132-store_image.jpg",
@@ -77,6 +81,7 @@
     },
     {
         "restaurentName": "Gud Dhani",
+        "restaurentAddress": "170, 16th Main Rd, Mahadeshwara Nagar, Stage 2, BTM 2nd Stage, Bengaluru, Karnataka 560076",
         "longitude": 77.611399,
         "latitude": 12.905415,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/ZzhWcGlZN01BTUlIeXJ1dWdDeDFFQT09-1596197570899-store_image.jpg",
@@ -96,6 +101,7 @@
     },
     {
         "restaurentName": "Biriyani Zone ",
+        "restaurentAddress": "92/5, Marathahalli - Sarjapur Outer Ring Rd, opposite Home Town, Bengaluru, Karnataka 560037",
         "longitude": 77.717188,
         "latitude": 12.955999 ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/da0a06aa-1c63-43e8-86fa-13523037c00c-1574940298330-store_image.jpg",
@@ -115,6 +121,7 @@
     },
     {
         "restaurentName": "Hotel Mariya Circle",
+        "restaurentAddress": "459, 1st Cross Rd, Sanjay Nagar, Marathahalli, Bengaluru, Karnataka 560037",
         "longitude": 77.699471,
         "latitude": 12.958453  ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/7c9660a5-0fbf-4e3e-953c-1d9176ca6860-1552917497827-store_image.jpg",
@@ -134,6 +141,7 @@
     },
     {
         "restaurentName": "Meghana Foods ",
+        "restaurentAddress": "Outer Ring Rd, above Sony Centre, opposite Park Plaza, Kasavanahalli Village, Marathahalli, Bengaluru, Karnataka 560037",
         "longitude": 77.699375,
         "latitude": 12.949535  ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/65bfc2ef-d3b1-4367-bc14-c268aca85d41-1547799970654-store_image.jpg",
@@ -153,6 +161,7 @@
     },
     {
         "restaurentName": "Krishna Vaibhava (A/C Vegetarian) ",
+        "restaurentAddress": "No: 90/6 Outer Ring Road, Service Rd, opp. Onnovative Multiplex, Sri Balaji Layout, Chandra Layout, Marathahalli, Bengaluru, Karnataka 560037",
         "longitude": 77.70108,
         "latitude": 12.957128  ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/7a258919-962d-452e-8bf8-c17a4195d5c3-1574658972638-store_image.jpg",
@@ -172,6 +181,7 @@
     },
     {
         "restaurentName": "Bageecha Restaurant ",
+        "restaurentAddress": "No.42/3, Whitefield Road, Marathahalli, Bangalore - 560037, Near Marathahalli Bridge & Ayoga Hospital, Opposite Navaprajna School",
         "longitude": 77.711792,
         "latitude": 12.955592 ,
         "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/SmM4UktMY2I5alBlZ09RREFFSENsdz09-1596022663997-store_image.jpg",

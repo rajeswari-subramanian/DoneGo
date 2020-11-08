@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const donegoSchema = new Schema({
     type: String,
     restaurentName: String,
+    restaurentAddress: String,
     longitude: Number,
     latitude: Number ,
     avatar: String,

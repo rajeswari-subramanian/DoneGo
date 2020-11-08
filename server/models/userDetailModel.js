@@ -10,6 +10,7 @@ const donegoSchema = new Schema({
         {
             street: String,
             landmark: String,
+            actualMapAddress: String,
             longitude: Number,
             latitude: Number ,
             contactPerson: String,
@@ -19,15 +20,27 @@ const donegoSchema = new Schema({
     ],
     orderDetails: [
         {
-            orderId: Number,
-            userId: Number,
             dateOfOrder: String,
-            restaurentName:String,
-            place: String,
-            itemName: String,
-            itemPrice: Number,
-            totalAmount: Number
-        }
+            restaurentName: String,
+            restaurentAddress: String,
+            userAddress: String,
+            userAddressType: String,
+            userMobileNumber: Number,
+            items: [
+                {
+                    itemName: String,
+                    itemPrice: Number,
+                    itemQuantity : Number
+                },
+                {
+                    itemName: String,
+                    itemPrice: Number,
+                    itemQuantity : Number
+                }
+            ],
+            totalAmount: Number,
+            status: String
+        },
     ]
 });
 
