@@ -101,7 +101,7 @@ export default function MenuAppBar() {
 
     return (
         <>
-          <AppBar variant="outlined" style={{ border: 'none', zIndex: '999', transition: '0.3s linear' }} className={classes.color} position="fixed">
+          {/* <AppBar variant="outlined" style={{ border: 'none', zIndex: '999', transition: '0.3s linear' }} className={classes.color} position="fixed">
                 <Toolbar>
                     <IconButton style={{ marginLeft: "280px", fontWeight: '1000', fontSize: '27px', fontFamily: 'Rubik' }} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         DoneGo
@@ -275,11 +275,11 @@ export default function MenuAppBar() {
                         <img src="https://ik.imagekit.io/dunzo/web-assets/images/appstore-43cd8d3a00a6ed32c485951de9b3af63.svg" alt="mobile" />
                     </div>
                 </div>
-            </Box>
+            </Box> */}
 
             {/* footer */}
             
-            <Box style={{
+            {/* <Box style={{
                 backgroundColor: "rgb(23, 30, 48)",
                 minWidth:'720px',
                 height: 'auto'
@@ -378,12 +378,12 @@ export default function MenuAppBar() {
                 </div>
 
                 </Box>
-            </Box>
+            </Box> */}
            
 
             {/* RESTURENT CARDS */}
-            <MediaCard/>
-            <BodyCard/>
+            {/* <MediaCard/>
+            <BodyCard/> */}
 
             {/* RESTURENT DETAILS CARD */}
             <ResturentDetailsHeader/>
