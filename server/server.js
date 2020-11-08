@@ -45,9 +45,9 @@ mongoose.connect(
 
 app.use('/api', donegoRoute)
 
-const authRoute = require("./routes/auth");
+const userRoute = require("./routes/DonegoUserRoutes");
 
-app.use("/user", authRoute);
+app.use("/user", userRoute);
 
 const port = process.env.PORT || 5000;
 

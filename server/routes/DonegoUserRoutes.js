@@ -1,62 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 const DonegoUserModel = require('../models/userDetailModel')
 
 const config = require("../config")
 const client = require('twilio')(config.accountSID, config.authToken)
 
-const { registerValidation, loginValidation } = require("../validation");
-
-const User = require("../models/Users");
-
-
-router.post("/register", async (req, res, next) => {
-    const { error } = registerValidation(req.body);
-    if (error) {
-        res.status(400).send(error.details[0].message);
-    }
-
-    const emailExists = await User.findOne({ email: req.body.email });
-    if (emailExists) {
-        return res.status(400).send("Email already exists in the database");
-    }
-
-    const hashedPassword = await bcrypt.hash(
-        req.body.password,
-        await bcrypt.genSalt(10)
-    );
-    const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: hashedPassword,
-    });
-
-    try {
-        const savedUser = await user.save();
-        res.send(savedUser);
-    } catch (err) {
-        res.status(400).send(err);
-    }
-});
-
-router.post("/login", async (req, res, next) => {
-    const { error } = loginValidation(req.body);
-    if (error) {
-        return res.status(400).send(error.details[0].message);
-    }
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) {
-        return res.status(400).send("Email or password is wrong");
-    }
-
-    const validPass = await bcrypt.compare(req.body.password, user.password);
-    if (!validPass) return res.status(400).send("Invalid password");
-    const userToken = { id: user._id, name: user.name, email: user.email }
-    const accessToken = jwt.sign(userToken, "HELLO", { expiresIn: '1000s' });
-    res.json({ accessToken: accessToken });
-});
 
 
 router.get("/loginOtp", (req, res) => {
@@ -69,6 +18,7 @@ router.get("/loginOtp", (req, res) => {
             channel: "sms"
         })
         .then(data => {
+            console.log(data)
             res.status(200).send(data)
         })
 });
@@ -118,15 +68,44 @@ router.get('/userDetails', (req, res) => {
 })
 
 
-// router.post('/userDetails', (req, res) => {
+router.put('/updateProfile', (req, res) => {
+    DonegoUserModel.update({ _id: req.body.id }, { $set:{
+        name: req.body.name,
+        email: req.body.email
+    }})
+    .then((donego) => {
+            res.status(200).json(donego)
+        })
+    .catch((err) => res.status(400).json("Error: " + err));
+})
 
-//     const userExist = DonegoUserModel.filter(item => item.mobile === req.body.mobile)
-//     if(userExist){
+router.put('/updateProfile', (req, res) => {
+    DonegoUserModel.update({ _id: req.body.id }, { $set:{
+        name: req.body.name,
+        email: req.body.email
+    }})
+    .then((donego) => {
+            res.status(200).json(donego)
+        })
+    .catch((err) => res.status(400).json("Error: " + err));
+})
 
-//     }
-//     DonegoUserModel.find()
-//     .then((donego) => res.json(donego))
-//     .catch((err) => res.status(400).json("Error: " + err));
-// })
+router.put('/addAddress', (req, res) => {
+    DonegoUserModel.update({ _id: req.body.id }, { $push:{
+        address: { 
+            street: req.body.street,
+            landmark: req.body.landmark,
+            longitude: req.body.longitude,
+            latitude: req.body.latitude,
+            contactPerson: req.body.contactPerson,
+            contactDetail: req.body.contactDetail,
+            addressType: req.body.addressType
+         }
+    }})
+    .then((donego) => {
+            res.status(200).json(donego)
+        })
+    .catch((err) => res.status(400).json("Error: " + err));
+})
 
 module.exports = router;

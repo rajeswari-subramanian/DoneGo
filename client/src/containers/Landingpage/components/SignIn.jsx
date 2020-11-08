@@ -150,6 +150,7 @@ export default function SignIn() {
             setFull(true)
           }
           else {
+            window.localStorage.setItem('token', res.data.accessToken)
             setFull(false)
             handleClose()
             alert(res.data.message)
@@ -176,6 +177,7 @@ export default function SignIn() {
           setFull(true)
         }
         else {
+          window.localStorage.setItem('token', res.data.accessToken)
           setFull(false)
           handleClose()
           alert(res.data.message)
@@ -253,16 +255,19 @@ export default function SignIn() {
                 isVerifyButton ?
                   <Button onClick={handleVerifyOtp} color="primary">
                     Verify and Submit
-              </Button>
+                  </Button>
                   :
                   <Button disabled color="primary">
                     Verify and Submit
-            </Button>
+                  </Button>
               }
             </div>
             :
             null
         }
+          <Button onClick={handleClose} color="primary">
+            Close
+          </Button>
       </Dialog>
 
     </>
