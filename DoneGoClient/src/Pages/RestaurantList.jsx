@@ -2,44 +2,32 @@ import React, { useState,useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
-// import Link from '@material-ui/core/Link';
-import { Link, Redirect } from "react-router-dom";
+import {useParams} from 'react-router-dom'
+import { useHistory, Redirect, Link } from 'react-router-dom'
 import { Box, Grid } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import RestaurantCardInfo from "./RestaurantCardInfo";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > * + *": {
-      marginTop: theme.spacing(0),
-      width: "100%",
-      padding: "10px 30px 10px 30px",
-      marginLeft: "20px",
-    },
+    paddingTop:"5%"   
   },
 }));
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
+export default function RestaurantList(props) {
+  const classes = useStyles();   
 
-export default function RestaurantList() {
-  const classes = useStyles();
-  const [restaurantData,setData] =useState(useSelector(state => state.app.restaurantData)) 
-  
   return (
     <>
       <div
         className={classes.root}
-        style={{ background: "rgb(247, 253, 250)", marginTop: "70px" }}
+        style={{ background: "rgb(247, 253, 250)" }}
       >
-        <Breadcrumbs separator="›" aria-label="breadcrumb">
+      <div style={{width:"70%",margin:"auto"}}>
+        <Breadcrumbs separator="-›" aria-label="breadcrumb" style={{marginTop:"30px"}}>
           <Link
-            style={{
-              marginLeft: "240px",
-              color: "rgb(0, 179, 122)",
-              lineHeight: "16px",
+            style={{             
+              color: "rgb(0, 179, 122)",             
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
@@ -51,8 +39,7 @@ export default function RestaurantList() {
           </Link>
           <Link
             style={{
-              color: "rgb(0, 179, 122)",
-              lineHeight: "16px",
+              color: "rgb(0, 179, 122)",             
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
@@ -63,8 +50,7 @@ export default function RestaurantList() {
             Bangalore
           </Link>
           <Typography
-            style={{
-              lineHeight: "16px",
+            style={{            
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
@@ -74,13 +60,12 @@ export default function RestaurantList() {
           >
             Food Delivery
           </Typography>
-        </Breadcrumbs>
-      </div>
-      <Box
+        </Breadcrumbs>     
+        <Box
         style={{
           border: "none",
-          width: "100%",
-          height: "180px",
+          width: "100%",      
+          paddingBottom:"5%",    
           background: "rgb(247, 253, 250)",
         }}
       >
@@ -88,9 +73,8 @@ export default function RestaurantList() {
           <Box
             style={{
               border: "none",
-              width: "88px",
-              marginLeft: "240px",
-              marginTop: "50px",
+              width: "88px",           
+              marginTop: "30px",
               height: "88px",
               borderRadius: "16px",
               textAlign: "center",
@@ -112,10 +96,8 @@ export default function RestaurantList() {
           <Box
             style={{
               border: "none",
-              margin: "10px",
-              width: "360px",
-              marginTop: "50px",
-              height: "88px",
+              margin: "10px",            
+              marginTop: "30px",             
               lineHeight: "normal",
               letterSpacing: "normal",
               fontFamily: "sans-serif",
@@ -143,11 +125,13 @@ export default function RestaurantList() {
                 fontFamily: "sans-serif",
               }}
             >
-              {restaurantData.length} Restaurants
+              {props.len}  Restaurants
             </p>
           </Box>
         </div>
       </Box>
+        </div>
+      </div>      <br />
       <RestaurantCardInfo />
     </>
   );

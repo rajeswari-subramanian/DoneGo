@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory, Redirect, Link } from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -79,8 +81,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() { 
   const classes = useStyles();
+  const params=useParams();
   const restaurantData = useSelector((state) => state.app.restaurantData);
-  console.log("restaurantData", restaurantData.length);
+  const [restaurantLen,setLen]=useState(restaurantData.length)
+  
+  useEffect(() => {
+    setLen(restaurantData.length)
+  }, [restaurantData],[restaurantLen])
+
+  //console.log("NavbarrestaurantDatalen", restaurantData.length);
 
   return (
     <>
@@ -91,6 +100,7 @@ export default function Navbar() {
         position="fixed"
       >
         <Toolbar>
+        
           <IconButton
             style={{
               marginLeft: "13%",
@@ -101,8 +111,9 @@ export default function Navbar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
-          >
-            DoneGo
+            
+          ><Link to="/">
+         DoneGo</Link>
           </IconButton>
           <Modal />
           <Button
@@ -122,6 +133,7 @@ export default function Navbar() {
           <IconButton color="black" aria-label="add to shopping cart">
             <ShoppingCartOutlinedIcon />
           </IconButton>
+          {/* <Link to = "/login" >{!isAuth?<button>Login</button> : <button onClick={handleLogout}>LogOut</button>}</Link> */}
           <Button
             style={{ textTransform: "none" }}
             className={classes.ButtonBackground}
@@ -131,6 +143,6 @@ export default function Navbar() {
           </Button>
         </Toolbar>
       </AppBar>  
-    <Routes />  </>
+    <Routes  leng={restaurantLen}/>  </>
   );
 }

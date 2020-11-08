@@ -18,8 +18,6 @@ import { useThrottle } from "use-throttle";
 import { useSelector, useDispatch } from 'react-redux'
 import {restaurantList} from '../Redux/Restaurant/action'
 
-//import Autocomplete from "@material-ui/lab/Autocomplete";
-
 const useStyles = makeStyles((theme) => ({
   margin: {
     border: "3px solid #F3F3F5",
@@ -91,15 +89,9 @@ export default function Modal() {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0,
-  };
+  };  
 
   var config1 = {
-    method: "get",
-    url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lang},${lat}.json?types=locality&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`,
-    headers: {},
-  };
-
-  var config2 = {
     method: "get",
     url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${throttledText}.json?country=in&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`,
     headers: {},
@@ -110,40 +102,36 @@ export default function Modal() {
   //   method: "get",
   //   url: `https://api.mapbox.com/geocoding/v5/mapbox.places/restaurants.json?types=poi&country=in&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`,
   //   headers: {},
-  // };
-
-  async function success(pos) {
-    var crd = pos.coords;
-    setLang(crd.longitude);
-    setLat(crd.latitude);
-    let payload = {
-        lang: crd.longitude,
-        lat: crd.latitude
-    }
-    await dispatch(restaurantList(payload))
-    console.log("Your current position is:");
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-  }
+  // };  
 
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
   //CURRENT LOCATION LANG LAT PLACENAME - Variables are lang, lat,curr
-  async function handleCurrent() {
-    await navigator.geolocation.getCurrentPosition(success, error, options);
-    await axios(config1)
-      .then(function (response) {
-        let temp = response.data.features[0].place_name.split(",");
-        setCurr(`${temp[0]},${temp[1]}`);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  function handleCurrent() {
+    console.log('Hello Current');
+    navigator.geolocation.getCurrentPosition(function success(pos) {
+      var crd = pos.coords;
+      axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${crd.longitude},${crd.latitude}.json?types=locality&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`)
+        .then(function (response) {
+          console.log(response);
+          let temp = response.data.features[0].place_name.split(",");
+          setCurr(`${temp[0]},${temp[1]}`);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      setLang(crd.longitude);
+      setLat(crd.latitude);
+      let payload = {
+        lang: crd.longitude,
+        lat: crd.latitude
+      }
+      dispatch(restaurantList(payload))
+    }, error, options);
     setOpen(false);
-  }
+  }  
 
   function handleEnter(e) {
     e.target.style.background = "#F3F3F5";
@@ -156,7 +144,7 @@ export default function Modal() {
   //SELECTED PLACE LANG LAT PLACENAME - Variables are lang, lat,curr
   function handlePlace(e) {
     setName(e.target.value);   
-    axios(config2)
+    axios(config1)
       .then(function (response) {
         response.data.features.map((item) => {
           let temp1 = item.place_name.split(",");
@@ -180,15 +168,13 @@ export default function Modal() {
       });
   }
 
-console.log("current", lang, lat, curr);
-//console.log("restdata",restaurantData)
 useEffect(() => {
-  let payload={
-    lang: lang,
-    lat: lat
-  }
-  dispatch(restaurantList(payload))
-}, [curr],[lang],[lat])
+  handleCurrent()
+}, [])
+
+//console.log("current", lang, lat, curr);
+//console.log("restdata",restaurantData)
+
   return (
     <>
       <div className={classes.search}>

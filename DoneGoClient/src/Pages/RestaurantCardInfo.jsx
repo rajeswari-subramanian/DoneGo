@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { useHistory, Redirect, Link } from 'react-router-dom'
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RestaurantCardInfo() {
   const classes = useStyles();
   const restaurantData = useSelector((state) => state.app.restaurantData);
-  console.log("rescard",restaurantData)
+  //console.log("rescard",restaurantData)
   return (
     <>
       <div className={classes.root}>
@@ -45,13 +46,13 @@ export default function RestaurantCardInfo() {
               <Paper className={classes.paper} style={{margin:"auto"}}  elevation={1}  >
                 <Grid container item spacing={1} >
                   <Grid item>
-                    <ButtonBase className={classes.image}>
+                    <Link to={`/order/${items.restaurentName}`}><ButtonBase className={classes.image}>
                       <img
                         className={classes.img}
                         alt="complex"
                         src={items.avatar}
                       />
-                    </ButtonBase>
+                    </ButtonBase></Link>
                   </Grid>
                   <Grid item xs={12} sm container>
                     <Grid item xs container direction="column" spacing={2}>
