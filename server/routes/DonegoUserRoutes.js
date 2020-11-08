@@ -103,7 +103,7 @@ router.put('/addAddress', (req, res) => {
          }
     }})
     .then((donego) => {
-            res.status(200).json(donego)
+        res.status(200).json({message: "Address Added"})
         })
     .catch((err) => res.status(400).json("Error: " + err));
 })
@@ -115,7 +115,7 @@ router.put('/updateProfile', (req, res) => {
         email: req.body.email
     }})
     .then((donego) => {
-            res.status(200).json(donego)
+        res.status(200).json({message: "Profile Updated"})
         })
     .catch((err) => res.status(400).json("Error: " + err));
 })
@@ -135,7 +135,7 @@ router.put('/placeOrder', (req, res) => {
          }
     }})
     .then((donego) => {
-            res.status(200).json(donego)
+            res.status(200).json({message: "Order Placed"})
         })
     .catch((err) => res.status(400).json("Error: " + err));
 })
