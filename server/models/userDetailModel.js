@@ -47,7 +47,6 @@ const donegoSchema = new Schema({
         {
             restaurentName: String,
             restaurentAddress: String,
-            userAddress: String,
             items: [
                 {
                     itemName: String,
@@ -59,8 +58,7 @@ const donegoSchema = new Schema({
                     itemPrice: Number,
                     itemQuantity : Number
                 }
-            ],
-            totalAmount: Number
+            ]
         }
     ]
 });

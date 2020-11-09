@@ -61,7 +61,6 @@
             {
                 "restaurentName":"Adyar Ananda Bhavan (A2B)",
                 "restaurentAddress": "BPCL. Petrol Bunk, #3, 100 Feet Road, I Stage, 16th Main Rd, I Phase, BTM Layout, Bengaluru, Karnataka 560068",
-                "userAddress": "#34 sai baba nilya, near grand city hot and cold bakery, Btm Layout, Bengaluru-68",
                 "items": [
                     {
                         "itemName": "Veg Burger Combo",
@@ -73,8 +72,7 @@
                         "itemPrice": 70,
                         "itemQuantity" : 1
                     }
-                ],
-                "totalAmount": 740
+                ]
             }
         ]
     }
