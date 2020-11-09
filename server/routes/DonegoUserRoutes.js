@@ -120,6 +120,21 @@ router.put('/updateProfile', (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 })
 
+
+// router.put('/addToCart', (req, res) => {
+//     DonegoUserModel.update({ _id: req.body.id }, { $set:{
+//         cartDetails: {
+//                 restaurentName: req.body.restaurentName,
+//                 restaurentAddress: req.body.restaurentAddress,
+//                 items: req.body.items
+//          }
+//     }})
+//     .then((donego) => {
+//             res.status(200).json({message: "Items Added"})
+//         })
+//     .catch((err) => res.status(400).json("Error: " + err));
+// })
+
 router.put('/placeOrder', (req, res) => {
     DonegoUserModel.update({ _id: req.body.id }, { $push:{
         orderDetails: { 

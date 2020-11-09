@@ -42,24 +42,6 @@ const donegoSchema = new Schema({
             totalAmount: Number,
             status: String
         },
-    ],
-    cartDetails:[
-        {
-            restaurentName: String,
-            restaurentAddress: String,
-            items: [
-                {
-                    itemName: String,
-                    itemPrice: Number,
-                    itemQuantity : Number
-                },
-                {
-                    itemName: String,
-                    itemPrice: Number,
-                    itemQuantity : Number
-                }
-            ]
-        }
     ]
 });
 
