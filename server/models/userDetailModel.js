@@ -21,6 +21,7 @@ const donegoSchema = new Schema({
     orderDetails: [
         {
             dateOfOrder: String,
+            transactionId: String,
             restaurentName: String,
             restaurentAddress: String,
             userAddress: String,
@@ -41,6 +42,26 @@ const donegoSchema = new Schema({
             totalAmount: Number,
             status: String
         },
+    ],
+    cartDetails:[
+        {
+            restaurentName: String,
+            restaurentAddress: String,
+            userAddress: String,
+            items: [
+                {
+                    itemName: String,
+                    itemPrice: Number,
+                    itemQuantity : Number
+                },
+                {
+                    itemName: String,
+                    itemPrice: Number,
+                    itemQuantity : Number
+                }
+            ],
+            totalAmount: Number
+        }
     ]
 });
 
