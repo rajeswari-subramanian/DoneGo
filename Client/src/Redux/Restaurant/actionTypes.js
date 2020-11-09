@@ -1,0 +1,11 @@
+export const GET_RESTAURANTS = {
+    REQUEST: "REQUEST",
+    SUCCESS: "SUCCESS",
+    FAILURE: "FAILURE"
+}
+
+export const GET_ITEMS = {
+    REQUEST: "REQUEST",
+    SUCCESS: "SUCCESS",
+    FAILURE: "FAILURE"
+}
