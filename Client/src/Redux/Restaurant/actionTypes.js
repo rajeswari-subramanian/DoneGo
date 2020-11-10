@@ -9,3 +9,11 @@ export const GET_ITEMS = {
     SUCCESS: "SUCCESS",
     FAILURE: "FAILURE"
 }
+
+export const CART_ITEMS = {
+    ADD: 'ADD',
+    REMOVE: 'REMOVE',
+    CLEAR: 'CLEAR'
+}
+
+export const SELECT_RESTAURANT = "SELECT_RESTAURANT"

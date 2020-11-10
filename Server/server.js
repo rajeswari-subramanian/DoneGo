@@ -67,7 +67,7 @@ app.post('/razorpay', async (req, res) => {
 //RAZORPAY
 
 let donego = require('./donegoitems.json')
-let users = require('./userDetail.json')
+let users = require('./UserDetail.json')
 
 dotenv.config();
 const donegoRoute = require("./routes/DonegoRoutes")
@@ -103,10 +103,9 @@ mongoose.connect(
         }));
     })
 
-
 app.use('/api/donego', donegoRoute)
 
-const userRoute = require("./routes/DonegoUserRoutes");
+const userRoute = require("./routes/DoneGoUserRoutes");
 
 app.use("/user", userRoute);
 

@@ -1,5 +1,5 @@
 import http from 'axios'
-import { GET_RESTAURANTS } from './actionTypes'
+import { GET_RESTAURANTS, CART_ITEMS, SELECT_RESTAURANT } from './actionTypes'
 import { API } from './apiConstants'
 const RESULT_RESTAURANTS = API.ENDPOINTS.GET_RESTAURANTS
 
@@ -14,6 +14,33 @@ export function restaurantList(payload) {
             .catch(err => {
                 dispatch(failure(err))
             })
+    }
+}
+
+export function selectRetaurant(payload) {
+    return {
+        type: SELECT_RESTAURANT,
+        payload
+    }
+}
+
+export function addToCart(payload) {
+    return {
+        type: CART_ITEMS.ADD,
+        payload
+    }
+}
+
+export function removeFromCart(id) {
+    return {
+        type: CART_ITEMS.REMOVE,
+        id
+    }
+}
+
+export function clearCart() {
+    return {
+        type: CART_ITEMS.CLEAR
     }
 }
 
