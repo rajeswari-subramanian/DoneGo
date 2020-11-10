@@ -16,6 +16,7 @@ import { getRestaurent } from '../../redux/actions/getRestaurentAction'
 import MediaCard from './components/MapCard';
 import LandingCard from './components/BodyCard'
 import ResturentDetailsHeader from './components/ResturentDetailsHeader';
+import ProfileDetails from './components/ProjileDetails';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -104,7 +105,7 @@ export default function MenuAppBar() {
           {/* <AppBar variant="outlined" style={{ border: 'none', zIndex: '999', transition: '0.3s linear' }} className={classes.color} position="fixed">
                 <Toolbar>
                     <IconButton style={{ marginLeft: "280px", fontWeight: '1000', fontSize: '27px', fontFamily: 'Rubik' }} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        DoneGo
+                        <img style={{height:'28px', width:'122px'}} src ="logo.png"/>
                         </IconButton>
                     <div className={classes.search}>
                         <div style={{ color: "rgb(0, 210, 144)" }} className={classes.searchIcon}>
@@ -386,7 +387,8 @@ export default function MenuAppBar() {
             <BodyCard/> */}
 
             {/* RESTURENT DETAILS CARD */}
-            <ResturentDetailsHeader/>
+            {/* <ResturentDetailsHeader/> */}
+            <ProfileDetails/>
 
         </>
     );

@@ -29,11 +29,11 @@ const Wrapper = styled.div`
 
 `
 
-function ResturentTableDetails() {
+function TableCards() {
   return (
     <>
       <Wrapper>
-        <div className="container"style={{ boxShadow:' rgb(231, 232, 235) 0px -1px 0px 0px inset'}}>
+        <div className="container" style={{ boxShadow:' rgb(231, 232, 235) 0px -1px 0px 0px inset'}}>
           <nav className="navbar navbar-light bg-white mt-5 card" 
           style={{borderRadius:'4px', height:'84px',width:'100%',boxAlign:'center',
           borderBottom:'1px solid rgb(216, 216, 216)',alignItems:'center', 
@@ -53,7 +53,7 @@ function ResturentTableDetails() {
         <div class="col-6 col-md-2" style={{border:'1px solid #BDBDBD'}}>
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a style={{backgroundColor:'transparent', color:'rgb(0, 192, 139)',
-            borderRight:'4px solid rgb(0, 192, 139)',width:'100%',backgroundColor:'transparent',
+            borderRight:'5px solid rgb(0, 192, 139)',width:'100%',backgroundColor:'transparent',
             textAlign:'right',padding:'0px 12px', textTransform:'capitalize', height:'26px',margin:'50px 0px', overflow:'hidden',fontSize:'16px', 
             fontWeight:'600', whiteSpace:'nowrap', textOverflow:'ellipsis'}}class="nav-link active" id="v-pills-foodItem-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Food Items</a>
             {/* <a style={{backgroundColor:'transparent', color:'rgb(0, 192, 139)',borderRight:'4px solid rgb(0, 192, 139)',width:'100%'}} class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
@@ -119,4 +119,4 @@ function ResturentTableDetails() {
   )
 }
 
-export default ResturentTableDetails
+export default TableCards
