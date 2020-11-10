@@ -115,7 +115,7 @@ export default function Navbar() {
             color="inherit"
             aria-label="menu"                      
           >
-         <Link to="/order" ><span>DoneGo</span></Link>
+         <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
           </IconButton>
           <Modal />
           <Button
@@ -123,6 +123,7 @@ export default function Navbar() {
               marginLeft: "12%",
               textTransform: "none",
               fontFamily: "sans-serif",
+              
             }}
             color="inherit"
           >
@@ -134,7 +135,7 @@ export default function Navbar() {
           </Button>
           <IconButton color="black" aria-label="add to shopping cart">
             <ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative"}}/><span 
-            style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"red",color:"white",width:"18px",height:"18px",fontWeight:"bolder",borderRadius:"50%",padding:"1px",fontSize:"16px"}}>1</span>
+            style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px"}}>1</span>
           </IconButton>
          <SignIn />         
         </Toolbar>

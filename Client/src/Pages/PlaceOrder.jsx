@@ -115,10 +115,10 @@ export default function PlaceOrder() {
         color="inherit"
         aria-label="menu"                      
       >
-     <Link to="/order" ><span>DoneGo</span></Link>
+      <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
       </IconButton>
       <Modal />      
-      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"37%"}}>
+      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"33%"}}>
         <ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative"}}/><span 
         style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"red",color:"white",width:"18px",height:"18px",fontWeight:"bolder",borderRadius:"50%",padding:"1px",fontSize:"16px"}}>1</span>
       </IconButton>

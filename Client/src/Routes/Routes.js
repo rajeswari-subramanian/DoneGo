@@ -6,6 +6,7 @@ import RestaurantList from "../Pages/RestaurantList";
 import Checkout from "../Pages/Checkout";
 import PlaceOrder from "../Pages/PlaceOrder";
 import Profile from "../Pages/Profile";
+import Thankyou from '../Pages/Thankyou'
 
 export default function Routes() {
     return (
@@ -23,19 +24,24 @@ export default function Routes() {
                         render={(props) => <LandingPage {...props} />}
                     />
                     <Route
-                        path="/order/restaurant"
-                        exact
-                        render={(props) => <RestaurantList {...props} />}
-                    />
-                    <Route
                         path="/order/checkout"
                         exact
                         render={(props) => <Checkout {...props} />}
                     />
                     <Route
+                        path="/order/restaurant"
+                        exact
+                        render={(props) => <RestaurantList {...props} />}
+                    />
+                    <Route
                         path="/order/profile"
                         exact
                         render={(props) => <Profile {...props} />}
+                    />
+                    <Route
+                        path="/order/thankyou"
+                        exact
+                        render={(props) => <Thankyou {...props} />}
                     />
                     <Route
                         path="/order/:id"

@@ -46,7 +46,7 @@ const SmallCards = (props) => {
           image={imgSrc}
         />
         <br/>
-        <span style={{overflowWrap:"unset"}}>{text}</span>
+        <span style={{whiteSpace:"nowrap"}}>{text}</span>
       </CardContent>
     </Card>
   );
