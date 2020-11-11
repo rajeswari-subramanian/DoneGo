@@ -1,17 +1,18 @@
 import { CART_ITEMS, GET_RESTAURANTS, SELECT_RESTAURANT, ADD_CART_RESTAURANT } from './actionTypes'
+import { loadData, saveData } from '../LocalStorage'
 
 const initState = {
   isLoading: false,
-  restaurantData: [],
-  restaurantItems: [],
-  cartItems: [],
+  restaurantData: loadData('restaurantData') || [] ,
+  restaurantItems: loadData('restaurantItems') || [],
+  cartItems: loadData('cartItems') || [],
   isError: false,
-  restaurantName: '',
-  restaurantId: '',
-  cartRestaurant:'',
-  cartRestaurantId:'',
-  totalCartValue: 0,
-  totalCartItems: 0
+  restaurantName: loadData('restaurantName') || '',
+  restaurantId: loadData('restaurantId') || '',
+  cartRestaurant: loadData('cartRestaurant') || '',
+  cartRestaurantId: loadData('cartRestaurantId') || '',
+  totalCartValue: loadData('totalCartValue') || 0,
+  totalCartItems: loadData('totalCartItems') || 0
 }
 
 
@@ -27,6 +28,7 @@ const reducer = (state = initState, { type, payload }) => {
     }
 
     case GET_RESTAURANTS.SUCCESS:{
+      saveData('restaurantData', payload)
       return {
         ...state,
         restaurantData: payload,
@@ -51,6 +53,9 @@ const reducer = (state = initState, { type, payload }) => {
           }
         }
       }
+      saveData('restaurantId', seletedRestaurant._id)
+      saveData('restaurantName', seletedRestaurant.restaurentName)
+      saveData('restaurantItems', seletedRestaurant.foodItems)
       return{
         ...state,
         restaurantId: seletedRestaurant._id,
@@ -61,9 +66,15 @@ const reducer = (state = initState, { type, payload }) => {
 
     case CART_ITEMS.ADD: {
         let addedItems = state.cartItems.find(item => item._id === payload._id)
-        let restaurantItem = state.restaurantItems.find(item=> item._id === payload._id)
+        // let restaurantItem = state.restaurantItems.find(item=> item._id === payload._id)
         if(addedItems){
           addedItems.quantity += 1
+          saveData('totalCartValue', state.totalCartValue + addedItems.itemPrice)
+          saveData('totalCartItems', state.totalCartItems + 1)
+          saveData('cartRestaurantId', state.restaurantId)
+          saveData('cartRestaurant', state.restaurantName)
+          saveData('cartItems', state.cartItems)
+          saveData('restaurantItems', state.restaurantItems)
           return {
             ...state,
             totalCartValue: state.totalCartValue + addedItems.itemPrice,
@@ -76,6 +87,10 @@ const reducer = (state = initState, { type, payload }) => {
         }
         else{
           payload.quantity = 1
+          saveData('totalCartValue', state.totalCartValue + payload.itemPrice)
+          saveData('totalCartItems', state.totalCartItems + payload.quantity)
+          saveData('cartItems', [...state.cartItems, payload])
+          saveData('restaurantItems', state.restaurantItems)
           return {
             ...state,
             totalCartItems: state.totalCartItems + payload.quantity,
@@ -94,6 +109,12 @@ const reducer = (state = initState, { type, payload }) => {
         if(removeItems.quantity === 1){
           let newItems = state.cartItems.filter(item => item._id !== payload)
           restaurantItem.quantity = 0
+
+          saveData('totalCartValue', state.totalCartValue - removeItems.itemPrice)
+          saveData('totalCartItems', state.totalCartItems - 1)
+          saveData('cartItems', newItems)
+          saveData('restaurantItems', state.restaurantItems)
+
           return {
             ...state,
             totalCartValue: state.totalCartValue - removeItems.itemPrice,
@@ -104,6 +125,12 @@ const reducer = (state = initState, { type, payload }) => {
         }
         else{
           removeItems.quantity -= 1
+
+          saveData('totalCartValue', state.totalCartValue - removeItems.itemPrice)
+          saveData('totalCartItems', state.totalCartItems - 1)
+          saveData('cartItems', state.cartItems)
+          saveData('restaurantItems', state.restaurantItems)
+
           return {
             ...state,
             totalCartValue: state.totalCartValue - removeItems.itemPrice,
@@ -115,6 +142,8 @@ const reducer = (state = initState, { type, payload }) => {
       }
   }
   case ADD_CART_RESTAURANT: {
+    saveData('cartRestaurantId', payload.id)
+    saveData('cartRestaurant', payload.name)
     return {
       ...state,
       cartRestaurant: payload.name,
