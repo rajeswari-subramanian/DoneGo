@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from "@material-ui/core/Button";
-import { useHistory, Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import "bootstrap/dist/css/bootstrap.css";
-import { addToCart, removeFromCart } from '../Redux/Restaurant/action'
+import { addToCart, removeFromCart, addCartRestaurant, selectRetaurant } from '../Redux/Restaurant/action'
 
 const Wrapper = styled.div`
 .card {
@@ -101,18 +101,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function RestaurantTableDetails() {
-  const {restaurantItems, restaurantId, restaurantName, cartItems} = useSelector((state)=> state.app)
+  const { restaurantItems, restaurantId, restaurantName, cartItems, cartRestaurantId, totalCartValue, totalCartItems } = useSelector((state) => state.app)
   const classes = useStyles();
   const dispatch = useDispatch()
 
-  const handleAddToCart = (item) =>{
+  const handleAddToCart = (item) => {
       dispatch(addToCart(item))
-  }
+      dispatch(addCartRestaurant({ id: restaurantId, name: restaurantName }))
+      // dispatch(selectRetaurant({_id: restaurantId}))
+    }
 
-  const handleRemoveFromCart = (id) =>{
+  const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id))
-}
-  console.log(cartItems, restaurantItems, restaurantId, restaurantName);
+    // dispatch(selectRetaurant({_id: restaurantId}))
+  }
+  console.log(cartItems, restaurantItems, totalCartValue);
   return (
     <>
       <Wrapper>
@@ -159,33 +162,33 @@ function RestaurantTableDetails() {
                 }}>food item</div>
                 {
                   restaurantItems && restaurantItems.length > 0 ?
-                  <div>
-                    {
-                      restaurantItems.map(item=>{
-                        return(
-                          <div>
+                    <div>
+                      {
+                        restaurantItems.map(item => {
+                          return (
+                            <div>
                               <div style={{ padding: '16px 24px', fontSize: '18px', textTransform: 'capitalize', width: '100%', padding: '24px', fontWeight: 500 }} class="col-9">
-                                  <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px' }}>{item.itemName}</p>
-                                  <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px' }}>&#8377;{item.itemPrice}</p>
+                                <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px' }}>{item.itemName}</p>
+                                <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px' }}>&#8377;{item.itemPrice}</p>
                               </div>
                               <div style={{ padding: '16px 24px', fontSize: '18px', textTransform: 'capitalize', width: '100%', padding: '24px', fontWeight: 500 }} class="col-3">
                                 {
                                   (item.quantity === undefined) || item.quantity === 0 ?
-                                  <button style={{ borderRadius: '20px' }} type="button" class="btn btn-outline-success" onClick={()=>handleAddToCart(item)}>+ ADD</button>
-                                  :
-                                  <button style={{ borderRadius: '20px' }} type="button" class="btn btn-outline-success"><span onClick={()=>handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={()=>handleRemoveFromCart(item._id)}>- </span> </button>
+                                    <button style={{ borderRadius: '20px' }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
+                                    :
+                                    <button style={{ borderRadius: '20px' }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
                                 }
-                                
-                              </div>
-                          </div>
-                        )
-                      })
 
-                    }
-                  </div>
-                  :
-                  <div>
-                    No Items Available
+                              </div>
+                            </div>
+                          )
+                        })
+
+                      }
+                    </div>
+                    :
+                    <div>
+                      No Items Available
                   </div>
                 }
               </div>
@@ -194,15 +197,51 @@ function RestaurantTableDetails() {
             <div class="col-6 col-md-3" style={{ border: '1px solid #BDBDBD' }}>
               <div className="row">
                 <div className="col-12">
-                  <p className="cart-header" style={{ fontSize: '20px', fontWeight: 600, letterSpacing: 'normal' }}>Your Cart</p>
+                  <p className="cart-header" style={{ fontSize: '20px', fontWeight: 600, letterSpacing: 'normal' }}>Your Cart {cartItems && cartItems.length > 0 ? totalCartItems : null}</p>
                 </div>
                 <div className="col-12 img-cart">
                   <img alt="" style={{ width: '205px', height: '100%', alignItems: 'center', }} src="https://ik.imagekit.io/dunzo/web-assets/images/no-items-in-cart-7e84056f44993b68d14184f9b2992af7.png?tr=w-410,cm-pad_resize" alt="image" />
-                  <p style={{ opacity: '0.5', fontSize: '16px', fontWeight: 600, textAlign: 'center', color: 'rgb(23, 30, 48);', textAlign: 'center' }}>Your cart is empty</p>
-                  <p style={{ opacity: '0.5', fontSize: '16px', fontWeight: 600, textAlign: 'center', color: 'rgb(23, 30, 48);', textAlign: 'center' }}>Add items to get started</p>
+                  {
+                    cartItems && cartItems.length > 0 ?
+                      <div>
+                        {
+                          cartItems.map(item => {
+                            return (
+                              <div>
+
+                                <div style={{ padding: '16px 24px', fontSize: '18px', textTransform: 'capitalize', width: '100%', padding: '24px', fontWeight: 500 }} class="col-9">
+                                  <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px' }}>{item.itemName}</p>
+                                  <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px' }}>&#8377;{item.itemPrice}</p>
+                                </div>
+                                <div style={{ padding: '16px 24px', fontSize: '18px', textTransform: 'capitalize', width: '100%', padding: '24px', fontWeight: 500 }} class="col-3">
+                                  {
+                                    (item.quantity === undefined) || (item.quantity === 0) ?
+                                      <button style={{ borderRadius: '20px' }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
+                                      :
+                                      <button style={{ borderRadius: '20px' }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
+                                  }
+                                </div>
+                                <div>           
+                                </div>
+                              </div>
+                            )
+                          })
+                        }
+                      </div>
+                      :
+                      <div>
+                        <p style={{ opacity: '0.5', fontSize: '16px', fontWeight: 600, textAlign: 'center', color: 'rgb(23, 30, 48);', textAlign: 'center' }}>Your cart is empty</p>
+                        <p style={{ opacity: '0.5', fontSize: '16px', fontWeight: 600, textAlign: 'center', color: 'rgb(23, 30, 48);', textAlign: 'center' }}>Add items to get started</p>
+                      </div>
+                  }
+
+                  {
+                      cartItems && cartItems.length > 0 && <div> Item Total {totalCartValue}</div>
+                  }   
+
                   <div style={{ marginTop: "100px" }}>
                     Place Order
-        <Link to="/order/checkout" style={{ textDecoration: "none" }}>
+                      <Link to="/order/checkout" style={{ textDecoration: "none" }}>
                       <p>
                         {" "}
                         <Button
@@ -211,22 +250,15 @@ function RestaurantTableDetails() {
                           color="inherit"
                         >
                           Proceed to checkout
-          </Button> </p>
+                        </Button> </p>
                     </Link>
-
                   </div>
                 </div>
-
               </div>
-
             </div>
           </div>
-
         </div>
-
       </Wrapper>
-
-
     </>
   )
 }
