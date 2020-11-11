@@ -163,7 +163,7 @@ export default function SignIn() {
             handleClose()
             //alert(res.data.message)
             dispatch(loginSuccess())
-            console.log(res.data)
+            console.log("verify",res.data)
           }
         })
     }
