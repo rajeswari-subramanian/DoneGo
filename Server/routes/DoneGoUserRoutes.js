@@ -81,18 +81,18 @@ router.put('/updateProfile', (req, res) => {
         .catch((err) => res.status(400).json("Error: " + err));
 })
 
-router.put('/updateProfile', (req, res) => {
-    DonegoUserModel.update({ _id: req.body.id }, {
-        $set: {
-            name: req.body.name,
-            email: req.body.email
-        }
-    })
-        .then((donego) => {
-            res.status(200).json(donego)
-        })
-        .catch((err) => res.status(400).json("Error: " + err));
-})
+// router.put('/updateProfile', (req, res) => {
+//     DonegoUserModel.update({ _id: req.body.id }, {
+//         $set: {
+//             name: req.body.name,
+//             email: req.body.email
+//         }
+//     })
+//         .then((donego) => {
+//             res.status(200).json(donego)
+//         })
+//         .catch((err) => res.status(400).json("Error: " + err));
+// })
 
 router.put('/addAddress', (req, res) => {
     DonegoUserModel.update({ _id: req.body.id }, {
