@@ -1,9 +1,9 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from './actionTypes'
-
+import { loadData, saveData } from '../LocalStorage'
 const initState = {
     isLoading: false,
     isError: false,
-    isAuth: false,
+    isAuth: loadData('isAuth') || false,
     message: "",
     token: ""
 }
@@ -18,7 +18,7 @@ const signinReducer = (state = initState, { type, payload }) => {
                 isAuth: false
             }
         case LOGIN_SUCCESS:
-            // console.log(payload)
+            saveData('isAuth', true)
             return {
                 ...state,
                 //isLoading: false,
@@ -35,6 +35,7 @@ const signinReducer = (state = initState, { type, payload }) => {
                 isAuth: false
             }
         case LOGOUT:
+            saveData('isAuth', false)
             return {
                 isAuth: false
             }
