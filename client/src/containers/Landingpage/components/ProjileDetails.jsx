@@ -5,16 +5,21 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import { Box, Button, Grid, Paper } from '@material-ui/core';
+import { Box, Button, Divider, Grid, Paper } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import PropTypes from 'prop-types';
-import Divider from '@material-ui/core/Divider';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import Timeline from '@material-ui/lab/Timeline';
+import TimelineItem from '@material-ui/lab/TimelineItem';
+import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
+import TimelineConnector from '@material-ui/lab/TimelineConnector';
+import TimelineContent from '@material-ui/lab/TimelineContent';
+import TimelineDot from '@material-ui/lab/TimelineDot';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 
 function TabPanel(props) {
@@ -79,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
       position:'fixed',
       zIndex:11,
       width:'100%',
-      display:'flex'
+     
 
 
   },
@@ -95,7 +100,8 @@ const useStyles = makeStyles((theme) => ({
       marginTop:'4%',
       background:'rgb(240, 245, 247) none repeat scroll 0% 0%',
       overflow:'hidden',
-      fontFamily:'Rubik'  
+      fontFamily:'Rubik' ,
+     
 
   },
   orderCard: {
@@ -205,17 +211,12 @@ export default function ProjileDetails() {
     {/* BODY */}
 
     <Box className={classes.body}>
-       
-
-      {/* <Container maxWidth="bd">
-        <Typography component="div" style={{ backgroundColor: '#cfe8fc',  }} />
-      </Container> */}
 
       <Box className={classes.orderCard}>
           <div className={classes.root}>
             <Grid container spacing={1}>
-              <Grid item sm={12}>
-                <Paper style={{height:'85px'}} className={classes.paper}>
+              <Grid item sm={12} xs={12}>
+                <Paper style={{height:'85px'}} className={classes.paper1}>
                 
                   <Toolbar>
                   
@@ -250,27 +251,85 @@ export default function ProjileDetails() {
                 <Tab className={classes.navStyle} label="About" {...a11yProps(5)} />
 
               </Tabs>
-              <TabPanel style={{margin:'auto'}} value={value} index={0}>
-                <Grid container spacing={2}>
-                  <Grid style={{display:'inline-block'}} item={12}>
+              <TabPanel value={value} index={0}>
+                <Grid container spacing={1}>
+                  <Grid style ={{border:'none', width:"750px"}} item={12}>
                    
-                      <img 
+                      {/* <img 
                       style={{height:'161px',width:'286px', marginLeft:'65px',fontFamily:'Rubik'}} 
                       src ="https://ik.imagekit.io/dunzo/web-assets/images/delivery_bike-9ca8bf0483fbb3cf9af11fefb4d6272e.png?tr=w-572,h-322,cm-pad_resize" 
                       alt="image"/>
                       <p 
                         style={{textAlign:'center', fontWeight:600, color:'rgb(148, 149, 158)', fontSize:'16px', marginTop:'45px'}}>
                         You dont have any active orders. Place your first order now!
-                      </p>
-                
-                  </Grid>
-                </Grid>
+                      </p> */}
 
+
+                  <Toolbar>
+                    <Typography style={{padding:'5px'}} variant="h6" className={classes.title}>
+                        <div class="container" style={{display:'flex'}}>
+                          <FastfoodIcon fontSize="large" style={{ color:'rgb(0, 179, 122)' }}/>  
+                          <p style={{fontSize:'17px',fontWeight:'800', lineHeight:'normal',fontFamily:'Rubik',marginLeft:'10px'}}>Resturents</p>
+                          
+                        </div>
+                    </Typography>
+                   <p style={{fontWeight:'600',fontSize:'17px'}}>Paid:<b style={{color:'rgb(0, 179, 122)'}}>₹220</b></p>
+                  </Toolbar>
+                  <Grid style ={{border:'none', width:"700px",margin:'auto'}} item={12}>
+                  <Timeline style={{textAlign:'left',alignItems:'left', alignContent:'left'}}>
+                    <TimelineItem>
+                      <TimelineSeparator>
+                        <TimelineDot />
+                        <TimelineConnector />
+                      </TimelineSeparator>
+                      <TimelineContent><h6 style={{fontSize:'12px', color:'rgb(159, 163, 175)'}}><b style={{color:'black', fontSize:'15px '}}>Meghna Foods </b>Joyti Nibas college rioad,</h6></TimelineContent>
+                    </TimelineItem>
+                
+                    <TimelineItem>
+                      <TimelineSeparator>
+                        <TimelineDot />
+                      </TimelineSeparator>
+                      <TimelineContent><h6 style={{fontSize:'12px', color:'rgb(159, 163, 175)'}}> <b style={{color:'black', fontSize:'15px '}}>HOME </b>34 Saibaba Nilia Mandir</h6></TimelineContent>
+                    </TimelineItem>
+                  </Timeline>
+                  <p style={{fontSize:'12px', fontWeight:'600', color:'rgb(159, 163, 175)', fontFamily:'Rubik'}}>Meghna Special Briyai x 1</p>
+
+                  </Grid>
+                  </Grid>
+                  
+                  
+                </Grid>
+                <Divider/>
+                <div class="container">
+                  <div class="row">
+                    <div style={{border:'none', paddingTop:'10px'}} class="col-12">
+                    <Toolbar>
+                  
+                        <Typography style={{padding:'5px'}} variant="h6" className={classes.title}>
+                          <div class="container" style={{display:'flex'}}>
+
+                          <CheckCircleIcon style={{ color:'rgb(0, 179, 122)'}}/>
+                            <p style={{fontSize:'16px',fontWeight:600, lineHeight:'normal',fontFamily:'Rubik', paddingLeft:'10px', color:'rgb(159, 163, 175)'}}>Completed</p>
+                           
+                          </div>
+                          
+                        </Typography>
+                        <button style={{fontWeight:600, fontFamily:'Rubik', borderRadius:'20px'}} type="button" class="btn btn-outline-success">Track Order</button>
+                    </Toolbar>
+                      
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              <Divider/>
                 
               </TabPanel>
               <TabPanel value={value} index={1}>
                   <div className={classes.root}>
-                  <Grid container spacing={3}>
+                  <Grid container spacing={2}>
                   <Grid item xs={6}>
                     <div className={classes.paper2}>
                       <p 
@@ -291,7 +350,7 @@ export default function ProjileDetails() {
                             <HomeIcon  fontSize="small"/>
 
                           </IconButton>
-                          <p style={{fontSize:'14px',fontWeight:600,fontFamily:'Rubik', paddingTop:'15px'}}>Harsha Khan</p>
+                          <p style={{fontSize:'14px',fontWeight:600,fontFamily:'Rubik', paddingTop:'15px'}}>Home</p>
                         </div>
                         
                         
