@@ -8,11 +8,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 
 const products = [
-  { name: 'Product 1', desc: 'A nice thing', price: '$9.99' },
-  { name: 'Product 2', desc: 'Another thing', price: '$3.45' },
-  { name: 'Product 3', desc: 'Something else', price: '$6.51' },
-  { name: 'Product 4', desc: 'Best thing of all', price: '$14.11' },
-  { name: 'Shipping', desc: '', price: 'Free' },
+  { name: 'Product 1', desc: 'A nice thing', price: 'Rs: 499' },
+  // { name: 'Product 2', desc: 'Another thing', price: '$3.45' },
+  // { name: 'Product 3', desc: 'Something else', price: '$6.51' },
+  // { name: 'Product 4', desc: 'Best thing of all', price: '$14.11' },
+  // { name: 'Shipping', desc: '', price: 'Free' },
 ];
 const addresses = ['1 Material-UI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
 const payments = [
@@ -54,8 +54,8 @@ export default function Review() {
             <ListItemText primary={product.name} secondary={product.desc} />
             <Typography variant="body2">{product.price}</Typography>
           </ListItem>
-        ))}
-        <ListItem className={classes.listItem}>
+        ))} </List>
+        {/* <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
             $34.06
@@ -85,9 +85,9 @@ export default function Review() {
                 </Grid>
               </React.Fragment>
             ))}
-          </Grid>
+          </Grid> 
         </Grid>
-      </Grid>
+      </Grid> */}
       </Paper>
   );
 }

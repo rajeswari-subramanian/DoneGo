@@ -134,7 +134,7 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid container style={{ marginTop: "20px" }}>
+          <Grid container style={{ marginTop: "20px",paddingBottom:"40px" }}>
             <Grid
               item
               container
@@ -178,9 +178,7 @@ export default function LandingPage() {
                   imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_wellness_tertiary_grid_1597821915084.png"
                 />
               </Grid>
-            </Grid>
-            <br />
-            <br />
+            </Grid>            
           </Grid>
         </div>
       </div>
@@ -252,11 +250,12 @@ export default function LandingPage() {
           display: "flex",
           boxSizing: "border-box",
           marginTop: "60px",
+          paddingBottom:"14px"
         }}
       >
         <Box className={classes.MobilePic}>
           <img
-            style={{ height: "270px" }}
+            style={{ height: "280px" }}
             src="https://ik.imagekit.io/dunzo/web-assets/images/dunzo-app-be5ce8c58d3ad0b183757f34179879b4.png?tr=w-352,h-480,cm-pad_resize"
             alt="mobile"
           />
@@ -292,8 +291,7 @@ export default function LandingPage() {
               src="https://ik.imagekit.io/dunzo/web-assets/images/appstore-43cd8d3a00a6ed32c485951de9b3af63.svg"
               alt="mobile"
             />
-          </div>
-          <br />
+          </div>          
         </div>
       </Box>
       <div style={{ backgroundColor: "rgb(23, 30, 48)" }}>

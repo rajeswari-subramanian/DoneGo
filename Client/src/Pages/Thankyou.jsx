@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     margin: "auto",
     paddingTop:"5%",
-    width: "70%",
+    width: "30%",
     background:"#F0F5F7",
     // border:"2px solid red",
     justifyContent:"center"
@@ -130,19 +130,9 @@ const useStyles = makeStyles((theme) => ({
 
 // style={{border:"2px solid blue"}}
 
-export default function Checkout() {
+export default function Thankyou() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-  const steps = [<Paper elevation={3} className={classes.paper1}><AddressForm /></Paper>,<Paper  elevation={3} className={classes.paper1}> <PaymentForm funcLast={handleNext} /></Paper>];
   
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
-
   return (<><AppBar
     variant="outlined"
     style={{ border: "none", zIndex: "999", transition: "0.3s linear",maxHeight:"70px",minHeight:"70px" }}
@@ -170,68 +160,22 @@ export default function Checkout() {
   </AppBar>
     <div style={{background:"#F0F5F7"}}>     
       <div className={classes.root}>
-        <Grid container spacing={6}  justify="center"
+        <Grid container justify="center"
   alignItems="center" style={{background:"#F0F5F7"}} >
-          <Grid item xs={8} >           
-              <main className={classes.layout} >
-                <Paper className={classes.paper} elevation={0}>                  
-                  <Stepper
-                  separator="›"
-                    activeStep={activeStep}
-                    className={classes.stepper}
-                    orientation="vertical"
-                  >
-                    {steps.map((label) => (
-                      <Step key={label}>
-                        <StepLabel>{label}</StepLabel>
-                      </Step>
-                    ))}
-                  </Stepper>
-                  <React.Fragment>
-                    {activeStep === steps.length-1? (
-                      <Redirect to="/order/thankyou" />
-                      // <React.Fragment>
-                      //   <Typography variant="h5" gutterBottom>
-                      //     Thank you for your order.
-                      //   </Typography>
-                      //   <Typography variant="subtitle1">
-                      //     Your order number is #2001539. We have emailed your
-                      //     order confirmation, and will send you an update when
-                      //     your order has shipped.
-                      //   </Typography>
-                      // </React.Fragment>
-                    ) : ( null )
-                      // <React.Fragment>
-                      //   {/* {getStepContent(activeStep)} */}
-                      //   <div className={classes.buttons}>
-                      //     {activeStep !== 0 && (
-                      //       <Button
-                      //         onClick={handleBack}
-                      //         className={classes.button}
-                      //       >
-                      //         Back
-                      //       </Button>
-                      //     )}
-                      //     <Button
-                      //       variant="contained"
-                      //       color="primary"
-                      //       onClick={handleNext}
-                      //       className={classes.button}
-                      //     >
-                      //       {activeStep === steps.length - 1
-                      //         ? "place order"
-                      //         : "Next"}
-                      //     </Button>
-                      //   </div>
-                      // </React.Fragment>
-                    }
-                  </React.Fragment>
+          <Grid item xs={12} >           
+              {/* <main className={classes.layout} > */}
+                <Paper className={classes.paper} elevation={3}>                
+                         <Typography variant="h5" gutterBottom>
+                           Thank you for your order.
+                         </Typography>
+                         <Typography variant="subtitle1">
+                           Your order number is #2001539. We have emailed your
+                           order confirmation, and will send you an update when
+                           your order has shipped.
+                         </Typography>               
                 </Paper>
-              </main>          
-          </Grid>
-          <Grid item xs={4} >          
-              <Review />          
-          </Grid>
+              {/* </main>           */}
+          </Grid>          
         </Grid>
       </div>
     </div></>

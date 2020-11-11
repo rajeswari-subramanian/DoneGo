@@ -102,10 +102,10 @@ export default function Profile() {
         color="inherit"
         aria-label="menu"                      
       >
-     <Link to="/order" ><span>DoneGo</span></Link>
+       <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
       </IconButton>
          
-      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"56%"}}>
+      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"54%"}}>
         <ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative"}}/><span 
         style={{position:"absolute",left:"30px",top:"5px",backgroundColor:"red",color:"white",width:"15px",height:"15px",fontWeight:"bolder",borderRadius:"50%",padding:"3px",fontSize:"16px"}}>1</span>
       </IconButton>

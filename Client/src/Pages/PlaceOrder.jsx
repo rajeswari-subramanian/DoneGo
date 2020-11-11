@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory, Redirect, Link } from "react-router-dom";
+import { useSelector } from 'react-redux'
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Navbar from '../Components/Navbar'
 import AppBar from "@material-ui/core/AppBar";
@@ -90,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PlaceOrder() {
+  const { totalCartItems } = useSelector((state) => state.app); 
   const classes = useStyles();
   function handleClick(event) {
     event.preventDefault();
@@ -115,17 +117,16 @@ export default function PlaceOrder() {
         color="inherit"
         aria-label="menu"                      
       >
-     <Link to="/order" ><span>DoneGo</span></Link>
+      <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
       </IconButton>
       <Modal />      
-      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"37%"}}>
+      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"33%"}}>
         <ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative"}}/><span 
-        style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"red",color:"white",width:"18px",height:"18px",fontWeight:"bolder",borderRadius:"50%",padding:"1px",fontSize:"16px"}}>1</span>
+        style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"red",color:"white",width:"18px",height:"18px",fontWeight:"bolder",borderRadius:"50%",padding:"1px",fontSize:"16px"}}>{totalCartItems}</span>
       </IconButton>
      <SignIn />         
     </Toolbar>
   </AppBar>
-
   
     <div className={classes.root} style={{background:'rgb(247, 253, 250)'}}>
       <Breadcrumbs separator="›" aria-label="breadcrumb">
@@ -164,5 +165,3 @@ export default function PlaceOrder() {
     </>
   );
 }
-
-

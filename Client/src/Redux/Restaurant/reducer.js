@@ -49,9 +49,6 @@ const reducer = (state = initState, { type, payload }) => {
           if(seletedRestaurant.foodItems[i]._id === state.cartItems[j]._id){
             seletedRestaurant.foodItems[i].quantity = state.cartItems[j].quantity
           }
-          else{
-            seletedRestaurant.foodItems[i].quantity = 0
-          }
         }
       }
       return{

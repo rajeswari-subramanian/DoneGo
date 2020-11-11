@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBox from './InputBox'
@@ -13,13 +14,14 @@ import IconButton from "@material-ui/core/IconButton";
 import { useHistory, Redirect, Link } from 'react-router-dom'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useDispatch, useSelector } from "react-redux";
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 import {loginSuccess} from '../Redux/User/action'
 
 var intervalId = 0
 const Wrapper = styled.div`
 	position:relative;
-	padding: 25px 25px 100px 25px;
+	padding: 60px 5px 60px 5px;
 	background-color:#ffffff;
 	border-radius:5px;
 	> h2{
@@ -224,72 +226,80 @@ export default function SignIn() {
 
       {/* <Button style={{ marginRight: '100px', textTransform: "none" }} className={classes.ButtonBackground} color="inherit" onClick={handleClickOpen}>
         Sign In</Button> */}
-      <Dialog open={open} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Login</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
-          </DialogContentText>
+      <Dialog open={open} aria-labelledby="form-dialog-title"  fullWidth
+            maxWidth="xs"  >
+        <DialogTitle id="form-dialog-title" style={{textAlign:"center"}}>Signin/Signup</DialogTitle>
+        <DialogContent style={{position:"relative"}}>
+          <DialogContentText style={{textAlign:"center"}}>
+          Your 10 digit mobile number<span style={{color:"red"}}>*</span>
+          </DialogContentText>         
           <TextField
-            autoFocus
-            margin="dense"
+            autoFocus             
             id="number"
             type="number"
             fullWidth
+            maxWidth="md"
             value={mobile}
             disabled={isMobileDisabled}
             onChange={handleMobileChange}
+            InputProps={{
+              startAdornment: <InputAdornment position="start">+91</InputAdornment>,
+            }}
             onInput={(e) => e.target.value = e.target.value.slice(0, 10)}
           />
-        </DialogContent>
+       
         {
           !isMobileValid ?
-            <Button disabled color="primary">
+            <Button disabled color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
               Send OTP
           </Button>
-
             :
             !isOtpSent ?
-              <Button onClick={handleSentOtp} color="primary">
+              <Button onClick={handleSentOtp} color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
                 Send OTP
             </Button>
               :
-              <Button onClick={handleEditNumber} color="primary">
-                Edit Number
+              <Button onClick={handleEditNumber} color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
+                Edit 
           </Button>
-        }
+        } 
         {
           isOtpSent ?
             <div>
-              {
-                timeLeft === 0 ? <h5 style={{ color: "green", cursor: 'pointer' }} onClick={handleResendOtp}>Resend OTP</h5> : <h5 style={{ color: "#828282" }}>Resend OTP in {timeLeft}s</h5>
-              }
-              <Wrapper chgClr={full}>
+              
+              <Wrapper chgClr={full} style={{textAlign:"center"}}>
+                <p>Please enter OTP</p>
                 <InputBox boxes={6} operation={handleOtpChange} />
-              </Wrapper>
+                {
+                full ? <div style={{color:'red'}}>Code is not Valid</div> : null
+              }
+              </Wrapper>              
               {
-                full ? <p style={{color:'red'}}>Code is not Valid</p> : null
+                timeLeft === 0 ? <h6 style={{ color: "#00D290", cursor: 'pointer' ,textAlign:"center"}} onClick={handleResendOtp}>Resend</h6> : <h6 style={{ color: "#828282" ,textAlign:"center"}}>Resend OTP in {timeLeft}s</h6>
               }
               {
                 isVerifyButton ?
-                  <Button onClick={handleVerifyOtp} color="primary">
-                    Verify and Submit
+                  <Button onClick={handleVerifyOtp} style={{background:"#00D290",color:"white",borderRadius:"30px",marginLeft:"120px",padding:"1px"}}>
+                   Verify and continue
                   </Button>
                   :
-                  <Button disabled color="primary">
-                    Verify and Submit
+                  <Button disabled color="primary" style={{background:"#D4D6DB",borderRadius:"30px",marginLeft:"120px",padding:"1p"}}>
+                  Verify and continue
                   </Button>
               }
             </div>
             :
             null
         }
-          <Button onClick={handleClose} color="primary">
-            Close
+        </DialogContent>
+        <DialogActions
+          style={{ position: "absolute", left: "350px" }}
+        >
+          <Button onClick={handleClose} color="black">
+            X
           </Button>
+        </DialogActions>          
       </Dialog>
-
     </>
   );
 }
