@@ -38,8 +38,10 @@ router.get('/verify', (req, res) => {
                     .then(user => {
                         console.log(user)
                         if (user.length > 0) {
-                            const userToken = { id: user._id, mobile: user.mobile }
+                            const userToken = { id: user[0]._id, mobile: user[0].mobile }
+                            console.log("rrr",userToken)
                             const accessToken = jwt.sign(userToken, "DONEGO", { expiresIn: '3600s' });
+                            console.log("rruuur",accessToken)
                             res.status(200).json({ accessToken: accessToken, message: "Login Successful" });
                         }
                         else {
@@ -47,7 +49,9 @@ router.get('/verify', (req, res) => {
                                 .then(newUser => {
                                     console.log(newUser[0])
                                     const userToken = { id: newUser[0]._id, mobile: newUser[0].mobile }
+                                    console.log("rrr77",userToken)
                                     const accessToken = jwt.sign(userToken, "DONEGO", { expiresIn: '3600s' });
+                                    console.log(accessToken)
                                     res.status(200).json({ accessToken: accessToken, message: "Login Successful" });
                                 })
                         }
