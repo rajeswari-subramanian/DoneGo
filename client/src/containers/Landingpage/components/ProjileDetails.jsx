@@ -97,10 +97,12 @@ const useStyles = makeStyles((theme) => ({
       width:'100%',
       height:'auto',
       margin:'auto',
-      marginTop:'4%',
+      marginTop:'5%',
       background:'rgb(240, 245, 247) none repeat scroll 0% 0%',
       overflow:'hidden',
       fontFamily:'Rubik' ,
+      paddingTop:'1%',
+      position:'fixed'
      
 
   },
@@ -180,6 +182,24 @@ const useStyles = makeStyles((theme) => ({
    
    
   },
+  pStyle:{
+    fontSize:'12px',
+    color:'rgb(159, 163, 175)', 
+    textAlign:'left',
+    paddingLeft:'5px',
+    paddingTop:'15px',
+    fontWeight:'500'
+
+  },
+  pStyle2 :{
+    fontSize:'12px', 
+    color:'rgb(159, 163, 175)', 
+    textAlign:'left', 
+    paddingLeft:'5px', 
+    paddingTop:'35px', 
+    fontWeight:'500'
+
+  }
   
 }));
 
@@ -275,26 +295,41 @@ export default function ProjileDetails() {
                     </Typography>
                    <p style={{fontWeight:'600',fontSize:'17px'}}>Paid:<b style={{color:'rgb(0, 179, 122)'}}>₹220</b></p>
                   </Toolbar>
-                  <Grid style ={{border:'none', width:"700px",margin:'auto'}} item={12}>
-                  <Timeline style={{textAlign:'left',alignItems:'left', alignContent:'left'}}>
-                    <TimelineItem>
-                      <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
-                      </TimelineSeparator>
-                      <TimelineContent><h6 style={{fontSize:'12px', color:'rgb(159, 163, 175)'}}><b style={{color:'black', fontSize:'15px '}}>Meghna Foods </b>Joyti Nibas college rioad,</h6></TimelineContent>
-                    </TimelineItem>
-                
-                    <TimelineItem>
-                      <TimelineSeparator>
-                        <TimelineDot />
-                      </TimelineSeparator>
-                      <TimelineContent><h6 style={{fontSize:'12px', color:'rgb(159, 163, 175)'}}> <b style={{color:'black', fontSize:'15px '}}>HOME </b>34 Saibaba Nilia Mandir</h6></TimelineContent>
-                    </TimelineItem>
-                  </Timeline>
-                  <p style={{fontSize:'12px', fontWeight:'600', color:'rgb(159, 163, 175)', fontFamily:'Rubik'}}>Meghna Special Briyai x 1</p>
+                  <Grid style ={{width:"700px"}} item={12}>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-2">
+                        <Timeline style={{textAlign:'left',alignItems:'left', alignContent:'left', paddingLeft:'0px', width:'40%', display:'inline-block'}}>
+                        <TimelineItem>
+                          <TimelineSeparator>
+                            <TimelineDot />
+                            <TimelineConnector />
+                          </TimelineSeparator>
+                          <TimelineContent><h6 style={{color:'black', fontSize:'15px '}}>Meghna Foods</h6></TimelineContent>
+                        </TimelineItem>
+                    
+                        <TimelineItem>
+                          <TimelineSeparator>
+                            <TimelineDot />
+                          </TimelineSeparator>
+                          <TimelineContent><h6 style={{color:'black', fontSize:'15px '}}> HOME</h6></TimelineContent>
+                        </TimelineItem>
+                      </Timeline>
+
+                        </div>
+                        <div class="col-10">
+                          <p className={classes.pStyle}>Joyti Navas college road, Near Jyoti Niyas College No: 124, 1st Cross Rd, KHB colony</p>
+                          <p className={classes.pStyle2}>34, Saibaba Nalia near hot and cold bakery, 34 Old Madiawala Palace</p>
+
+                        </div>
+                      </div>
+
+                      
+                    </div>
+                      <p style={{fontSize:'12px', fontWeight:'600', color:'rgb(159, 163, 175)', fontFamily:'Rubik', paddingLeft:'45px'}}>Meghna Special Briyai x 1</p>
 
                   </Grid>
+                 
                   </Grid>
                   
                   
