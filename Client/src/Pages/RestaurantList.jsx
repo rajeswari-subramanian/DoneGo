@@ -124,7 +124,7 @@ export default function RestaurantList(props) {
         className={classes.root}
         style={{ background: "rgb(247, 253, 250)" }}
       >
-      <div style={{width:"70%",margin:"auto"}}>
+      <div style={{width:"70%",margin:"auto",margingTop:'50px'}}>
         <Breadcrumbs separator="-›" aria-label="breadcrumb" style={{marginTop:"30px"}}>
           <Link
             style={{             

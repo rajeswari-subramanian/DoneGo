@@ -105,7 +105,7 @@ export default function Navbar() {
         
           <IconButton
             style={{
-              marginLeft: "13%",
+              marginLeft: "10%",
               fontWeight: "1000",
               fontSize: "27px",
             }}
@@ -114,21 +114,22 @@ export default function Navbar() {
             color="inherit"
             aria-label="menu"                      
           >
-         <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
+         <Link to="/order" ><img width="122px" height="28px" alt="img" src='/logo.png'/></Link>
           </IconButton>
           <Modal />
           <Button
             style={{
-              marginLeft: "12%",
+              marginLeft: "16%",
               textTransform: "none",
-              fontFamily: "sans-serif",
+              fontFamily: "Open+Sans",
+              width:'auto'
               
             }}
             color="inherit"
           >
             Donego for Partners{" "}
           </Button>
-          <Button style={{  fontFamily: "sans-serif", textTransform: "none" }}>
+          <Button style={{  fontFamily: "Open+Sans", textTransform: "none" }}>
             {" "}
             Donego for Business
           </Button>

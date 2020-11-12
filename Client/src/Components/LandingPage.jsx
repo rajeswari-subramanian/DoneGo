@@ -86,16 +86,19 @@ export default function LandingPage() {
   console.log("restaurantData", restaurantData.length);
 
   return (
-    <> <Navbar />
+    <> 
+    <Navbar />
       {/* INSTANT SECTION */}
       <div style={{ background: " rgb(247, 253, 250)" }}>
-        <div style={{ width: "70%", margin: "auto" }}>
+        <div style={{ width: "70%", marginLeft:'12%' }}>
           <Grid
             container
             direction="column"
             style={{
               paddingTop: "120px",
               fontFamily: "sans-serif",
+              width:'112%',
+              
             }}
           >
             <Grid
@@ -104,7 +107,7 @@ export default function LandingPage() {
                 fontSize: "28px",
                 fontWeight: "600",
                 marginBottom: "40px",
-                fontFamily: "sans-serif",
+                fontFamily: "Open+Sans",
                 textAlign: "left",
               }}
             >
@@ -134,7 +137,7 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid container style={{ marginTop: "20px",paddingBottom:"40px" }}>
+          <Grid container style={{ marginTop: "20px",paddingBottom:"40px",width:'112%' }}>
             <Grid
               item
               container
@@ -183,7 +186,7 @@ export default function LandingPage() {
         </div>
       </div>
       {/* TOP SECTION */}
-      <div style={{ width: "70%", margin: "auto" }}>
+      <div style={{ width: "70%", marginLeft:'12%' }}>
         <Grid container direction="column" style={{  paddingTop: "60px", }}>
           <Grid
             item
@@ -192,7 +195,8 @@ export default function LandingPage() {
               fontSize: "28px",
               fontWeight: "600",
               marginBottom: "40px",
-              fontFamily: "sans-serif",
+              fontFamily: "Open+Sans",
+              width:'112%'
             }}
           >
             Top picks for you
@@ -214,16 +218,19 @@ export default function LandingPage() {
                   height: "6px",
                   marginTop: "10px",
                   borderRadius: "25px",
+                
                 }}
               />
             </div>
           </Grid>
           <Grid
+          style={{ width:'113%',}}
             item
             container
             spacing={2}
-            justify="space-between"
-            alignItems="center"
+           
+           
+           
           >
             <Grid item xs={12} sm={3}>
               <TopPickCards imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/d4b.jpg?tr=w-488,h-326,cm-pad_resize" />
@@ -264,7 +271,7 @@ export default function LandingPage() {
         <div
           style={{
             marginTop: "130px",           
-            fontFamily: "sans-serif",
+            fontFamily: "Open+Sans",
             fontSize: "20px",
             color: "#2D3444",
             fontWeight: "bold",
@@ -295,7 +302,7 @@ export default function LandingPage() {
         </div>
       </Box>
       <div style={{ backgroundColor: "rgb(23, 30, 48)" }}>
-        <div style={{ width: "70%", margin: "auto" }}>
+        <div style={{ width: "75%", margin: "auto" }}>
           <Footer />
         </div>
       </div>

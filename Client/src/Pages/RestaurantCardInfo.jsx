@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),   
     margin: "auto",
     width:"490px",
-    transition: "box-shadow .5s",    
+       
   },  
   image: {
     width: 128,
@@ -51,11 +51,11 @@ export default function RestaurantCardInfo() {
     <>
    
       <div className={classes.root}>
-      <Grid container spacing={1} justify="center" alignItems="center"  style={{ fontFamily: "sans-serif" }}>     
+      <Grid container spacing={2} justify="center" alignItems="center"  style={{ fontFamily: "sans-serif" }}>     
         {restaurantData.map((items) => (
             <Grid onClick={() => handleRestaurantChange(items)} style={{cursor:'pointer'}} item xs={12} sm={12} md={6} lg={6} xl={6} key={items.restaurentName} >          
-              <Paper className={classes.paper} style={{margin:"auto"}}  elevation={1}  >
-                <Grid container item spacing={1} >
+              <Paper className={classes.paper} style={{margin:"auto",}}  elevation={1}  >
+                <Grid container item spacing={2} >
                   <Grid item>
                     <ButtonBase className={classes.image}>
                       <img
@@ -76,6 +76,7 @@ export default function RestaurantCardInfo() {
                             whiteSpace: "nowrap",
                             textOverflow: "ellipsis",
                             fontWeight: 600,
+                            
                           }}
                           gutterBottom
                           variant="subtitle1"
