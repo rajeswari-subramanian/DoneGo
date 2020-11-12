@@ -10,7 +10,6 @@ import Button from "@material-ui/core/Button";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import Routes from '../Routes/Routes'
 import Modal from './Modal'
-
 import SignIn from './SignIn'
 
 const useStyles = makeStyles((theme) => ({

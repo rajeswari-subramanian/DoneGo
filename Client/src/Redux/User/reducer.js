@@ -1,5 +1,7 @@
+import jwt_decode from "jwt-decode";
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from './actionTypes'
 import { loadData, saveData } from '../LocalStorage'
+
 const initState = {
     isLoading: false,
     isError: false,

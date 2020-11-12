@@ -20,11 +20,15 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Modal from "../Components/Modal";
 import axios from "axios";
+import Address from "./Address"
 
 import SignIn from "../Components/SignIn";
+import { loadData } from "../Redux/LocalStorage";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
+
 
   return (
     <div
@@ -188,7 +192,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Profile() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [address, setAddress] = React.useState([]);
+  const [orders, setOrders] = React.useState([]);
   const dispatch = useDispatch();
+
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -196,20 +203,23 @@ export default function Profile() {
     setValue(newValue);
   };
 
+  console.log(loadData('userId'))
    React.useEffect(() => {
     axios
       .get("http://localhost:5000/user/userDetails", {
-        params: {
-          id: "",
-        },
+        headers:{
+          id: window.localStorage.getItem('userId')
+        }
+      })
+      .then(res=> {
+        setAddress(res.data[0].address)
+        setOrders(res.data[0].orderDetails)
+        // console.log("UserDetails: ",res.data[0])
       })
 
-      .then((res) => {
-        console.log("inprofileuserdetail", res.data);
-      });
-    return () => {};
   }, []);
  
+  console.log(address, orders);
   return (
     <>
       <AppBar
@@ -298,7 +308,7 @@ export default function Profile() {
                           fontFamily: "sans-serif",
                         }}
                       >
-                        +91-9008477628
+                        +91-{loadData('mobileNo')}
                       </div>
                       <div
                         style={{
@@ -426,6 +436,7 @@ export default function Profile() {
                           }}
                         >
                           + Add new address
+                          <Address />
                         </p>
                       </div>
                     </Grid>
@@ -503,6 +514,7 @@ export default function Profile() {
                         }}
                       >
                         + Add new card
+                        
                       </p>
                     </div>
                   </Grid>

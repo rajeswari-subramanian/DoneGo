@@ -159,6 +159,8 @@ export default function SignIn() {
           }
           else {
             window.localStorage.setItem('token', res.data.accessToken)
+            window.localStorage.setItem('userId',res.data.userToken.id)// mongoid
+            window.localStorage.setItem('mobileNo',res.data.userToken.mobile)
             setFull(false)
             handleClose()
             //alert(res.data.message)

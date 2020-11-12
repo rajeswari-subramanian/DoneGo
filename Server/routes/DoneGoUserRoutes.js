@@ -42,7 +42,7 @@ router.get('/verify', (req, res) => {
                             console.log("rrr",userToken)
                             const accessToken = jwt.sign(userToken, "DONEGO", { expiresIn: '3600s' });
                             console.log("rruuur",accessToken)
-                            res.status(200).json({ accessToken: accessToken, message: "Login Successful" });
+                            res.status(200).json({ accessToken: accessToken,userToken: userToken, message: "Login Successful" });
                         }
                         else {
                             DonegoUserModel.insertMany({ "mobile": req.query.mobile })
@@ -52,7 +52,7 @@ router.get('/verify', (req, res) => {
                                     console.log("rrr77",userToken)
                                     const accessToken = jwt.sign(userToken, "DONEGO", { expiresIn: '3600s' });
                                     console.log(accessToken)
-                                    res.status(200).json({ accessToken: accessToken, message: "Login Successful" });
+                                    res.status(200).json({ accessToken: accessToken, userToken: userToken,  message: "Login Successful" });
                                 })
                         }
                     })
@@ -117,6 +117,7 @@ router.put('/addAddress', (req, res) => {
         })
         .catch((err) => res.status(400).json("Error: " + err));
 })
+
 
 
 router.put('/updateProfile', (req, res) => {
