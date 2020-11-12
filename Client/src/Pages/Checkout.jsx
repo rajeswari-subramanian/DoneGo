@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from 'react-redux'
+import axios from 'axios'
 import { fade,makeStyles } from "@material-ui/core/styles";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
@@ -133,6 +135,24 @@ const useStyles = makeStyles((theme) => ({
 export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const [address, setAddress] = React.useState([])
+  const [selectedUserAddress, setSeletedUserAddress] = React.useState('')
+  const [addressType, setAddressType] = React.useState('')
+
+  const {restaurantData, cartItems, cartRestaurant, cartRestaurantId, totalCartValue, totalCartItems } = useSelector((state)=> state.app)
+
+  React.useEffect(() => {
+      axios
+      .get("http://localhost:5000/user/userDetails", {
+        headers:{
+          id: window.localStorage.getItem('userId')
+        }
+      })
+      .then(res=> {
+        setAddress(res.data[0].address)
+      })
+  }, [])
+
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -142,6 +162,53 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  // Call this Function after Successful Payment
+  const handleShowAllOrder = ()=>{
+    let statuses = ["Order Accepted", "Order Placed", "On the Way", "Cancelled", "Delivered"]
+    let items = []
+    for(let i = 0; i < cartItems.length; i++){
+      let tempObj = {}
+      tempObj.itemName = cartItems[i].itemName
+      tempObj.itemPrice = cartItems[i].itemPrice
+      tempObj.quantity = cartItems[i].quantity
+      items.push(tempObj)
+    }
+
+    let id = window.localStorage.getItem('userId') // UserId
+    let restaurantName = cartRestaurant  // Restaurant Name
+    let restaurentAddress = restaurantData.filter(f=> f._id === cartRestaurantId)[0].restaurentAddress
+    let userAddress = selectedUserAddress  // Have to set userAddess
+    let userAddressType = addressType  // Have to set userAddress Type
+    let userMobileNumber = window.localStorage.getItem('mobileNo')
+    let totalAmount = totalCartValue
+    let status = statuses[(Math.floor(Math.random() * 5))]  // Status is Random
+
+    let dateOfOrder = new Date().toUTCString();
+
+    let payload ={
+      id: id,
+      dateOfOrder: dateOfOrder,
+      items: items,
+      restaurantName: restaurantName,
+      restaurentAddress: restaurentAddress,
+      userAddress: userAddress,
+      userAddressType: userAddressType,
+      userMobileNumber: userMobileNumber,
+      totalAmount: totalAmount,
+      status:status
+
+    }
+    console.log(payload);
+    axios
+    .put("http://localhost:5000/user/placeOrder", payload)
+    .then(res=> {
+      alert(res.data.message)
+    })
+    // Order Place API Call here
+  }
+
+  console.log(address, cartItems, cartRestaurant, cartRestaurantId, totalCartValue, totalCartItems, restaurantData);
 
   return (<><AppBar
     variant="outlined"
@@ -234,6 +301,8 @@ export default function Checkout() {
           </Grid>
         </Grid>
       </div>
-    </div></>
+    </div>
+    <button onClick={handleShowAllOrder}>Show All Order Data</button>
+    </>
   );
 }
