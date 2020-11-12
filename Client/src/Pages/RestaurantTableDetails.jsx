@@ -129,9 +129,10 @@ console.log(cartItems, restaurantItems, totalCartValue);
             }}>
             <form className="form-inline">
               <input style={{ margin: '10px', width: '60%', padding: '25px' }} className="form-control mr-sm-2 input-style" type="search" placeholder="Search for an item" aria-label="Search" />
+
               <div class="custom-control custom-switch">
-                <label class="custom-control-label" for="customSwitch1">Veg Only</label>
                 <input type="checkbox" class="custom-control-input" id="customSwitch1" />
+                <label class="custom-control-label" for="customSwitch1">Veg only</label>
               </div>
             </form>
           </nav>
@@ -146,9 +147,6 @@ console.log(cartItems, restaurantItems, totalCartValue);
                   textAlign: 'right', padding: '0px 12px', textTransform: 'capitalize', height: '26px', margin: '50px 0px', overflow: 'hidden', fontSize: '16px',
                   fontWeight: '600', whiteSpace: 'nowrap', textOverflow: 'ellipsis'
                 }} class="nav-link active" id="v-pills-foodItem-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Food Items</a>
-                {/* <a style={{backgroundColor:'transparent', color:'rgb(0, 192, 139)',borderRight:'4px solid rgb(0, 192, 139)',width:'100%'}} class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a> */}
               </div>
             </div>
             <div style={{ overflow: 'auto', border: '1px solid #BDBDBD' }} class="col-6 col-md-7" >
@@ -168,13 +166,13 @@ console.log(cartItems, restaurantItems, totalCartValue);
                           return (
                             <div>
                               <div style={{ padding: '16px 24px', fontSize: '18px', textTransform: 'capitalize', width: '100%', padding: '24px', fontWeight: 500 }} class="col-9">
-                                <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px' }}>{item.itemName}</p>
-                                <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px' }}>&#8377;{item.itemPrice}</p>
+                                <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px', width: '120px' }}>{item.itemName}</p>
+                                <p style={{ fontWeight: '600', color: 'rgb(23, 30, 48)', marginBottom: '4px', width: '120px' }}>&#8377;{item.itemPrice}</p>
                               </div>
                               <div style={{ padding: '16px 24px', fontSize: '18px', textTransform: 'capitalize', width: '100%', padding: '24px', fontWeight: 500 }} class="col-3">
                                 {
                                   (item.quantity === undefined) || item.quantity === 0 ?
-                                    <button style={{ borderRadius: '20px' }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
+                                    <button style={{ borderRadius: '10px' }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
                                     :
                                     <button style={{ borderRadius: '20px' }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
                                 }
@@ -331,14 +329,14 @@ export default RestaurantTableDetails
 //               pointerEvents: 'auto', boxShadow: 'rgba(0, 0, 0, 0.12) 0px -4px 8px',
 //               transition: 'transform 0.2s ease-in-out 0s;'
 //             }}>
-//             <form className="form-inline">
-//               <input style={{ margin: '10px', width: '60%', padding: '25px' }} className="form-control mr-sm-2 input-style" type="search" placeholder="Search for an item" aria-label="Search" />
+            // <form className="form-inline">
+            //   <input style={{ margin: '10px', width: '60%', padding: '25px' }} className="form-control mr-sm-2 input-style" type="search" placeholder="Search for an item" aria-label="Search" />
 
-//               <div class="custom-control custom-switch">
-//                 <input type="checkbox" class="custom-control-input" id="customSwitch1" />
-//                 <label class="custom-control-label" for="customSwitch1">Veg only</label>
-//               </div>
-//             </form>
+            //   <div class="custom-control custom-switch">
+            //     <input type="checkbox" class="custom-control-input" id="customSwitch1" />
+            //     <label class="custom-control-label" for="customSwitch1">Veg only</label>
+            //   </div>
+            // </form>
 //           </nav>
 //         </div>
 //         <div style={{ borderRadius: '5px' }} className="container card2">
