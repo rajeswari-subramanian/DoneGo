@@ -10,7 +10,6 @@ import Button from "@material-ui/core/Button";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import Routes from '../Routes/Routes'
 import Modal from './Modal'
-
 import SignIn from './SignIn'
 
 const useStyles = makeStyles((theme) => ({
@@ -85,7 +84,9 @@ export default function Navbar() {
   const classes = useStyles();
   const params=useParams();
   const dispatch = useDispatch()
-  const restaurantData = useSelector((state) => state.app.restaurantData); 
+  const temp=window.localStorage.getItem('totalCartItems')
+  const [totalCartItems,seti] =React.useState(temp); 
+  const { restaurantData} = useSelector((state) => state.app); 
   const [restaurantLen,setLen]=useState(restaurantData.length)
   
   useEffect(() => {
@@ -106,7 +107,7 @@ export default function Navbar() {
         
           <IconButton
             style={{
-              marginLeft: "13%",
+              marginLeft: "10%",
               fontWeight: "1000",
               fontSize: "27px",
             }}
@@ -115,33 +116,32 @@ export default function Navbar() {
             color="inherit"
             aria-label="menu"                      
           >
-         <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
+         <Link to="/order" ><img width="122px" height="28px" alt="img" src='/logo.png'/></Link>
           </IconButton>
           <Modal />
           <Button
             style={{
-              marginLeft: "12%",
+              marginLeft: "19%",
               textTransform: "none",
-              fontFamily: "sans-serif",
+              fontFamily: "Open+Sans",
+              width:'auto'
               
             }}
             color="inherit"
           >
             Donego for Partners{" "}
           </Button>
-          <Button style={{  fontFamily: "sans-serif", textTransform: "none" }}>
+          <Button style={{  fontFamily: "Open+Sans", textTransform: "none" }}>
             {" "}
             Donego for Business
           </Button>
           <IconButton color="black" aria-label="add to shopping cart">
-            <ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative"}}/><span 
-            style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px"}}>1</span>
+          <Link to='/order/checkout'  ><ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative",color:"black"}}/><span 
+            style={{position:"absolute",left:"30px",top:"5px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px"}}>{totalCartItems}</span></Link>
           </IconButton>
          <SignIn />         
         </Toolbar>
-      </AppBar> 
-      {/* <Routes  leng={restaurantLen}/>  */}
-        </>
-    
+      </AppBar>      
+        </>    
   );
 }

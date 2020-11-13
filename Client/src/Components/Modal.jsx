@@ -18,6 +18,7 @@ import { useThrottle } from "use-throttle";
 import { useSelector, useDispatch } from 'react-redux'
 import {restaurantList} from '../Redux/Restaurant/action'
 
+
 const useStyles = makeStyles((theme) => ({
   margin: {
     border: "3px solid #F3F3F5",
@@ -53,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Modal() {
+  const classes = useStyles();
   const [name, setName] = useState("");
   const throttledText = useThrottle(name, 800);
   //const [showmap, setShowMap] = useState("false");
@@ -73,7 +75,7 @@ export default function Modal() {
   const handleClose = () => {
     setOpen(false);
   };
-  const classes = useStyles();
+  
 
   const descriptionElementRef = React.useRef(null);
 
@@ -118,17 +120,23 @@ export default function Modal() {
           console.log(response);
           let temp = response.data.features[0].place_name.split(",");
           setCurr(`${temp[0]},${temp[1]}`);
+          window.localStorage.setItem('Place', `${temp[0]},${temp[1]}`)
         })
         .catch(function (error) {
           console.log(error);
         });
       setLang(crd.longitude);
       setLat(crd.latitude);
+      window.localStorage.setItem('Lang', crd.longitude)
+      window.localStorage.setItem('Lati', crd.latitude)
+      //window.localStotage.setItem('totalCartItems',0)
+     
       let payload = {
         lang: crd.longitude,
         lat: crd.latitude
       }
       dispatch(restaurantList(payload))
+     
     }, error, options);
     setOpen(false);
   }  
@@ -156,6 +164,10 @@ export default function Modal() {
           ]);
           setLang(item.center[0]);
           setLat(item.center[1]);
+          window.localStorage.setItem('Lang', item.center[0])
+          window.localStorage.setItem('Lati', item.center[1])
+          window.localStorage.setItem('Place', `${temp1[0]},${temp1[1]}`)
+          //window.localStotage.setItem('totalCartItems',0)
           let payload = {
             lang: lang,
             lat: lat
@@ -169,7 +181,7 @@ export default function Modal() {
   }
 
 useEffect(() => {
-  handleCurrent()
+    handleCurrent()
 }, [])
 
 //console.log("current", lang, lat, curr);

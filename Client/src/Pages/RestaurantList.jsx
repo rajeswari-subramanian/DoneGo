@@ -6,19 +6,12 @@ import { useHistory, Redirect, Link } from 'react-router-dom'
 import { Box, Grid } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import RestaurantCardInfo from "./RestaurantCardInfo";
-import Navbar from '../Components/Navbar'
-
-
-
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-
 import Modal from '../Components/Modal'
-
 import SignIn from '../Components/SignIn'
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,9 +76,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RestaurantList(props) {
   const classes = useStyles();   
-  const restaurantData = useSelector((state) => state.app.restaurantData); 
-  const [restaurantLen,setLen]=useState(restaurantData.length)
-  
+  const {restaurantData, totalCartItems} = useSelector((state) => state.app); 
+  const [restaurantLen,setLen]=useState(restaurantData.length)  
   useEffect(() => {
     setLen(restaurantData.length)
   }, [restaurantData],[restaurantLen])
@@ -97,11 +89,10 @@ export default function RestaurantList(props) {
     className={classes.color}
     position="fixed"
   >
-    <Toolbar>
-    
+    <Toolbar>    
       <IconButton
         style={{
-          marginLeft: "13%",
+          marginLeft: "10%",
           fontWeight: "1000",
           fontSize: "27px",
         }}
@@ -113,19 +104,18 @@ export default function RestaurantList(props) {
      <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
       </IconButton>
       <Modal />      
-      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"33%"}}>
-        <ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative"}}/><span 
-        style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"red",color:"white",width:"18px",height:"18px",fontWeight:"bolder",borderRadius:"50%",padding:"1px",fontSize:"16px"}}>1</span>
-      </IconButton>
+      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"46%"}}>
+          <Link to='/order/checkout'  ><ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative",color:"black"}}/><span 
+            style={{position:"absolute",left:"30px",top:"5px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px"}}>{totalCartItems}</span></Link>
+          </IconButton>
      <SignIn />         
     </Toolbar>
   </AppBar>
-
       <div
         className={classes.root}
         style={{ background: "rgb(247, 253, 250)" }}
       >
-      <div style={{width:"70%",margin:"auto"}}>
+      <div style={{width:"75%",margin:"auto",margingTop:'50px'}}>
         <Breadcrumbs separator="-›" aria-label="breadcrumb" style={{marginTop:"30px"}}>
           <Link
             style={{             

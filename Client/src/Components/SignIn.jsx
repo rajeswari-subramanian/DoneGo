@@ -70,7 +70,7 @@ export default function SignIn() {
   const [full, setFull] = React.useState(undefined)
   const [timeLeft, setTimeLeft] = React.useState(30)
   const [isVerifyButton, setIsVerifyButton] = React.useState(false)
-  const isAuth = useSelector((state) => state.user.isAuth);
+  const [isAuth,seti] =React.useState(useSelector((state) => state.user.isAuth))
 
   React.useEffect(() => {
     if (isOtpSent) {
@@ -159,6 +159,8 @@ export default function SignIn() {
           }
           else {
             window.localStorage.setItem('token', res.data.accessToken)
+            window.localStorage.setItem('userId',res.data.userToken.id)// mongoid
+            window.localStorage.setItem('mobileNo',res.data.userToken.mobile)
             setFull(false)
             handleClose()
             //alert(res.data.message)
@@ -191,6 +193,7 @@ export default function SignIn() {
           handleClose()
           //alert(res.data.message)
           dispatch(loginSuccess())
+        
           console.log(res.data)
         }
       })
@@ -209,23 +212,26 @@ export default function SignIn() {
     setIsVerifyButton(false)
     setPinValue('')
   };
-
+  //const temp=React.useState(useSelector((state) => state.user.isAuth));
+  //const temp=window.localStorage.getItem('isAuth')
+  //const [isAuth,seti] =React.useState(window.localStorage.getItem('isAuth'))
+  console.log("isAuthincsignin",isAuth)
   return (
     <>
-     {!isAuth? 
-          <Button          
+     {isAuth? 
+     (<Link to="/order/profile" ><IconButton style={{color:"rgb(0, 210, 144)",backgroundColor: "white",padding:"0px"}} aria-label="add to shopping cart"  >
+     <AccountCircleIcon fontSize="large"/>
+   </IconButton></Link>):
+          (<Button          
             className={classes.ButtonBackground}
             color="inherit"
             onClick={handleClickOpen}
           >
             Sign In
-          </Button>
-          :  <Link to="/order/profile" ><IconButton style={{color:"rgb(0, 210, 144)",backgroundColor: "white",padding:"0px"}} aria-label="add to shopping cart"  >
-            <AccountCircleIcon fontSize="large"/>
-          </IconButton></Link>} 
+          </Button>)
+           } 
 
-      {/* <Button style={{ marginRight: '100px', textTransform: "none" }} className={classes.ButtonBackground} color="inherit" onClick={handleClickOpen}>
-        Sign In</Button> */}
+     
       <Dialog open={open} aria-labelledby="form-dialog-title"  fullWidth
             maxWidth="xs"  >
         <DialogTitle id="form-dialog-title" style={{textAlign:"center"}}>Signin/Signup</DialogTitle>

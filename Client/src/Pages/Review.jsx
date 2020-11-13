@@ -1,34 +1,29 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
+import ListItemText from "@material-ui/core/ListItemText";
+import Grid from "@material-ui/core/Grid";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  addCartRestaurant,
+  selectRetaurant,
+} from "../Redux/Restaurant/action";
 
 const products = [
-  { name: 'Product 1', desc: 'A nice thing', price: 'Rs: 499' },
-  // { name: 'Product 2', desc: 'Another thing', price: '$3.45' },
-  // { name: 'Product 3', desc: 'Something else', price: '$6.51' },
-  // { name: 'Product 4', desc: 'Best thing of all', price: '$14.11' },
-  // { name: 'Shipping', desc: '', price: 'Free' },
-];
-const addresses = ['1 Material-UI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
+  { name: "Product 1", desc: "A nice thing", price: "Rs: 499" },
 ];
 
 const useStyles = makeStyles((theme) => ({
-    paper1: {       
-        width:"300px",
-        padding: theme.spacing(2),
-        textAlign: "center",  
-        color: theme.palette.text.secondary,
-      },
+  paper1: {
+    width: "100%",
+    marginTop: "100px",
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
   listItem: {
     padding: theme.spacing(1.8, 1),
   },
@@ -42,52 +37,271 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Review() {
   const classes = useStyles();
+  const {
+    restaurantItems,
+    restaurantId,
+    restaurantName,
+    cartItems,
+    cartRestaurantId,
+    totalCartValue,
+    totalCartItems,
+  } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+    dispatch(addCartRestaurant({ id: restaurantId, name: restaurantName }));
+    // dispatch(selectRetaurant({_id: restaurantId}))
+  };
+
+  const handleRemoveFromCart = (id) => {
+    dispatch(removeFromCart(id));
+    // dispatch(selectRetaurant({_id: restaurantId}))
+  };
+  console.log(cartItems, restaurantItems, totalCartValue);
 
   return (
-    <Paper elevation={3} className={classes.paper1}>
-      <Typography variant="h6" gutterBottom>
-        Order summary
-      </Typography>
-      <List >
-        {products.map((product) => (
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
-        ))} </List>
-        {/* <ListItem className={classes.listItem}>
-          <ListItemText primary="Total" />
-          <Typography variant="subtitle1" className={classes.total}>
-            $34.06
-          </Typography>
-        </ListItem>
-      </List>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom className={classes.title}>
-            Shipping
-          </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
-        </Grid>
-        <Grid item container direction="column" xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom className={classes.title}>
-            Payment details
-          </Typography>
-          <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid> 
-        </Grid>
-      </Grid> */}
+    <>
+      <Paper elevation={3} className={classes.paper1}>
+        <div className="row">
+          <div className="col-12">
+            <p
+              className="cart-header"
+              style={{
+                fontSize: "20px",
+                fontWeight: 600,
+                letterSpacing: "normal",
+              }}
+            >
+              Your Cart{" "}
+              {(cartItems && cartItems.length) > 0
+                ? "(" + totalCartItems + " " + "Items" + ")"
+                : null}
+            </p>
+          </div>
+          <div className="col-12 img-cart">
+            {cartItems.length === 0 && (
+              <img
+                alt=""
+                style={{
+                  width: "205px",
+                  height: "100%",
+                  alignItems: "center",
+                }}
+                src="https://ik.imagekit.io/dunzo/web-assets/images/no-items-in-cart-7e84056f44993b68d14184f9b2992af7.png?tr=w-410,cm-pad_resize"
+                alt=""
+              />
+            )}
+            {cartItems && cartItems.length > 0 ? (
+              <div>
+                {cartItems.map((item) => {
+                  return (
+                    <div style={{ display: "flex", width: "auto" }}>
+                      <div
+                        style={{
+                          fontSize: "15px",
+                          textTransform: "capitalize",
+                          width: "180px",
+                          padding: "24px",
+                          fontWeight: 500,
+                        }}
+                        class="col-7"
+                      >
+                        <p
+                          style={{
+                            fontWeight: "500",
+                            color: "rgb(23, 30, 48)",
+                            marginBottom: "4px",
+                            fontFamily: "Open+Sans",
+                          }}
+                        >
+                          {item.itemName}
+                        </p>
+                      </div>
+                      <div
+                        style={{
+                          padding: "3px 18px",
+                          fontSize: "16px",
+                          textTransform: "capitalize",
+                          width: "580px",
+                          fontWeight: 500,
+                          paddingTop: "25px",
+                          fontFamily: "Open+Sans",
+                        }}
+                        class="col-5"
+                      >
+                        {item.quantity === undefined || item.quantity === 0 ? (
+                          <button
+                            style={{
+                              borderRadius: "20px",
+                              padding: "3px 15px",
+                            }}
+                            type="button"
+                            class="btn btn-outline-success"
+                            onClick={() => handleAddToCart(item)}
+                          >
+                            + ADD
+                          </button>
+                        ) : (
+                          <button
+                            style={{
+                              borderRadius: "20px",
+                              padding: "3px 15px",
+                            }}
+                            type="button"
+                            class="btn btn-outline-success"
+                          >
+                            <span onClick={() => handleAddToCart(item)}>
+                              +{" "}
+                            </span>
+                            {item.quantity}{" "}
+                            <span
+                              onClick={() => handleRemoveFromCart(item._id)}
+                            >
+                              -{" "}
+                            </span>{" "}
+                          </button>
+                        )}
+                        <span
+                          style={{
+                            fontWeight: "500",
+                            color: "rgb(23, 30, 48)",
+                            marginBottom: "4px",
+                            fontFamily: "Open+Sans",
+                          }}
+                        >
+                          &#8377;{item.itemPrice}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div>
+                <p
+                  style={{
+                    opacity: "0.5",
+                    fontSize: "16px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                    color: "rgb(23, 30, 48);",
+                    textAlign: "center",
+                  }}
+                >
+                  Your cart is empty
+                </p>
+                <p
+                  style={{
+                    opacity: "0.5",
+                    fontSize: "16px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                    color: "rgb(23, 30, 48);",
+                    textAlign: "center",
+                  }}
+                >
+                  Add items to get started
+                </p>
+              </div>
+            )}
+            {/* {cartItems && cartItems.length > 0 && (
+              <div
+                style={{
+                  fontSize: "16px",
+                  fontFamily: "Open+Sans",
+                  fontWeight: "600",
+                  margin: "auto",
+                }}
+              >
+                {" "}
+                Item Total &#8377;{totalCartValue}
+              </div>
+            )} */}
+          </div>
+        </div>
       </Paper>
+      <Paper elevation={3} style={{ marginTop: "20px", padding: "5px" }}>
+        <p>Any instructions for the delivery partner?</p>
+      </Paper>
+      <Paper elevation={3} style={{ marginTop: "20px" }}>
+        <Typography variant="h6" gutterBottom>
+          Invoice
+        </Typography>
+        {cartItems && cartItems.length > 0 && (
+          <Grid container style={{ padding: "3px", minHeight: "100px" }}>
+            <Grid
+              item
+              container
+              xs={12}
+              style={{ borderBottom: "1px solid gray" }}
+            >
+              <Grid item xs={6}>
+                <ListItemText secondary="Item total" />
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="body2">
+                  &#8377; {totalCartValue}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              container
+              xs={12}
+              style={{ borderBottom: "1px solid gray" }}
+            >
+              <Grid item xs={6}>
+                <ListItemText secondary="Tax" />
+              </Grid>
+              <Grid item xs={6}>
+                {" "}
+                <Typography variant="body2">&#8377; 0</Typography>
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              container
+              xs={12}
+              style={{ borderBottom: "1px solid gray" }}
+            >
+              <Grid item xs={6}>
+                {" "}
+                <ListItemText secondary="Packing" />
+              </Grid>
+              <Grid item xs={6}>
+                {" "}
+                <Typography variant="body2">&#8377; 0</Typography>
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              container
+              xs={12}
+              style={{ borderBottom: "1px solid gray" }}
+            >
+              <Grid item xs={6}>
+                {" "}
+                <ListItemText secondary="Partnet delivery fee" />
+              </Grid>
+              <Grid item xs={6}>
+                {" "}
+                <Typography variant="body2">&#8377; 0</Typography>
+              </Grid>
+            </Grid>
+            <Grid item container xs={12}>
+              <Grid item xs={6}>
+                {" "}
+                <ListItemText primary="To pay" />
+              </Grid>
+              <Grid item xs={6}>
+                {" "}
+                <Typography variant="body2">&#8377;{totalCartValue}</Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+      </Paper>
+    </>
   );
 }

@@ -1,55 +1,40 @@
 import React from "react";
-import { fade,makeStyles } from "@material-ui/core/styles";
+import { fade, makeStyles } from "@material-ui/core/styles";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import StepContent from '@material-ui/core/StepContent';
-// import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
-import AddressForm from "./AddressForm";
-import PaymentForm from "./PaymentForm";
-import Review from "./Review";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import Modal from '../Components/Modal'
-
-import SignIn from '../Components/SignIn'
+import SignIn from "../Components/SignIn";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     margin: "auto",
-    paddingTop:"5%",
+    paddingTop: "5%",
     width: "30%",
-    background:"#F0F5F7",
+    background: "#F0F5F7",
     // border:"2px solid red",
-    justifyContent:"center"
-    
-  }, 
+    justifyContent: "center",
+  },
   layout: {
-    background:"#F0F5F7",
+    background: "#F0F5F7",
     width: "left",
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(0),
     [theme.breakpoints.up(500 + theme.spacing(1) * 1)]: {
-      width:500,
-      // marginLeft: "auto",
-      // marginRight: "auto",
+      width: 500,
     },
   },
   paper1: {
-    width:"600px",
+    width: "600px",
     padding: theme.spacing(2),
-    textAlign: "center",  
+    textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  paper: {background:"#F0F5F7",
+  paper: {
+    background: "#F0F5F7",
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(2),
     padding: theme.spacing(1),
@@ -60,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   stepper: {
-    padding: theme.spacing(0, 0, 0),   background:"#F0F5F7",
-    
+    padding: theme.spacing(0, 0, 0),
+    background: "#F0F5F7",
   },
   buttons: {
     display: "flex",
@@ -128,56 +113,66 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// style={{border:"2px solid blue"}}
-
 export default function Thankyou() {
   const classes = useStyles();
-  
-  return (<><AppBar
-    variant="outlined"
-    style={{ border: "none", zIndex: "999", transition: "0.3s linear",maxHeight:"70px",minHeight:"70px" }}
-    className={classes.color}
-    position="fixed"
-  >
-    <Toolbar>
-    
-      <IconButton
+  return (
+    <>
+      <AppBar
+        variant="outlined"
         style={{
-          marginLeft: "13%",
-          fontWeight: "1000",
-          fontSize: "27px",
+          border: "none",
+          zIndex: "999",
+          transition: "0.3s linear",
+          maxHeight: "70px",
+          minHeight: "70px",
         }}
-        edge="start"
-        className={classes.menuButton}
-        color="inherit"
-        aria-label="menu"                      
+        className={classes.color}
+        position="fixed"
       >
-       <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
-      </IconButton>            
-     
-     <span style={{marginLeft:"54%"}}><SignIn /> </span>        
-    </Toolbar>
-  </AppBar>
-    <div style={{background:"#F0F5F7"}}>     
-      <div className={classes.root}>
-        <Grid container justify="center"
-  alignItems="center" style={{background:"#F0F5F7"}} >
-          <Grid item xs={12} >           
-              {/* <main className={classes.layout} > */}
-                <Paper className={classes.paper} elevation={3}>                
-                         <Typography variant="h5" gutterBottom>
-                           Thank you for your order.
-                         </Typography>
-                         <Typography variant="subtitle1">
-                           Your order number is #2001539. We have emailed your
-                           order confirmation, and will send you an update when
-                           your order has shipped.
-                         </Typography>               
-                </Paper>
-              {/* </main>           */}
-          </Grid>          
-        </Grid>
+        <Toolbar>
+          <IconButton
+            style={{
+              marginLeft: "13%",
+              fontWeight: "1000",
+              fontSize: "27px",
+            }}
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <Link to="/order">
+              <img width="122px" height="28px" alt="" src="/logo.png" />
+            </Link>
+          </IconButton>
+          <span style={{ marginLeft: "54%" }}>
+            <SignIn />{" "}
+          </span>
+        </Toolbar>
+      </AppBar>
+      <div style={{ background: "#F0F5F7" }}>
+        <div className={classes.root}>
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            style={{ background: "#F0F5F7" }}
+          >
+            <Grid item xs={12}>
+              <Paper className={classes.paper} elevation={3}>
+                <Typography variant="h5" gutterBottom>
+                  Thank you for your order.
+                </Typography>
+                <Typography variant="subtitle1">
+                  Your order number is #2001539. We have emailed your order
+                  confirmation, and will send you an update when your order has
+                  shipped.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        </div>
       </div>
-    </div></>
+    </>
   );
 }
