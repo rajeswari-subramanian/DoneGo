@@ -147,6 +147,16 @@ const reducer = (state = initState, { type, payload }) => {
         }
       }
   }
+  case CART_ITEMS.CLEAR:{
+    return{
+      ...state,
+      cartItems: [],
+      cartRestaurant: '',
+      cartRestaurantId: '',
+      totalCartValue: 0,
+      totalCartItems: 0
+    }
+  }
   case ADD_CART_RESTAURANT: {
     saveData('cartRestaurantId', payload.id)
     saveData('cartRestaurant', payload.name)
