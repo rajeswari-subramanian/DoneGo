@@ -85,8 +85,25 @@ function RestaurantTableDetails() {
   const classes = useStyles();
   const dispatch = useDispatch()
   const [openCartModal, setOpenCartModal] = React.useState(false)
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [address, setAddress] = React.useState([])
+  const [selectedUserAddress, setSeletedUserAddress] = React.useState('')
+  const [addressType, setAddressType] = React.useState('')
   const [newItem, setNewItem] = React.useState({})
+  const [isVegSelected, setVegSelected] = React.useState(false)
 
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:5000/user/userDetails", {
+        headers: {
+          id: window.localStorage.getItem('userId')
+        }
+      })
+      .then(res => {
+        setAddress(res.data[0].address)
+      })
+  }, [])
+  console.log("cartRestaurantId", cartRestaurantId,"restaurantId", restaurantId);
   const handleAddToCart = (item) => {
     if ((cartRestaurantId === '') || (cartRestaurantId === restaurantId)) {
       dispatch(addToCart(item))
@@ -100,6 +117,7 @@ function RestaurantTableDetails() {
 
   const handleClearCart = () => {
     dispatch(clearCart())
+    dispatch(addCartRestaurant({ id: restaurantId, name: restaurantName }))
     setTimeout(() => dispatch(addToCart(newItem)), 100)
     setOpenCartModal(false)
   }
@@ -110,27 +128,7 @@ function RestaurantTableDetails() {
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id))
-    // dispatch(selectRetaurant({_id: restaurantId}))
   }
-
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [address, setAddress] = React.useState([])
-  const [selectedUserAddress, setSeletedUserAddress] = React.useState('')
-  const [addressType, setAddressType] = React.useState('')
-
-  // const {restaurantData, cartItems, cartRestaurant, cartRestaurantId, totalCartValue, totalCartItems } = useSelector((state)=> state.app)
-
-  React.useEffect(() => {
-    axios
-      .get("http://localhost:5000/user/userDetails", {
-        headers: {
-          id: window.localStorage.getItem('userId')
-        }
-      })
-      .then(res => {
-        setAddress(res.data[0].address)
-      })
-  }, [])
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -140,6 +138,16 @@ function RestaurantTableDetails() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const handleVeg = (e)=>{
+      console.log("Checkbox", e.target.value, e.target.checked);
+      if(e.target.checked){
+        setVegSelected(true)
+      }
+      else{
+        setVegSelected(false)
+      }
+  }
 
   // Call this Function after Successful Payment
   const handleShowAllOrder = () => {
@@ -201,7 +209,7 @@ function RestaurantTableDetails() {
               <input style={{ margin: '10px', width: '60%', padding: '25px' }} className="form-control mr-sm-2 input-style" type="search" placeholder="Search for an item" aria-label="Search" />
 
               <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1" />
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" onClick={handleVeg} />
                 <label class="custom-control-label" for="customSwitch1">Veg only</label>
               </div>
             </form>
@@ -233,7 +241,14 @@ function RestaurantTableDetails() {
                   restaurantItems && restaurantItems.length > 0 ?
                     <div>
                       {
-                        restaurantItems.map(item => {
+                        restaurantItems.filter(function(e) {
+                          if(isVegSelected){
+                            return e.catagoryFood === 'veg'
+                          }
+                          else{
+                            return e.catagoryFood
+                            }
+                        }).map(item => {
                           return (
                             <div style={{ display: 'flex', flexDirection: 'row', width: '177%' }}>
                               <div class="container" style={{ width: '90%' }}>
@@ -273,6 +288,7 @@ function RestaurantTableDetails() {
               <div className="row">
                 <div className="col-12">
                   <p className="cart-header" style={{ fontSize: '20px', fontWeight: 600, letterSpacing: 'normal' }}>Your Cart {cartItems && cartItems.length > 0 ? totalCartItems : null}</p>
+                  <p>{restaurantId !== cartRestaurantId && cartItems.length > 0 ? cartRestaurant : null}</p>
                 </div>
                 <div className="col-12 img-cart">
                   <img alt="" style={{ width: '205px', height: '100%', alignItems: 'center', }} src="https://ik.imagekit.io/dunzo/web-assets/images/no-items-in-cart-7e84056f44993b68d14184f9b2992af7.png?tr=w-410,cm-pad_resize" alt="image" />

@@ -1,4 +1,3 @@
-import jwt_decode from "jwt-decode";
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from './actionTypes'
 import { loadData, saveData } from '../LocalStorage'
 
@@ -36,11 +35,13 @@ const signinReducer = (state = initState, { type, payload }) => {
                 isError: true,
                 isAuth: false
             }
-        case LOGOUT:
+        case LOGOUT:{
             saveData('isAuth', false)
             return {
                 isAuth: false
             }
+        }
+
         default:
             return {
                 ...state

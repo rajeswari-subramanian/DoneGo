@@ -1,4 +1,4 @@
-import { CART_ITEMS, GET_RESTAURANTS, SELECT_RESTAURANT, ADD_CART_RESTAURANT } from './actionTypes'
+import { CART_ITEMS, GET_RESTAURANTS, SELECT_RESTAURANT, ADD_CART_RESTAURANT, LOGOUT } from './actionTypes'
 import { loadData, saveData } from '../LocalStorage'
 
 const initState = {
@@ -120,13 +120,17 @@ const reducer = (state = initState, { type, payload }) => {
           saveData('totalCartItems', state.totalCartItems - 1)
           saveData('cartItems', newItems)
           saveData('restaurantItems', state.restaurantItems)
+          saveData('cartRestaurantId', state.totalCartItems === 1 ? '': state.cartRestaurantId)
+          saveData('cartRestaurant', state.totalCartItems === 1 ? '': state.cartRestaurant)
 
           return {
             ...state,
             totalCartValue: state.totalCartValue - removeItems.itemPrice,
             totalCartItems: state.totalCartItems - 1,
             cartItems: newItems,
-            restaurantItems: state.restaurantItems
+            restaurantItems: state.restaurantItems,
+            cartRestaurantId: state.totalCartItems === 1 ? '': state.cartRestaurantId,
+            cartRestaurant: state.totalCartItems === 1 ? '': state.cartRestaurant
           }
         }
         else{
@@ -164,6 +168,25 @@ const reducer = (state = initState, { type, payload }) => {
       ...state,
       cartRestaurant: payload.name,
       cartRestaurantId: payload.id,
+    }
+  }
+
+  case LOGOUT:{
+    window.localStorage.removeItem('cartItems')
+    window.localStorage.removeItem('totalCartItems')
+    window.localStorage.removeItem('totalCartValue')
+    window.localStorage.removeItem('cartRestaurantId')
+    window.localStorage.removeItem('cartRestaurant')
+    window.localStorage.removeItem('token')
+
+    return{
+      ...state,
+      cartItems: [],
+      restaurantId: '',
+      cartRestaurant: '',
+      cartRestaurantId: '',
+      totalCartValue: 0,
+      totalCartItems: 0
     }
   }
     default:

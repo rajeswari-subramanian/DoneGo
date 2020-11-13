@@ -122,18 +122,18 @@ export default function LandingPage() {
               alignItems="center"
             >
               <Grid item xs={12} sm={3}>
-                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_grocery_secondary2_1602495207383.png" />
+                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_grocery_secondary2_1605273256240.png" />
               </Grid>
               <Grid item xs={12} sm={3}>
-                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_pnd_secondary2_1598257809885.png" />
+                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_pnd_secondary2_1605273427965.png" />
               </Grid>
               <Grid item xs={12} sm={3}>
                 <Link to="/order/restaurant">
-                  <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_food_secondary2_1598017573106.png" />
+                  <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_food_secondary2_1605278787854.png" />
                 </Link>
               </Grid>
               <Grid item xs={12} sm={3}>
-                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_fnv_secondary2_1598016020169.png" />
+                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_fnv_secondary2_1605273307166.png" />
               </Grid>
             </Grid>
           </Grid>
