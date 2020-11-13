@@ -8,6 +8,8 @@ const initState = {
   cartItems: loadData('cartItems') || [],
   isError: false,
   restaurantName: loadData('restaurantName') || '',
+  restaurentImage:  loadData('restaurentImage') || '',
+  restaurentDelivery:  loadData('restaurentDelivery') || '',
   restaurantId: loadData('restaurantId') || '',
   cartRestaurant: loadData('cartRestaurant') || '',
   cartRestaurantId: loadData('cartRestaurantId') || '',
@@ -56,11 +58,15 @@ const reducer = (state = initState, { type, payload }) => {
       saveData('restaurantId', seletedRestaurant._id)
       saveData('restaurantName', seletedRestaurant.restaurentName)
       saveData('restaurantItems', seletedRestaurant.foodItems)
+      saveData('restaurentImage', seletedRestaurant.avatar)
+      saveData('restaurentDelivery', seletedRestaurant.deliveryTime)
       return{
         ...state,
         restaurantId: seletedRestaurant._id,
         restaurantName: seletedRestaurant.restaurentName,
-        restaurantItems: seletedRestaurant.foodItems
+        restaurantItems: seletedRestaurant.foodItems,
+        restaurentImage: seletedRestaurant.avatar,
+        restaurentDelivery:  seletedRestaurant.deliveryTime
       }
     }
 

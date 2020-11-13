@@ -91,12 +91,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PlaceOrder() {
-  const { totalCartItems } = useSelector((state) => state.app); 
+  const { totalCartItems, restaurantName, restaurentImage, restaurentDelivery } = useSelector((state) => state.app);
   const classes = useStyles();
   function handleClick(event) {
     event.preventDefault();
     console.info('You clicked a breadcrumb.');
   }
+  // console.log("Delivery Time", restaurantData.filter(f=> f._id === restaurantId)[0].deliveryTime)
   return (
     <> 
     <AppBar
@@ -177,13 +178,13 @@ export default function PlaceOrder() {
        <div style={{display:'flex', flexDirection:'row'}}>
 
        <Box style={{border:'none', width:'160px', marginLeft:'10%', marginTop:'50px',height:'160px',borderRadius: '16px',padding:'5px',background:'rgba(0, 210, 144, 0.08)'}}>
-           <img style={{width:'160px', height:'160px', borderRadius:6}} src="https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/dFNqSkR1VmhZbGY4UnhZMlhhYzZyUT09-1601552412558-store_image.jpg" alt="resturent"/>
+           <img style={{width:'160px', height:'160px', borderRadius:6}} src={restaurentImage} alt="resturent"/>
 
        </Box>
        <Box style={{border:'none', margin:'10px',width: '360px', marginTop:'50px',height:'88px', lineHeight:'normal',letterSpacing:'normal', textAlign:'left'}}>
             <p style={{fontSize:'14px',fontWeight:500,opacity:'0.6'}}>Biryani</p>
-            <p style={{fontSize:'28px', color:'black', letterSpacing:'normal',fontWeight:'700',lineHeight:'0'}}>Le Burger Seigneur</p>
-            <p style={{fontSize:'14px',fontWeight:500,opacity:'0.6'}}>198 Restaurants</p>
+          <p style={{fontSize:'28px', color:'black', letterSpacing:'normal',fontWeight:'700',lineHeight:'0'}}>{restaurantName}</p>
+          <p style={{fontSize:'14px',fontWeight:500,opacity:'0.6'}}>{restaurentDelivery}</p>
           
 
        </Box>
