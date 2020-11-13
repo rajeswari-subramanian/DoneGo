@@ -41,7 +41,7 @@ app.post('/verification', (req, res) => {
 
 app.post('/razorpay', async (req, res) => {
     const payment_capture = 1
-    const amount = 499
+    const amount = req.params.amount
     const currency = 'INR'
 
     const options = {
@@ -67,7 +67,7 @@ app.post('/razorpay', async (req, res) => {
 //RAZORPAY
 
 let donego = require('./donegoitems.json')
-let users = require('./userDetail.json')
+let users = require('./userDet.json')
 
 dotenv.config();
 const donegoRoute = require("./routes/DonegoRoutes")

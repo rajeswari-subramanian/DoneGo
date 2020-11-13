@@ -6,8 +6,6 @@ const DonegoUserModel = require('../models/userDetailModel')
 const config = require("../config")
 const client = require('twilio')(config.accountSID, config.authToken)
 
-
-
 router.get("/loginOtp", (req, res) => {
     client
         .verify
@@ -38,9 +36,9 @@ router.get('/verify', (req, res) => {
                     .then(user => {
                         console.log(user)
                         if (user.length > 0) {
-                            const userToken = { id: user._id, mobile: user.mobile }
+                            const userToken = { id: user[0]._id, mobile: user[0].mobile }
                             const accessToken = jwt.sign(userToken, "DONEGO", { expiresIn: '3600s' });
-                            res.status(200).json({ accessToken: accessToken, message: "Login Successful" });
+                            res.status(200).json({ accessToken: accessToken, userToken: userToken, message: "Login Successful" });
                         }
                         else {
                             DonegoUserModel.insertMany({ "mobile": req.query.mobile })
@@ -48,7 +46,7 @@ router.get('/verify', (req, res) => {
                                     console.log(newUser[0])
                                     const userToken = { id: newUser[0]._id, mobile: newUser[0].mobile }
                                     const accessToken = jwt.sign(userToken, "DONEGO", { expiresIn: '3600s' });
-                                    res.status(200).json({ accessToken: accessToken, message: "Login Successful" });
+                                    res.status(200).json({ accessToken: accessToken, userToken: userToken, message: "Login Successful" });
                                 })
                         }
                     })
@@ -81,25 +79,13 @@ router.put('/updateProfile', (req, res) => {
         .catch((err) => res.status(400).json("Error: " + err));
 })
 
-// router.put('/updateProfile', (req, res) => {
-//     DonegoUserModel.update({ _id: req.body.id }, {
-//         $set: {
-//             name: req.body.name,
-//             email: req.body.email
-//         }
-//     })
-//         .then((donego) => {
-//             res.status(200).json(donego)
-//         })
-//         .catch((err) => res.status(400).json("Error: " + err));
-// })
-
 router.put('/addAddress', (req, res) => {
     DonegoUserModel.update({ _id: req.body.id }, {
         $push: {
             address: {
                 street: req.body.street,
                 landmark: req.body.landmark,
+                actualMapAddress: req.body.actualMapAddress,
                 longitude: req.body.longitude,
                 latitude: req.body.latitude,
                 contactPerson: req.body.contactPerson,
@@ -113,35 +99,6 @@ router.put('/addAddress', (req, res) => {
         })
         .catch((err) => res.status(400).json("Error: " + err));
 })
-
-
-router.put('/updateProfile', (req, res) => {
-    DonegoUserModel.update({ _id: req.body.id }, {
-        $set: {
-            name: req.body.name,
-            email: req.body.email
-        }
-    })
-        .then((donego) => {
-            res.status(200).json({ message: "Profile Updated" })
-        })
-        .catch((err) => res.status(400).json("Error: " + err));
-})
-
-
-// router.put('/addToCart', (req, res) => {
-//     DonegoUserModel.update({ _id: req.body.id }, { $set:{
-//         cartDetails: {
-//                 restaurentName: req.body.restaurentName,
-//                 restaurentAddress: req.body.restaurentAddress,
-//                 items: req.body.items
-//          }
-//     }})
-//     .then((donego) => {
-//             res.status(200).json({message: "Items Added"})
-//         })
-//     .catch((err) => res.status(400).json("Error: " + err));
-// })
 
 router.put('/placeOrder', (req, res) => {
     DonegoUserModel.update({ _id: req.body.id }, {
