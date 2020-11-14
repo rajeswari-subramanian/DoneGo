@@ -1,17 +1,11 @@
-import React from "react";
-import { useSelector } from 'react-redux'
-import axios from 'axios'
-import { fade,makeStyles } from "@material-ui/core/styles";
+import React, { useEffect, useState } from "react";
+import { fade, makeStyles } from "@material-ui/core/styles";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
-import StepContent from '@material-ui/core/StepContent';
-// import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
@@ -19,39 +13,30 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import Modal from '../Components/Modal'
-
-import SignIn from '../Components/SignIn'
+import { useDispatch, useSelector } from "react-redux";
+import SignIn from "../Components/SignIn";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    margin: "auto",
-    paddingTop:"5%",
-    width: "70%",
-    background:"#F0F5F7",
-    // border:"2px solid red",
-    justifyContent:"center"
-    
-  }, 
+    marginTop: "60px",
+  },
   layout: {
-    background:"#F0F5F7",
+    background: "#F0F5F7",
     width: "left",
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(0),
     [theme.breakpoints.up(500 + theme.spacing(1) * 1)]: {
-      width:500,
-      // marginLeft: "auto",
-      // marginRight: "auto",
+      width: 500,
     },
   },
   paper1: {
-    width:"600px",
+    width: "600px",
     padding: theme.spacing(2),
-    textAlign: "center",  
+    textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  paper: {background:"#F0F5F7",
+  paper: {
+    background: "#F0F5F7",
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(2),
     padding: theme.spacing(1),
@@ -62,8 +47,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   stepper: {
-    padding: theme.spacing(0, 0, 0),   background:"#F0F5F7",
-    
+    padding: theme.spacing(0, 0, 0, 0),
+    background: "#F0F5F7",
   },
   buttons: {
     display: "flex",
@@ -76,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   ButtonBackground: {
     backgroundColor: "rgb(0, 210, 144)",
     borderRadius: "20px",
-    padding: "8px 20px",
+    padding: "8px 90px",
     fontWeight: "bold",
     fontSize: "12px",
     cursor: "pointer",
@@ -130,120 +115,88 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// style={{border:"2px solid blue"}}
-
 export default function Checkout() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [activeStep, setActiveStep] = React.useState(0);
-  const [address, setAddress] = React.useState([])
-  const [selectedUserAddress, setSeletedUserAddress] = React.useState('')
-  const [addressType, setAddressType] = React.useState('')
-
-  const {restaurantData, cartItems, cartRestaurant, cartRestaurantId, totalCartValue, totalCartItems } = useSelector((state)=> state.app)
-
-  React.useEffect(() => {
-      axios
-      .get("http://localhost:5000/user/userDetails", {
-        headers:{
-          id: window.localStorage.getItem('userId')
-        }
-      })
-      .then(res=> {
-        setAddress(res.data[0].address)
-      })
-  }, [])
-
+  //const isAuth = useSelector((state) => state.user.isAuth);
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
-  const steps = [<Paper elevation={3} className={classes.paper1}><AddressForm /></Paper>,<Paper  elevation={3} className={classes.paper1}> <PaymentForm funcLast={handleNext} /></Paper>];
-  
+  const steps = [
+    <Paper elevation={3} className={classes.paper1}>
+      <AddressForm />
+    </Paper>,
+    <Paper elevation={3} className={classes.paper1}>
+      {" "}
+      <PaymentForm funcLast={handleNext} />
+    </Paper>,
+  ];
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
-
-  // Call this Function after Successful Payment
-  const handleShowAllOrder = ()=>{
-    let statuses = ["Order Accepted", "Order Placed", "On the Way", "Cancelled", "Delivered"]
-    let items = []
-    for(let i = 0; i < cartItems.length; i++){
-      let tempObj = {}
-      tempObj.itemName = cartItems[i].itemName
-      tempObj.itemPrice = cartItems[i].itemPrice
-      tempObj.quantity = cartItems[i].quantity
-      items.push(tempObj)
-    }
-
-    let id = window.localStorage.getItem('userId') // UserId
-    let restaurantName = cartRestaurant  // Restaurant Name
-    let restaurentAddress = restaurantData.filter(f=> f._id === cartRestaurantId)[0].restaurentAddress
-    let userAddress = selectedUserAddress  // Have to set userAddess
-    let userAddressType = addressType  // Have to set userAddress Type
-    let userMobileNumber = window.localStorage.getItem('mobileNo')
-    let totalAmount = totalCartValue
-    let status = statuses[(Math.floor(Math.random() * 5))]  // Status is Random
-
-    let dateOfOrder = new Date().toUTCString();
-
-    let payload ={
-      id: id,
-      dateOfOrder: dateOfOrder,
-      items: items,
-      restaurantName: restaurantName,
-      restaurentAddress: restaurentAddress,
-      userAddress: userAddress,
-      userAddressType: userAddressType,
-      userMobileNumber: userMobileNumber,
-      totalAmount: totalAmount,
-      status:status
-
-    }
-    console.log(payload);
-    axios
-    .put("http://localhost:5000/user/placeOrder", payload)
-    .then(res=> {
-      alert(res.data.message)
-    })
-    // Order Place API Call here
-  }
-
-  console.log(address, cartItems, cartRestaurant, cartRestaurantId, totalCartValue, totalCartItems, restaurantData);
-
-  return (<><AppBar
-    variant="outlined"
-    style={{ border: "none", zIndex: "999", transition: "0.3s linear",maxHeight:"70px",minHeight:"70px" }}
-    className={classes.color}
-    position="fixed"
-  >
-    <Toolbar>
-    
-      <IconButton
+  // React.useEffect(() => {
+  //   dispatch(userAddress())
+  //   }, []);
+  // const [address,setAddress]=React.useState(useSelector((state) => state.user.userAddresses));
+  //const isAuth = useSelector((state) => state.user.isAuth);
+  const temp = window.localStorage.getItem("isAuth");
+  const [isAuth, seti] = React.useState(temp);
+  console.log("isAuthincheckout", isAuth);
+  return (
+    <>
+      <AppBar
+        variant="outlined"
         style={{
-          marginLeft: "13%",
-          fontWeight: "1000",
-          fontSize: "27px",
+          border: "none",
+          zIndex: "999",
+          transition: "0.3s linear",
+          maxHeight: "70px",
+          minHeight: "70px",
         }}
-        edge="start"
-        className={classes.menuButton}
-        color="inherit"
-        aria-label="menu"                      
+        className={classes.color}
+        position="fixed"
       >
-       <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
-      </IconButton>            
-     
-     <span style={{marginLeft:"54%"}}><SignIn /> </span>        
-    </Toolbar>
-  </AppBar>
-    <div style={{background:"#F0F5F7"}}>     
-      <div className={classes.root}>
-        <Grid container spacing={6}  justify="center"
-  alignItems="center" style={{background:"#F0F5F7"}} >
-          <Grid item xs={8} >           
-              <main className={classes.layout} >
-                <Paper className={classes.paper} elevation={0}>                  
+        <Toolbar>
+          <IconButton
+            style={{
+              marginLeft: "10%",
+              fontWeight: "1000",
+              fontSize: "27px",
+            }}
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <Link to="/order">
+              <img width="122px" height="28px" alt="" src="/logo.png" />
+            </Link>
+          </IconButton>
+
+          <span style={{ marginLeft: "63%" }}>
+            <SignIn />{" "}
+          </span>
+        </Toolbar>
+      </AppBar>
+      {isAuth && (
+        <div
+          className={classes.root}
+          style={{ background: "#F0F5F7", height: "100vh" }}
+        >
+          <Grid
+            container
+            spacing={2}
+            justify="center"
+            alignItems="center"
+            style={{ background: "#F0F5F7", width: "80%", margin: "auto" }}
+          >
+            <Grid item xs={8}>
+              <main>
+                <Paper className={classes.paper} elevation={0}>
                   <Stepper
-                  separator="›"
+                    separator="›"
                     activeStep={activeStep}
                     className={classes.stepper}
                     orientation="vertical"
@@ -255,54 +208,55 @@ export default function Checkout() {
                     ))}
                   </Stepper>
                   <React.Fragment>
-                    {activeStep === steps.length-1? (
+                    {activeStep === steps.length - 1 ? (
                       <Redirect to="/order/thankyou" />
-                      // <React.Fragment>
-                      //   <Typography variant="h5" gutterBottom>
-                      //     Thank you for your order.
-                      //   </Typography>
-                      //   <Typography variant="subtitle1">
-                      //     Your order number is #2001539. We have emailed your
-                      //     order confirmation, and will send you an update when
-                      //     your order has shipped.
-                      //   </Typography>
-                      // </React.Fragment>
-                    ) : ( null )
-                      // <React.Fragment>
-                      //   {/* {getStepContent(activeStep)} */}
-                      //   <div className={classes.buttons}>
-                      //     {activeStep !== 0 && (
-                      //       <Button
-                      //         onClick={handleBack}
-                      //         className={classes.button}
-                      //       >
-                      //         Back
-                      //       </Button>
-                      //     )}
-                      //     <Button
-                      //       variant="contained"
-                      //       color="primary"
-                      //       onClick={handleNext}
-                      //       className={classes.button}
-                      //     >
-                      //       {activeStep === steps.length - 1
-                      //         ? "place order"
-                      //         : "Next"}
-                      //     </Button>
-                      //   </div>
-                      // </React.Fragment>
-                    }
+                    ) : null}
                   </React.Fragment>
                 </Paper>
-              </main>          
+              </main>
+            </Grid>
+            <Grid item xs={4}>
+              <Review />
+            </Grid>
           </Grid>
-          <Grid item xs={4} >          
-              <Review />          
-          </Grid>
-        </Grid>
-      </div>
-    </div>
-    <button onClick={handleShowAllOrder}>Show All Order Data</button>
+        </div>
+      )}
+      {!isAuth && (
+        <div
+          style={{
+            margin: "auto",
+            background: "#F0F5F7",
+            width: "100%",
+            height: "100vh",
+            paddingTop: "200px",
+          }}
+        >
+          <img
+            width="100"
+            height="130"
+            alt=""
+            src="https://ik.imagekit.io/dunzo/web-assets/images/empty-cart-f69fe081c4f49106ac9eae054db33d89.png?tr=w-200,h-240,cm-pad_resize"
+          />
+          <br /> <br />
+          <div style={{ fontWeight: "bolder" }}>Your cart is empty!</div>
+          <div style={{ fontSize: "14px", color: "#A188C0" }}>
+            Make your task list and DoneGo it now!
+          </div>
+          <br />
+          <Link to="/order">
+            <p>
+              {" "}
+              <Button
+                style={{ textTransform: "none", textDecoration: "none" }}
+                className={classes.ButtonBackground}
+                color="inherit"
+              >
+                Okay
+              </Button>{" "}
+            </p>
+          </Link>
+        </div>
+      )}
     </>
   );
 }

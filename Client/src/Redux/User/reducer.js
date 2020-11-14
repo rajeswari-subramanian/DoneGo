@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from './actionTypes'
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, USER_ADDRESS } from './actionTypes'
 import { loadData, saveData } from '../LocalStorage'
 
 const initState = {
@@ -6,6 +6,7 @@ const initState = {
     isError: false,
     isAuth: loadData('isAuth') || false,
     message: "",
+    userAddresses: [],
     token: ""
 }
 
@@ -36,11 +37,18 @@ const signinReducer = (state = initState, { type, payload }) => {
                 isAuth: false
             }
         case LOGOUT:{
+            // window.localStorage.setItem('totalCartItems', 0)
+            // window.localStorage.clear()
             saveData('isAuth', false)
             return {
                 isAuth: false
             }
         }
+        case USER_ADDRESS:
+            console.log("reduceradd", payload)
+            return {
+                userAddresses: payload
+            }
 
         default:
             return {

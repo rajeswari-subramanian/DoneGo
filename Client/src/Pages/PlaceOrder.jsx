@@ -24,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > * + *': {
       marginTop: theme.spacing(3),
-      width:'100%',
-      padding:'10px 30px 10px 30px',
-      marginLeft:'20px',
-     
+      width: '100%',
+      padding: '10px 30px 10px 30px',
+      marginLeft: '20px',
+
     },
   },
   // root: {
@@ -99,44 +99,44 @@ export default function PlaceOrder() {
   }
   // console.log("Delivery Time", restaurantData.filter(f=> f._id === restaurantId)[0].deliveryTime)
   return (
-    <> 
-    <AppBar
-    variant="outlined"
-    style={{ border: "none", zIndex: "999", transition: "0.3s linear",maxHeight:"70px",minHeight:"70px" }}
-    className={classes.color}
-    position="fixed"
-  >
-    <Toolbar>
-    
-      <IconButton
-        style={{
-          marginLeft: "13%",
-          fontWeight: "1000",
-          fontSize: "27px",
-        }}
-        edge="start"
-        className={classes.menuButton}
-        color="inherit"
-        aria-label="menu"                      
+    <>
+      <AppBar
+        variant="outlined"
+        style={{ border: "none", zIndex: "999", transition: "0.3s linear", maxHeight: "70px", minHeight: "70px" }}
+        className={classes.color}
+        position="fixed"
       >
-      <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
-      </IconButton>
-      <Modal />      
-      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"33%"}}>
-        <ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative"}}/><span 
-        style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"red",color:"white",width:"18px",height:"18px",fontWeight:"bolder",borderRadius:"50%",padding:"1px",fontSize:"16px"}}>{totalCartItems}</span>
-      </IconButton>
-     <SignIn />         
-    </Toolbar>
-  </AppBar>
-  
-   
-        <div style={{width:"70%",margin:"auto"}}>
+        <Toolbar>
 
-    <Breadcrumbs separator="-›" aria-label="breadcrumb" style={{marginTop:"70px",width:'100%'}}>
+          <IconButton
+            style={{
+              marginLeft: "13%",
+              fontWeight: "1000",
+              fontSize: "27px",
+            }}
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png' /></Link>
+          </IconButton>
+          <Modal />
+          <IconButton color="black" aria-label="add to shopping cart" style={{ marginLeft: "33%" }}>
+            <ShoppingCartOutlinedIcon fontSize="large" style={{ position: "relative" }} /><span
+              style={{ position: "absolute", left: "30px", top: "2px", backgroundColor: "red", color: "white", width: "18px", height: "18px", fontWeight: "bolder", borderRadius: "50%", padding: "1px", fontSize: "16px" }}>{totalCartItems}</span>
+          </IconButton>
+          <SignIn />
+        </Toolbar>
+      </AppBar>
+
+
+      <div style={{ width: "70%", margin: "auto" }}>
+
+        <Breadcrumbs separator="-›" aria-label="breadcrumb" style={{ marginTop: "70px", width: '100%' }}>
           <Link
-            style={{             
-              color: "rgb(0, 179, 122)",             
+            style={{
+              color: "rgb(0, 179, 122)",
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
@@ -148,7 +148,7 @@ export default function PlaceOrder() {
           </Link>
           <Link
             style={{
-              color: "rgb(0, 179, 122)",             
+              color: "rgb(0, 179, 122)",
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
@@ -159,7 +159,7 @@ export default function PlaceOrder() {
             Bangalore
           </Link>
           <Typography
-            style={{            
+            style={{
               opacity: 1,
               fontWeight: 600,
               fontSize: 12,
@@ -170,29 +170,27 @@ export default function PlaceOrder() {
             Food Delivery
           </Typography>
         </Breadcrumbs>
+      </div>
+
+      <Box style={{ border: 'none', width: '100%', height: '100%', background: 'rgb(247, 253, 250)', overflow: 'hidden', pointerEvents: 'auto', transform: 'scleY(1)' }}>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+
+          <Box style={{ border: 'none', width: '160px', marginLeft: '10%', marginTop: '50px', height: '160px', borderRadius: '16px', padding: '5px', background: 'rgba(0, 210, 144, 0.08)' }}>
+            <img style={{ width: '160px', height: '160px', borderRadius: 6 }} src={restaurentImage} alt="resturent" />
+
+          </Box>
+          <Box style={{ border: 'none', margin: '10px', width: '360px', marginTop: '50px', height: '88px', lineHeight: 'normal', letterSpacing: 'normal', textAlign: 'left' }}>
+            <p style={{ fontSize: '14px', fontWeight: 500, opacity: '0.6' }}>Biryani</p>
+            <p style={{ fontSize: '28px', color: 'black', letterSpacing: 'normal', fontWeight: '700', lineHeight: '0' }}>{restaurantName}</p>
+            <p style={{ fontSize: '14px', fontWeight: 500, opacity: '0.6' }}>{restaurentDelivery}</p>
+
+
+          </Box>
+
         </div>
-    
-         
- 
-   <Box style={{border:'none',width:'100%',height:'100%',background:'rgb(247, 253, 250)', overflow:'hidden',pointerEvents:'auto', transform:'scleY(1)'}}>
-       <div style={{display:'flex', flexDirection:'row'}}>
 
-       <Box style={{border:'none', width:'160px', marginLeft:'10%', marginTop:'50px',height:'160px',borderRadius: '16px',padding:'5px',background:'rgba(0, 210, 144, 0.08)'}}>
-           <img style={{width:'160px', height:'160px', borderRadius:6}} src={restaurentImage} alt="resturent"/>
-
-       </Box>
-       <Box style={{border:'none', margin:'10px',width: '360px', marginTop:'50px',height:'88px', lineHeight:'normal',letterSpacing:'normal', textAlign:'left'}}>
-            <p style={{fontSize:'14px',fontWeight:500,opacity:'0.6'}}>Biryani</p>
-          <p style={{fontSize:'28px', color:'black', letterSpacing:'normal',fontWeight:'700',lineHeight:'0'}}>{restaurantName}</p>
-          <p style={{fontSize:'14px',fontWeight:500,opacity:'0.6'}}>{restaurentDelivery}</p>
-          
-
-       </Box>
-
-       </div>
-
-   </Box>
-   <RestaurantTableDetails />  
+      </Box>
+      <RestaurantTableDetails />
 
     </>
   );

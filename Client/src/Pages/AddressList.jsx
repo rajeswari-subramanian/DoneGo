@@ -1,12 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
-import { userAddress } from "../Redux/User/action";
-import AddNewAddress from "./AddNewAddress";
 import React, { useState, useEffect } from "react";
-import { useHistory, Redirect, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { useDispatch, useSelector } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import { Box, Button, Grid, Paper } from "@material-ui/core";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import AddNewAddress from "./AddNewAddress";
+import { userAddress } from "../Redux/User/action";
 
 function HomeIcon(props) {
   return (
@@ -136,108 +137,66 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
 }));
-export default function AddressForm() {
+
+export default function AddressList() {
   const classes = useStyles();
-  const [show, setShow] = React.useState(false);
   const dispatch = useDispatch();
-  const [index, setIndex] = React.useState(0);
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(userAddress());
-  }, [index]);
-  console.log("showww", show);
-  const [address, setAddress] = React.useState(
+  }, []);
+  const [address1, setAddress1] = React.useState(
     useSelector((state) => state.user.userAddresses)
   );
-  console.log("addressssss", address);
   return (
     <>
-      <Grid container spacing={2}>
-        <Grid
-          item
-          xs={6}
-          style={{
-            fontSize: "20px",
-            textAlign: "left",
-            fontWeight: 600,
-            fontFamily: "sans-serif",
-          }}
-        >
-          Add delivery address
-        </Grid>
+      <Grid container>
         <Grid item xs={6}>
-          {" "}
-          <button
-            style={{ borderRadius: "20px" }}
-            onClick={() => setShow(!show)}
-            type="button"
-            class="btn btn-outline-success"
-          >
-            Change
-          </button>
-        </Grid>{" "}
-      </Grid>
-      <p style={{ fontSize: "12px", color: "#87B2D8", textAlign: "left" }}>
-        Choose your delivery address from address book or add new
-      </p>
-      {!show && (
-        <>
-          {address.map((item, i) => (
-            <div style={{ textAlign: "left" }} key={i}>
-              {i === index && (
-                <p style={{ textAlign: "left" }}>
-                  {item.addressType}
-                  {item.street}
-                  {item.landmark}
-                  {item.place}
-                </p>
-              )}
-            </div>
-          ))}
-        </>
-      )}
-      {show && (
-        <Grid container>
-          <Grid item xs={6}>
-            <AddNewAddress />
-          </Grid>
-          {address.map((item, i) => (
-            <Grid item xs={6} key={i}>
-              <div
-                className={classes.paper3}
-                style={{ display: "flex" }}
-                onClick={() => {
-                  setIndex(i);
-                  setShow(false);
+          <AddNewAddress />
+        </Grid>
+        {address1.map((item, i) => (
+          <Grid item xs={6} key={i}>
+            <div className={classes.paper3} style={{ display: "flex" }}>
+              <div>
+                <IconButton>
+                  <HomeIcon fontSize="small" />
+                </IconButton>
+              </div>
+              <p
+                style={{
+                  fontSize: "10px",
+                  flexBasis: "90%",
+                  textAlign: "justify",
+                  fontWeight: 600,
+                  fontFamily: "sans-serif",
+                  paddingTop: "15px",
+                  minHeight: "100px",
+                  maxHeight: "80px",
                 }}
               >
-                <div>
-                  <IconButton>
-                    <HomeIcon fontSize="small" />
-                  </IconButton>
-                </div>
-                <p
-                  style={{
-                    fontSize: "10px",
-                    flexBasis: "90%",
-                    textAlign: "justify",
-                    fontWeight: 600,
-                    fontFamily: "sans-serif",
-                    paddingTop: "15px",
-                    minHeight: "100px",
-                    maxHeight: "80px",
-                  }}
+                {item.addressType}
+                <br />
+                {item.street}
+                {item.landmark}
+                {item.actualMapAddress}
+              </p>
+
+              <div>
+                <IconButton
+                  fontSize="small"
+                  style={{ color: "rgb(0, 179, 122)" }}
                 >
-                  {item.addressType}
-                  <br />
-                  {item.street}
-                  {item.landmark}
-                  {item.actualMapAddress}
-                </p>
+                  <EditIcon fontSize="small" />
+                </IconButton>
               </div>
-            </Grid>
-          ))}{" "}
-        </Grid>
-      )}
+              <div>
+                <IconButton fontSize="small" color="rgb(231, 232, 235)">
+                  <DeleteIcon fontSize="small" />
+                </IconButton>
+              </div>
+            </div>
+          </Grid>
+        ))}{" "}
+      </Grid>
     </>
   );
 }

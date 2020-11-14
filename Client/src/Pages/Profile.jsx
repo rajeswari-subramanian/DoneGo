@@ -1,35 +1,30 @@
 import React from "react";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { userAddress } from "../Redux/User/action";
 import AppBar from "@material-ui/core/AppBar";
-import { logout } from "../Redux/User/action";
-import { logOut } from '../Redux/Restaurant/action'
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Container from "@material-ui/core/Container";
-import { Box, Button, Grid, Paper } from "@material-ui/core";
+import { Box, Button, Divider, Grid, Paper } from "@material-ui/core";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import PropTypes from "prop-types";
-import Divider from "@material-ui/core/Divider";
 import SvgIcon from "@material-ui/core/SvgIcon";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import Modal from "../Components/Modal";
-import axios from "axios";
-import Address from "./Address"
-
-import SignIn from "../Components/SignIn";
-import { loadData } from "../Redux/LocalStorage";
-
+import FastfoodIcon from "@material-ui/icons/Fastfood";
+import Timeline from "@material-ui/lab/Timeline";
+import TimelineItem from "@material-ui/lab/TimelineItem";
+import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
+import TimelineConnector from "@material-ui/lab/TimelineConnector";
+import TimelineContent from "@material-ui/lab/TimelineContent";
+import TimelineDot from "@material-ui/lab/TimelineDot";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { logout } from "../Redux/User/action";
+import AddressList from "./AddressList";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
-
 
   return (
     <div
@@ -122,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "sans-serif",
   },
   root1: {
-    flexGrow: 1,
+    border: "none",
     backgroundColor: theme.palette.background.paper,
     width: "100%",
     display: "flex",
@@ -138,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navStyle: {
     fontWeight: 600,
-    textAlign: "left",
+
     fontFamily: "sans-serif",
     border: "none",
   },
@@ -146,7 +141,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid rgb(231, 232, 235)",
     minHeight: "108px",
     marginBottom: "18px",
-    width: "90%",
+    width: "95%",
     alignItems: "center",
     paddingTop: "35px",
     borderRadius: "5px",
@@ -161,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "108px",
     marginBottom: "18px",
     paddingTop: "0px",
-    width: "90%",
+    width: "95%",
     // alignItems:'center',
     borderRadius: "5px",
   },
@@ -188,40 +183,44 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     color: "white",
   },
+  pStyle: {
+    fontSize: "12px",
+    color: "rgb(159, 163, 175)",
+    textAlign: "left",
+    paddingLeft: "15px",
+    paddingTop: "15px",
+    fontWeight: "500",
+  },
+  pStyle2: {
+    fontSize: "12px",
+    color: "rgb(159, 163, 175)",
+    textAlign: "left",
+    paddingLeft: "5px",
+    paddingTop: "35px",
+    fontWeight: "500",
+  },
 }));
 
 export default function Profile() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [address, setAddress] = React.useState([]);
-  const [orders, setOrders] = React.useState([]);
+  const [orderList, setorderList] = React.useState(true);
+  const { restaurantData, totalCartItems } = useSelector((state) => state.app);
   const dispatch = useDispatch();
-
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(logOut())
   };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const [address, setAddress] = React.useState(
+    useSelector((state) => state.user.userAddresses)
+  );
+  console.log("userrrradd", address);
+  React.useEffect(() => {
+    dispatch(userAddress());
+  }, [address]);
 
-  console.log(loadData('userId'))
-   React.useEffect(() => {
-    axios
-      .get("http://localhost:5000/user/userDetails", {
-        headers:{
-          id: window.localStorage.getItem('userId')
-        }
-      })
-      .then(res=> {
-        setAddress(res.data[0].address)
-        setOrders(res.data[0].orderDetails)
-        // console.log("UserDetails: ",res.data[0])
-      })
-
-  }, []);
- 
-  console.log(address, orders);
   return (
     <>
       <AppBar
@@ -252,41 +251,40 @@ export default function Profile() {
               <img width="122px" height="28px" alt="" src="/logo.png" />
             </Link>
           </IconButton>
-
           <IconButton
             color="black"
             aria-label="add to shopping cart"
             style={{ marginLeft: "57%" }}
           >
-            <ShoppingCartOutlinedIcon
-              fontSize="large"
-              style={{ position: "relative" }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                left: "30px",
-                top: "2px",
-                backgroundColor: "red",
-                color: "white",
-                width: "18px",
-                height: "18px",
-                fontWeight: "bolder",
-                borderRadius: "50%",
-                padding: "1px",
-                fontSize: "16px",
-              }}
-            >
-              1
-            </span>
+            <Link to="/order/checkout">
+              <ShoppingCartOutlinedIcon
+                fontSize="large"
+                style={{ position: "relative", color: "black" }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  left: "30px",
+                  top: "5px",
+                  backgroundColor: "#ff2e56",
+                  color: "white",
+                  width: "18px",
+                  height: "18px",
+                  fontWeight: "bolder",
+                  cursor: "pointer",
+                  borderRadius: "50%",
+                  padding: "1px",
+                  fontSize: "12px",
+                }}
+              >
+                {totalCartItems}
+              </span>
+            </Link>
           </IconButton>
         </Toolbar>
       </AppBar>
-
       {/* BODY */}
-
-      <Box className={classes.body}>       
-
+      <Box className={classes.body}>
         <Box className={classes.orderCard}>
           <div className={classes.root}>
             <Grid container spacing={1}>
@@ -310,7 +308,7 @@ export default function Profile() {
                           fontFamily: "sans-serif",
                         }}
                       >
-                        +91-{loadData('mobileNo')}
+                        +91-9008477628
                       </div>
                       <div
                         style={{
@@ -324,7 +322,7 @@ export default function Profile() {
                         Update Profile
                       </div>
                     </Typography>
-                 
+
                     <Link to="/order" style={{ textDecoration: "none" }}>
                       <p>
                         {" "}
@@ -347,9 +345,10 @@ export default function Profile() {
             <Tabs
               style={{
                 height: "100%",
-                textAlign: "center",
                 background: "#F3F3F5",
                 marginLeft: "20px",
+                marginRight: "10px",
+                border: "none",
               }}
               orientation="vertical"
               variant="scrollable"
@@ -360,12 +359,11 @@ export default function Profile() {
             >
               <Tab
                 className={classes.navStyle}
-                label="Order List"
+                label="Orders List"
                 {...a11yProps(0)}
               />
               <Tab
                 className={classes.navStyle}
-                style={{ width: "300px" }}
                 label="Addresses"
                 {...a11yProps(1)}
               />
@@ -376,7 +374,7 @@ export default function Profile() {
               />
               <Tab
                 className={classes.navStyle}
-                label="Dumgo Cash"
+                label="DoneGo Cash"
                 {...a11yProps(3)}
               />
               <Tab
@@ -390,106 +388,201 @@ export default function Profile() {
                 {...a11yProps(5)}
               />
             </Tabs>
-            <TabPanel style={{ margin: "auto" }} value={value} index={0}>
-              <Grid container>
-                <Grid style={{ display: "inline-block" }} item={12}>
-                  <img
-                    alt=""
-                    style={{
-                      height: "161px",
-                      width: "286px",
-                      marginLeft: "65px",
-                      fontFamily: "sans-serif",
-                    }}
-                    src="https://ik.imagekit.io/dunzo/web-assets/images/delivery_bike-9ca8bf0483fbb3cf9af11fefb4d6272e.png?tr=w-572,h-322,cm-pad_resize"
-                  />
-                  <p
-                    style={{
-                      textAlign: "center",
-                      fontWeight: 600,
-                      color: "rgb(148, 149, 158)",
-                      fontSize: "16px",
-                      marginTop: "45px",
-                    }}
-                  >
-                    You dont have any active orders. Place your first order now!
-                  </p>
-                </Grid>
-              </Grid>
-            </TabPanel>
             <TabPanel
+              style={{ width: "75%", margin: "auto", height: "100vh" }}
               value={value}
-              index={1}
-              style={{ border: "2px solid red" }}
+              index={0}
             >
-              <div class="conatiner">
-                <div className={classes.root}>
+              {!orderList && (
+                <Grid container>
+                  <Grid style={{ display: "inline-block" }} item={12}>
+                    <img
+                      alt=""
+                      style={{
+                        height: "161px",
+                        width: "286px",
+                        marginLeft: "30px",
+                        fontFamily: "sans-serif",
+                      }}
+                      src="https://ik.imagekit.io/dunzo/web-assets/images/delivery_bike-9ca8bf0483fbb3cf9af11fefb4d6272e.png?tr=w-572,h-322,cm-pad_resize"
+                    />
+                    <p
+                      style={{
+                        textAlign: "center",
+                        fontWeight: 600,
+                        fontFamily: "sans-serif",
+                        color: "rgb(148, 149, 158)",
+                        fontSize: "16px",
+                        marginTop: "45px",
+                      }}
+                    >
+                      You dont have any active orders. Place your first order
+                      now!
+                    </p>
+                  </Grid>
+                </Grid>
+              )}
+              {orderList && (
+                <>
                   <Grid container spacing={1}>
-                    <Grid item xs={6}>
-                      <div className={classes.paper2}>
-                        <p
-                          style={{
-                            textAlign: "center",
-                            color: "rgb(0, 179, 122)",
-                            fontSize: "16px",
-                            height: "18px",
-                            fontWeight: 600,
-                            fontFamily: "sans-serif",
-                          }}
+                    <Grid style={{ width: "100%" }} item={12}>
+                      <Toolbar>
+                        <Typography
+                          style={{ padding: "2px" }}
+                          variant="h6"
+                          className={classes.title}
                         >
-                          + Add new address
-                          <Address />
+                          <div class="container" style={{ display: "flex" }}>
+                            <FastfoodIcon
+                              fontSize="large"
+                              style={{ color: "rgb(0, 179, 122)" }}
+                            />
+                            <p
+                              style={{
+                                fontSize: "17px",
+                                fontWeight: "800",
+                                lineHeight: "normal",
+                                fontFamily: "sans-serif",
+                                marginLeft: "10px",
+                              }}
+                            >
+                              Restaurants
+                            </p>
+                          </div>
+                        </Typography>
+                        <p style={{ fontWeight: "600", fontSize: "17px" }}>
+                          Paid:<b style={{ color: "rgb(0, 179, 122)" }}>₹220</b>
                         </p>
-                      </div>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <div
-                        className={classes.paper3}
-                        style={{ display: "flex" }}
-                      >
-                        <div>
-                          <IconButton>
-                            <HomeIcon fontSize="small" />
-                          </IconButton>
-                        </div>
-                        <p
-                          style={{
-                            fontSize: "10px",
-                            flexBasis: "90%",
-                            textAlign: "justify",
-                            fontWeight: 600,
-                            fontFamily: "sans-serif",
-                            paddingTop: "15px",
-                          }}
-                        >
-                          HOME
-                          <br />
-                          24 gdjffk, -, NAL Quarters Scientist Apartment, 13th
-                          Main Rd, HAL 3rd Stage, NAL Colony, Kodihalli,
-                          Bengaluru, Karnataka 560017, India
-                        </p>
+                      </Toolbar>
+                      <Grid style={{ width: "100%" }} item={12}>
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-2">
+                              <Timeline
+                                style={{
+                                  textAlign: "left",
+                                  alignItems: "left",
+                                  alignContent: "left",
+                                  paddingLeft: "0px",
+                                  width: "100%",
+                                  display: "inline-block",
+                                }}
+                              >
+                                <TimelineItem>
+                                  <TimelineSeparator>
+                                    <TimelineDot />
+                                    <TimelineConnector />
+                                  </TimelineSeparator>
+                                  <TimelineContent>
+                                    <h6
+                                      style={{
+                                        color: "black",
+                                        fontSize: "15px ",
+                                      }}
+                                    >
+                                      Meghna Foods
+                                    </h6>
+                                  </TimelineContent>
+                                </TimelineItem>
 
-                        <div>
-                          <IconButton
-                            fontSize="small"
-                            style={{ color: "rgb(0, 179, 122)" }}
-                          >
-                            <EditIcon fontSize="small" />
-                          </IconButton>
+                                <TimelineItem>
+                                  <TimelineSeparator>
+                                    <TimelineDot />
+                                  </TimelineSeparator>
+                                  <TimelineContent>
+                                    <h6
+                                      style={{
+                                        color: "black",
+                                        fontSize: "15px ",
+                                      }}
+                                    >
+                                      {" "}
+                                      HOME
+                                    </h6>
+                                  </TimelineContent>
+                                </TimelineItem>
+                              </Timeline>
+                            </div>
+                            <div class="col-10">
+                              <p className={classes.pStyle}>
+                                Joyti Navas college road, Near Jyoti Niyas
+                                College No: 124, 1st Cross Rd, KHB colony
+                              </p>
+                              <p className={classes.pStyle2}>
+                                34, Saibaba Nalia near hot and cold bakery, 34
+                                Old Madiawala Palace
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                          <IconButton
-                            fontSize="small"
-                            color="rgb(231, 232, 235)"
-                          >
-                            <DeleteIcon fontSize="small" />
-                          </IconButton>
-                        </div>
-                      </div>
+                        <p
+                          style={{
+                            fontSize: "12px",
+                            fontWeight: "600",
+                            color: "rgb(159, 163, 175)",
+                            fontFamily: "sans-serif",
+                            paddingLeft: "35px",
+                            textAlign: "left",
+                          }}
+                        >
+                          Meghna Special Biriyani x 1
+                        </p>
+                      </Grid>
                     </Grid>
                   </Grid>
-                </div>
-              </div>
+                  <Divider />
+                  <div class="container">
+                    <div class="row">
+                      <div
+                        style={{ border: "none", paddingTop: "10px" }}
+                        class="col-12"
+                      >
+                        <Toolbar>
+                          <Typography
+                            style={{ padding: "5px" }}
+                            variant="h6"
+                            className={classes.title}
+                          >
+                            <div class="container" style={{ display: "flex" }}>
+                              <CheckCircleIcon
+                                style={{ color: "rgb(0, 179, 122)" }}
+                              />
+                              <p
+                                style={{
+                                  fontSize: "16px",
+                                  fontWeight: 600,
+                                  lineHeight: "normal",
+                                  fontFamily: "sans-serif",
+                                  paddingLeft: "10px",
+                                  color: "rgb(159, 163, 175)",
+                                }}
+                              >
+                                Completed
+                              </p>
+                            </div>
+                          </Typography>
+                          <button
+                            style={{
+                              fontWeight: 600,
+                              fontFamily: "sans-serif",
+                              borderRadius: "20px",
+                            }}
+                            type="button"
+                            class="btn btn-outline-success"
+                          >
+                            Track Order
+                          </button>
+                        </Toolbar>
+                      </div>
+                    </div>
+                  </div>
+                  <Divider />
+                </>
+              )}
+            </TabPanel>
+            <TabPanel style={{ width: "75%" }} value={value} index={1}>
+              {" "}
+              <AddressList address={address} />
             </TabPanel>
             <TabPanel value={value} index={2}>
               <div className={classes.root}>
@@ -516,7 +609,6 @@ export default function Profile() {
                         }}
                       >
                         + Add new card
-                        
                       </p>
                     </div>
                   </Grid>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect, Link } from 'react-router-dom'
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -80,16 +80,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar() { 
+export default function Navbar() {
   const classes = useStyles();
-  const params=useParams();
+  const params = useParams();
   const dispatch = useDispatch()
-  const { restaurantData, totalCartItems} = useSelector((state) => state.app); 
-  const [restaurantLen,setLen]=useState(restaurantData.length)
-  
+  const { restaurantData, totalCartItems } = useSelector((state) => state.app);
+  const [restaurantLen, setLen] = useState(restaurantData.length)
+
   useEffect(() => {
     setLen(restaurantData.length)
-  }, [restaurantData],[restaurantLen])
+  }, [restaurantData], [restaurantLen])
 
   //console.log("NavbarrestaurantDatalen", restaurantData.length);
 
@@ -97,12 +97,12 @@ export default function Navbar() {
     <>
       <AppBar
         variant="outlined"
-        style={{ border: "none", zIndex: "999", transition: "0.3s linear",maxHeight:"70px",minHeight:"70px" }}
+        style={{ border: "none", zIndex: "999", transition: "0.3s linear", maxHeight: "70px", minHeight: "70px" }}
         className={classes.color}
         position="fixed"
       >
         <Toolbar>
-        
+
           <IconButton
             style={{
               marginLeft: "10%",
@@ -112,9 +112,9 @@ export default function Navbar() {
             edge="start"
             className={classes.menuButton}
             color="inherit"
-            aria-label="menu"                      
+            aria-label="menu"
           >
-         <Link to="/order" ><img width="122px" height="28px" alt="img" src='/logo.png'/></Link>
+            <Link to="/order" ><img width="122px" height="28px" alt="img" src='/logo.png' /></Link>
           </IconButton>
           <Modal />
           <Button
@@ -122,26 +122,26 @@ export default function Navbar() {
               marginLeft: "16%",
               textTransform: "none",
               fontFamily: "Open+Sans",
-              width:'auto'
-              
+              width: 'auto'
+
             }}
             color="inherit"
           >
             Donego for Partners{" "}
           </Button>
-          <Button style={{  fontFamily: "Open+Sans", textTransform: "none" }}>
+          <Button style={{ fontFamily: "Open+Sans", textTransform: "none" }}>
             {" "}
             Donego for Business
           </Button>
           <IconButton color="black" aria-label="add to shopping cart">
-            <ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative"}}/><span 
-            style={{position:"absolute",left:"30px",top:"2px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px"}}>{totalCartItems}</span>
+            <ShoppingCartOutlinedIcon fontSize="large" style={{ position: "relative" }} /><span
+              style={{ position: "absolute", left: "30px", top: "2px", backgroundColor: "#ff2e56", color: "white", width: "18px", height: "18px", fontWeight: "bolder", cursor: "pointer", borderRadius: "50%", padding: "1px", fontSize: "12px" }}>{totalCartItems}</span>
           </IconButton>
-         <SignIn />         
+          <SignIn />
         </Toolbar>
-      </AppBar> 
+      </AppBar>
       {/* <Routes  leng={restaurantLen}/>  */}
-        </>
-    
+    </>
+
   );
 }

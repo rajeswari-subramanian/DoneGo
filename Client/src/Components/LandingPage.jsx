@@ -86,19 +86,19 @@ export default function LandingPage() {
   console.log("restaurantData", restaurantData.length);
 
   return (
-    <> 
-    <Navbar />
+    <>
+      <Navbar />
       {/* INSTANT SECTION */}
       <div style={{ background: " rgb(247, 253, 250)" }}>
-        <div style={{ width: "70%", marginLeft:'12%' }}>
+        <div style={{ width: "70%", marginLeft: '12%' }}>
           <Grid
             container
             direction="column"
             style={{
               paddingTop: "120px",
               fontFamily: "sans-serif",
-              width:'112%',
-              
+              width: '112%',
+
             }}
           >
             <Grid
@@ -137,7 +137,7 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid container style={{ marginTop: "20px",paddingBottom:"40px",width:'112%' }}>
+          <Grid container style={{ marginTop: "20px", paddingBottom: "40px", width: '112%' }}>
             <Grid
               item
               container
@@ -181,13 +181,13 @@ export default function LandingPage() {
                   imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_wellness_tertiary_grid_1597821915084.png"
                 />
               </Grid>
-            </Grid>            
+            </Grid>
           </Grid>
         </div>
       </div>
       {/* TOP SECTION */}
-      <div style={{ width: "70%", marginLeft:'12%' }}>
-        <Grid container direction="column" style={{  paddingTop: "60px", }}>
+      <div style={{ width: "70%", marginLeft: '12%' }}>
+        <Grid container direction="column" style={{ paddingTop: "60px", }}>
           <Grid
             item
             style={{
@@ -196,7 +196,7 @@ export default function LandingPage() {
               fontWeight: "600",
               marginBottom: "40px",
               fontFamily: "Open+Sans",
-              width:'112%'
+              width: '112%'
             }}
           >
             Top picks for you
@@ -218,19 +218,19 @@ export default function LandingPage() {
                   height: "6px",
                   marginTop: "10px",
                   borderRadius: "25px",
-                
+
                 }}
               />
             </div>
           </Grid>
           <Grid
-          style={{ width:'113%',}}
+            style={{ width: '113%', }}
             item
             container
             spacing={2}
-           
-           
-           
+
+
+
           >
             <Grid item xs={12} sm={3}>
               <TopPickCards imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/d4b.jpg?tr=w-488,h-326,cm-pad_resize" />
@@ -257,7 +257,7 @@ export default function LandingPage() {
           display: "flex",
           boxSizing: "border-box",
           marginTop: "60px",
-          paddingBottom:"14px"
+          paddingBottom: "14px"
         }}
       >
         <Box className={classes.MobilePic}>
@@ -270,7 +270,7 @@ export default function LandingPage() {
 
         <div
           style={{
-            marginTop: "130px",           
+            marginTop: "130px",
             fontFamily: "Open+Sans",
             fontSize: "20px",
             color: "#2D3444",
@@ -298,7 +298,7 @@ export default function LandingPage() {
               src="https://ik.imagekit.io/dunzo/web-assets/images/appstore-43cd8d3a00a6ed32c485951de9b3af63.svg"
               alt="mobile"
             />
-          </div>          
+          </div>
         </div>
       </Box>
       <div style={{ backgroundColor: "rgb(23, 30, 48)" }}>

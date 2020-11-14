@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -16,12 +16,12 @@ import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 import { useThrottle } from "use-throttle";
 import { useSelector, useDispatch } from 'react-redux'
-import {restaurantList} from '../Redux/Restaurant/action'
+import { restaurantList } from '../Redux/Restaurant/action'
 
 const useStyles = makeStyles((theme) => ({
   margin: {
     border: "3px solid #F3F3F5",
-    borderRadius: "20px",    
+    borderRadius: "20px",
     backgroundColor: "#F3F3F5",
     margin: theme.spacing(1),
   },
@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Modal() {
+  const classes = useStyles();
   const [name, setName] = useState("");
   const throttledText = useThrottle(name, 800);
   //const [showmap, setShowMap] = useState("false");
@@ -73,7 +74,6 @@ export default function Modal() {
   const handleClose = () => {
     setOpen(false);
   };
-  const classes = useStyles();
 
   const descriptionElementRef = React.useRef(null);
 
@@ -85,11 +85,12 @@ export default function Modal() {
       }
     }
   }, [open]);
+
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0,
-  };  
+  };
 
   var config1 = {
     method: "get",
@@ -118,12 +119,17 @@ export default function Modal() {
           console.log(response);
           let temp = response.data.features[0].place_name.split(",");
           setCurr(`${temp[0]},${temp[1]}`);
+          window.localStorage.setItem('Place', `${temp[0]},${temp[1]}`)
         })
         .catch(function (error) {
           console.log(error);
         });
       setLang(crd.longitude);
       setLat(crd.latitude);
+      window.localStorage.setItem('Lang', crd.longitude)
+      window.localStorage.setItem('Lati', crd.latitude)
+      //window.localStotage.setItem('totalCartItems',0)
+
       let payload = {
         lang: crd.longitude,
         lat: crd.latitude
@@ -131,7 +137,7 @@ export default function Modal() {
       dispatch(restaurantList(payload))
     }, error, options);
     setOpen(false);
-  }  
+  }
 
   function handleEnter(e) {
     e.target.style.background = "#F3F3F5";
@@ -143,7 +149,7 @@ export default function Modal() {
 
   //SELECTED PLACE LANG LAT PLACENAME - Variables are lang, lat,curr
   function handlePlace(e) {
-    setName(e.target.value);   
+    setName(e.target.value);
     axios(config1)
       .then(function (response) {
         response.data.features.map((item) => {
@@ -156,10 +162,15 @@ export default function Modal() {
           ]);
           setLang(item.center[0]);
           setLat(item.center[1]);
+          window.localStorage.setItem('Lang', item.center[0])
+          window.localStorage.setItem('Lati', item.center[1])
+          window.localStorage.setItem('Place', `${temp1[0]},${temp1[1]}`)
+          //window.localStotage.setItem('totalCartItems',0)
+          
           let payload = {
             lang: lang,
             lat: lat
-        }
+          }
           dispatch(restaurantList(payload))
         });
       })
@@ -168,12 +179,12 @@ export default function Modal() {
       });
   }
 
-useEffect(() => {
-  handleCurrent()
-}, [])
+  useEffect(() => {
+    handleCurrent()
+  }, [])
 
-//console.log("current", lang, lat, curr);
-//console.log("restdata",restaurantData)
+  //console.log("current", lang, lat, curr);
+  //console.log("restdata",restaurantData)
 
   return (
     <>
@@ -186,9 +197,9 @@ useEffect(() => {
         </div>
       </div>
       <Button
-        onClick={handleClickOpen("paper")}        
+        onClick={handleClickOpen("paper")}
       >
-        <span style={{ marginLeft: "20px",overflow: "hidden",textOverflow: "ellipsis", maxHeight:"20px",whiteSpace:"nowrap",   textTransform: "none" ,maxWidth:"100px",minWidth:"130px"}}>{curr}</span>
+        <span style={{ marginLeft: "20px", overflow: "hidden", textOverflow: "ellipsis", maxHeight: "20px", whiteSpace: "nowrap", textTransform: "none", maxWidth: "100px", minWidth: "130px" }}>{curr}</span>
         <div style={{ color: "rgb(0, 210, 144)" }}>
           <ExpandMoreOutlinedIcon />
         </div>

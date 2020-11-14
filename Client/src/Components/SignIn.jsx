@@ -16,7 +16,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useDispatch, useSelector } from "react-redux";
 import InputAdornment from '@material-ui/core/InputAdornment';
 
-import {loginSuccess} from '../Redux/User/action'
+import { loginSuccess } from '../Redux/User/action'
 
 var intervalId = 0
 const Wrapper = styled.div`
@@ -159,13 +159,13 @@ export default function SignIn() {
           }
           else {
             window.localStorage.setItem('token', res.data.accessToken)
-            window.localStorage.setItem('userId',res.data.userToken.id)// mongoid
-            window.localStorage.setItem('mobileNo',res.data.userToken.mobile)
+            window.localStorage.setItem('userId', res.data.userToken.id)// mongoid
+            window.localStorage.setItem('mobileNo', res.data.userToken.mobile)
             setFull(false)
             handleClose()
             //alert(res.data.message)
             dispatch(loginSuccess())
-            console.log("verify",res.data)
+            console.log("verify", res.data)
           }
         })
     }
@@ -214,29 +214,29 @@ export default function SignIn() {
 
   return (
     <>
-     {!isAuth? 
-          <Button          
-            className={classes.ButtonBackground}
-            color="inherit"
-            onClick={handleClickOpen}
-          >
-            Sign In
+      {!isAuth ?
+        <Button
+          className={classes.ButtonBackground}
+          color="inherit"
+          onClick={handleClickOpen}
+        >
+          Sign In
           </Button>
-          :  <Link to="/order/profile" ><IconButton style={{color:"rgb(0, 210, 144)",backgroundColor: "white",padding:"0px"}} aria-label="add to shopping cart"  >
-            <AccountCircleIcon fontSize="large"/>
-          </IconButton></Link>} 
+        : <Link to="/order/profile" ><IconButton style={{ color: "rgb(0, 210, 144)", backgroundColor: "white", padding: "0px" }} aria-label="add to shopping cart"  >
+          <AccountCircleIcon fontSize="large" />
+        </IconButton></Link>}
 
       {/* <Button style={{ marginRight: '100px', textTransform: "none" }} className={classes.ButtonBackground} color="inherit" onClick={handleClickOpen}>
         Sign In</Button> */}
-      <Dialog open={open} aria-labelledby="form-dialog-title"  fullWidth
-            maxWidth="xs"  >
-        <DialogTitle id="form-dialog-title" style={{textAlign:"center"}}>Signin/Signup</DialogTitle>
-        <DialogContent style={{position:"relative"}}>
-          <DialogContentText style={{textAlign:"center"}}>
-          Your 10 digit mobile number<span style={{color:"red"}}>*</span>
-          </DialogContentText>         
+      <Dialog open={open} aria-labelledby="form-dialog-title" fullWidth
+        maxWidth="xs"  >
+        <DialogTitle id="form-dialog-title" style={{ textAlign: "center" }}>Signin/Signup</DialogTitle>
+        <DialogContent style={{ position: "relative" }}>
+          <DialogContentText style={{ textAlign: "center" }}>
+            Your 10 digit mobile number<span style={{ color: "red" }}>*</span>
+          </DialogContentText>
           <TextField
-            autoFocus             
+            autoFocus
             id="number"
             type="number"
             fullWidth
@@ -249,50 +249,50 @@ export default function SignIn() {
             }}
             onInput={(e) => e.target.value = e.target.value.slice(0, 10)}
           />
-       
-        {
-          !isMobileValid ?
-            <Button disabled color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
-              Send OTP
-          </Button>
-            :
-            !isOtpSent ?
-              <Button onClick={handleSentOtp} color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
+
+          {
+            !isMobileValid ?
+              <Button disabled color="primary" style={{ color: "white", background: "#00D290", borderRadius: "30px", position: "absolute", left: "320px", padding: "1px" }}>
                 Send OTP
-            </Button>
-              :
-              <Button onClick={handleEditNumber} color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
-                Edit 
           </Button>
-        } 
-        {
-          isOtpSent ?
-            <div>
-              
-              <Wrapper chgClr={full} style={{textAlign:"center"}}>
-                <p>Please enter OTP</p>
-                <InputBox boxes={6} operation={handleOtpChange} />
+              :
+              !isOtpSent ?
+                <Button onClick={handleSentOtp} color="primary" style={{ color: "white", background: "#00D290", borderRadius: "30px", position: "absolute", left: "320px", padding: "1px" }}>
+                  Send OTP
+            </Button>
+                :
+                <Button onClick={handleEditNumber} color="primary" style={{ color: "white", background: "#00D290", borderRadius: "30px", position: "absolute", left: "320px", padding: "1px" }}>
+                  Edit
+          </Button>
+          }
+          {
+            isOtpSent ?
+              <div>
+
+                <Wrapper chgClr={full} style={{ textAlign: "center" }}>
+                  <p>Please enter OTP</p>
+                  <InputBox boxes={6} operation={handleOtpChange} />
+                  {
+                    full ? <div style={{ color: 'red' }}>Code is not Valid</div> : null
+                  }
+                </Wrapper>
                 {
-                full ? <div style={{color:'red'}}>Code is not Valid</div> : null
-              }
-              </Wrapper>              
-              {
-                timeLeft === 0 ? <h6 style={{ color: "#00D290", cursor: 'pointer' ,textAlign:"center"}} onClick={handleResendOtp}>Resend</h6> : <h6 style={{ color: "#828282" ,textAlign:"center"}}>Resend OTP in {timeLeft}s</h6>
-              }
-              {
-                isVerifyButton ?
-                  <Button onClick={handleVerifyOtp} style={{background:"#00D290",color:"white",borderRadius:"30px",marginLeft:"120px",padding:"1px"}}>
-                   Verify and continue
+                  timeLeft === 0 ? <h6 style={{ color: "#00D290", cursor: 'pointer', textAlign: "center" }} onClick={handleResendOtp}>Resend</h6> : <h6 style={{ color: "#828282", textAlign: "center" }}>Resend OTP in {timeLeft}s</h6>
+                }
+                {
+                  isVerifyButton ?
+                    <Button onClick={handleVerifyOtp} style={{ background: "#00D290", color: "white", borderRadius: "30px", marginLeft: "120px", padding: "1px" }}>
+                      Verify and continue
                   </Button>
-                  :
-                  <Button disabled color="primary" style={{background:"#D4D6DB",borderRadius:"30px",marginLeft:"120px",padding:"1p"}}>
-                  Verify and continue
+                    :
+                    <Button disabled color="primary" style={{ background: "#D4D6DB", borderRadius: "30px", marginLeft: "120px", padding: "1p" }}>
+                      Verify and continue
                   </Button>
-              }
-            </div>
-            :
-            null
-        }
+                }
+              </div>
+              :
+              null
+          }
         </DialogContent>
         <DialogActions
           style={{ position: "absolute", left: "350px" }}
@@ -300,7 +300,7 @@ export default function SignIn() {
           <Button onClick={handleClose} color="black">
             X
           </Button>
-        </DialogActions>          
+        </DialogActions>
       </Dialog>
     </>
   );

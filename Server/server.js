@@ -15,6 +15,7 @@ const razorpay = new Razorpay({
     key_id: 'rzp_test_8sYueDGWseWPkq',
     key_secret: 't9I6Fb4f6EveXqYsr4JQqqN8',
 })
+
 app.post('/verification', (req, res) => {
     // do a validation
     const secret = '12345678'
@@ -39,9 +40,10 @@ app.post('/verification', (req, res) => {
     res.json({ status: 'ok' })
 })
 
+
 app.post('/razorpay', async (req, res) => {
     const payment_capture = 1
-    const amount = 499
+    const amount = req.params.amount
     const currency = 'INR'
 
     const options = {
@@ -73,7 +75,6 @@ dotenv.config();
 const donegoRoute = require("./routes/DonegoRoutes")
 const donegoModel = require("./models/DonegoModel");
 const userModel = require("./models/userDetailModel")
-
 
 app.use(cors())
 app.use(express.json());
