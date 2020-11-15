@@ -26,7 +26,7 @@
         "restaurentAddress": "770,16th Main Road, 2nd Stage, BTM Layout, near IAS Officers Colony, Bengaluru, Karnataka 560076",
         "longitude": 77.610022,
         "latitude": 12.913428 ,
-        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/f62d48e1-5ff0-45a9-9d76-90ebe952cdda-1551026109146-store_image.jpg",
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/fde9f3b2-e40b-4d3d-9550-78c7ca2dc7d9-1556801438576-store_image.jpg",
         "foodType":"Chinese Food",
         "place": "btm",
         "foodCategory": "non veg",
@@ -105,6 +105,28 @@
             {
                 "itemName": "Idli (2 Pcs) + Vada (1 Pc)",
                 "itemPrice": 57,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Basmati Biryani Nation",
+        "restaurentAddress": "1, 120, 14th Main Rd, Sector 5, 1st Sector, HSR Layout 5th Sector, Bengaluru, Karnataka 560034",
+        "longitude": 77.6356669 ,
+        "latitude": 12.9163494,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/elZRdFlnL2IwcXFFdG9uOEcwMmQ0UT09-1587463413189-store_image.jpg",
+        "foodType":"South Indian",
+        "place": "btm",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Panner Tikka Masala",
+                "itemPrice": 155,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Boneless Chicken",
+                "itemPrice": 220,
                 "catagoryFood": "non veg"
             }
         ]
@@ -215,6 +237,28 @@
             {
                 "itemName": "Thai Green Curry Chicken & Basmati Rice",
                 "itemPrice": 305,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Imperio Restaurant ",
+        "restaurentAddress": "ITPL Main Rd, AECS Layout, Brookefield, Bengaluru, Karnataka 560037",
+        "longitude": 77.7484841 ,
+        "latitude": 12.9619691,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/0b7c4cee-d05e-4ebe-9b8d-ad33032e7c37-1574917115770-store_image.jpg",
+        "foodType":"North Indian",
+        "place": "marathahalli",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Plain Dosa",
+                "itemPrice": 35,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Dosa Chicken",
+                "itemPrice": 175,
                 "catagoryFood": "non veg"
             }
         ]
