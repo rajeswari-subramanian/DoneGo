@@ -66,7 +66,7 @@ export default function Modal() {
   const [scroll, setScroll] = React.useState("paper");
   const dispatch = useDispatch()
 
-  const restaurantData = useSelector(state => state.app.restaurantData)
+
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
     setScroll(scrollType);
@@ -97,27 +97,19 @@ export default function Modal() {
     method: "get",
     url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${throttledText}.json?country=in&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`,
     headers: {},
-  };
-
-  //RESTAURANT SEARCH
-  // var config3 = {
-  //   method: "get",
-  //   url: `https://api.mapbox.com/geocoding/v5/mapbox.places/restaurants.json?types=poi&country=in&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`,
-  //   headers: {},
-  // };  
+  };  
 
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
   //CURRENT LOCATION LANG LAT PLACENAME - Variables are lang, lat,curr
-  function handleCurrent() {
-    console.log('Hello Current');
+  function handleCurrent() {   
     navigator.geolocation.getCurrentPosition(function success(pos) {
       var crd = pos.coords;
       axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${crd.longitude},${crd.latitude}.json?types=locality&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`)
         .then(function (response) {
-          console.log(response);
+          //console.log(response);
           let temp = response.data.features[0].place_name.split(",");
           setCurr(`${temp[0]},${temp[1]}`);
           window.localStorage.setItem('Place', `${temp[0]},${temp[1]}`)
@@ -183,9 +175,9 @@ export default function Modal() {
 useEffect(() => {
     handleCurrent()
 }, [])
-
-//console.log("current", lang, lat, curr);
-//console.log("restdata",restaurantData)
+const restaurantData = useSelector(state => state.app.restaurantData)
+//console.log("Modalcurrent", lang, lat, curr);
+//console.log("Modalrestdata",restaurantData)
 
   return (
     <>
@@ -194,15 +186,16 @@ useEffect(() => {
           style={{ color: "rgb(0, 210, 144)" }}
           className={classes.searchIcon}
         >
-          <LocationOnIcon />
+          <LocationOnIcon style={{outline:"none"}} />
         </div>
       </div>
       <Button
-        onClick={handleClickOpen("paper")}        
+        onClick={handleClickOpen("paper")}  
+        style={{outline:"none"}}      
       >
         <span style={{ marginLeft: "20px",overflow: "hidden",textOverflow: "ellipsis", maxHeight:"20px",whiteSpace:"nowrap",   textTransform: "none" ,maxWidth:"100px",minWidth:"130px"}}>{curr}</span>
         <div style={{ color: "rgb(0, 210, 144)" }}>
-          <ExpandMoreOutlinedIcon />
+          <ExpandMoreOutlinedIcon style={{outline:"none"}}/>
         </div>
       </Button>
       <Dialog

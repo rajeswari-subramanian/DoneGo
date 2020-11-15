@@ -23,6 +23,8 @@ import TimelineDot from "@material-ui/lab/TimelineDot";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { logout } from "../Redux/User/action";
 import AddressList from "./AddressList";
+import { loadData } from "../Redux/LocalStorage";
+import axios from 'axios'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -66,7 +68,8 @@ function HomeIcon(props) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1,    
+    height: "100hv",
   },
   color: {
     backgroundColor: "white",
@@ -122,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     alignContent: "center",
-    height: 671,
+    height: "100hv",
     fontFamily: "sans-serif",
   },
   tabs: {
@@ -186,8 +189,8 @@ const useStyles = makeStyles((theme) => ({
   pStyle: {
     fontSize: "12px",
     color: "rgb(159, 163, 175)",
-    textAlign: "left",
-    paddingLeft: "15px",
+    textAlign: "left",   
+    marginLeft: "30px",
     paddingTop: "15px",
     fontWeight: "500",
   },
@@ -195,8 +198,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "12px",
     color: "rgb(159, 163, 175)",
     textAlign: "left",
-    paddingLeft: "5px",
-    paddingTop: "35px",
+    marginLeft: "30px",
+    paddingTop: "15px",
     fontWeight: "500",
   },
 }));
@@ -205,6 +208,7 @@ export default function Profile() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [orderList, setorderList] = React.useState(true);
+  const [address, setAddress] = React.useState(useSelector((state) => state.user.userAddresses))
   const { restaurantData, totalCartItems } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -212,15 +216,23 @@ export default function Profile() {
   };
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-  const [address, setAddress] = React.useState(
-    useSelector((state) => state.user.userAddresses)
-  );
-  console.log("userrrradd", address);
-  React.useEffect(() => {
-    dispatch(userAddress());
-  }, [address]);
+  };  
 
+React.useEffect(() => {
+  axios
+    .get("http://localhost:5000/user/userDetails", {
+      headers:{
+        id: window.localStorage.getItem('userId')
+      }
+    })
+    .then(res=> {
+      setAddress(res.data[0].address)
+      setorderList(res.data[0].orderDetails)
+      //console.log("UserDetails: ",res.data[0])
+    })
+
+}, [address]);
+  //console.log("profile",address,orderList,window.localStorage.getItem('cartRestaurant'),window.localStorage.getItem('totalCartValue'))
   return (
     <>
       <AppBar
@@ -241,6 +253,7 @@ export default function Profile() {
               marginLeft: "13%",
               fontWeight: "1000",
               fontSize: "27px",
+              outline:"none",
             }}
             edge="start"
             className={classes.menuButton}
@@ -308,7 +321,7 @@ export default function Profile() {
                           fontFamily: "sans-serif",
                         }}
                       >
-                        +91-9008477628
+                        +91-{loadData('mobileNo')}
                       </div>
                       <div
                         style={{
@@ -341,10 +354,9 @@ export default function Profile() {
               </Grid>
             </Grid>
           </div>
-          <div className={classes.root1}>
+          <div className={classes.root1} >
             <Tabs
-              style={{
-                height: "100%",
+              style={{              
                 background: "#F3F3F5",
                 marginLeft: "20px",
                 marginRight: "10px",
@@ -451,7 +463,7 @@ export default function Profile() {
                           </div>
                         </Typography>
                         <p style={{ fontWeight: "600", fontSize: "17px" }}>
-                          Paid:<b style={{ color: "rgb(0, 179, 122)" }}>₹220</b>
+                          Paid:<b style={{ color: "rgb(0, 179, 122)" }}>₹{window.localStorage.getItem('totalCartValue')}</b>
                         </p>
                       </Toolbar>
                       <Grid style={{ width: "100%" }} item={12}>
@@ -480,7 +492,7 @@ export default function Profile() {
                                         fontSize: "15px ",
                                       }}
                                     >
-                                      Meghna Foods
+                                      {window.localStorage.getItem('cartRestaurant')}
                                     </h6>
                                   </TimelineContent>
                                 </TimelineItem>
@@ -505,12 +517,10 @@ export default function Profile() {
                             </div>
                             <div class="col-10">
                               <p className={classes.pStyle}>
-                                Joyti Navas college road, Near Jyoti Niyas
-                                College No: 124, 1st Cross Rd, KHB colony
+                              {window.localStorage.getItem('restaurantAddress')}
                               </p>
                               <p className={classes.pStyle2}>
-                                34, Saibaba Nalia near hot and cold bakery, 34
-                                Old Madiawala Palace
+                              {window.localStorage.getItem('currDeliveryAddress')}
                               </p>
                             </div>
                           </div>
@@ -580,77 +590,17 @@ export default function Profile() {
                 </>
               )}
             </TabPanel>
-            <TabPanel style={{ width: "75%" }} value={value} index={1}>
+            <TabPanel style={{ width: "75%" ,height:"100vh"}} value={value} index={1}>
               {" "}
               <AddressList address={address} />
             </TabPanel>
-            <TabPanel value={value} index={2}>
-              <div className={classes.root}>
-                <Grid container spacing={1}>
-                  <Grid item xs={6}>
-                    <p
-                      style={{
-                        fontWeight: 700,
-                        fontFamily: "sans-serif",
-                        fontSize: "16px",
-                      }}
-                    >
-                      Wallets
-                    </p>
-                    <div className={classes.paper4}>
-                      <p
-                        style={{
-                          textAlign: "center",
-                          color: "rgb(0, 179, 122)",
-                          fontSize: "16px",
-                          height: "18px",
-                          fontWeight: 600,
-                          fontFamily: "sans-serif",
-                        }}
-                      >
-                        + Add new card
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}></Grid>
-
-                  <Grid item xs={6}>
-                    <p
-                      style={{
-                        fontWeight: 700,
-                        fontFamily: "sans-serif",
-                        fontSize: "16px",
-                      }}
-                    >
-                      Saved Cards
-                    </p>
-                    <div className={classes.paper2}>
-                      <p
-                        style={{
-                          textAlign: "center",
-                          color: "rgb(0, 179, 122)",
-                          fontSize: "16px",
-                          height: "18px",
-                          fontWeight: 600,
-                          fontFamily: "sans-serif",
-                        }}
-                      >
-                        + Add new card
-                      </p>
-                    </div>
-                  </Grid>
-                  <Grid item xs={6}></Grid>
-                </Grid>
-              </div>
+            <TabPanel value={value} index={2}>              
             </TabPanel>
-            <TabPanel value={value} index={3}>
-              Item Four
+            <TabPanel value={value} index={3}>             
             </TabPanel>
-            <TabPanel value={value} index={4}>
-              Item Five
+            <TabPanel value={value} index={4}>            
             </TabPanel>
-            <TabPanel value={value} index={5}>
-              Item Six
+            <TabPanel value={value} index={5}>            
             </TabPanel>
           </div>
         </Box>

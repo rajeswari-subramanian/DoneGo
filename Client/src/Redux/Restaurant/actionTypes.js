@@ -18,3 +18,4 @@ export const CART_ITEMS = {
 export const SELECT_RESTAURANT = "SELECT_RESTAURANT"
 
 export const ADD_CART_RESTAURANT = "ADD_CART_RESTAURANT"
+export const LOGOUT = "LOGOUT"

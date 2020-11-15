@@ -1,6 +1,7 @@
 import http from 'axios'
-import { GET_RESTAURANTS, CART_ITEMS, SELECT_RESTAURANT, ADD_CART_RESTAURANT } from './actionTypes'
+import { GET_RESTAURANTS, CART_ITEMS, SELECT_RESTAURANT, ADD_CART_RESTAURANT, LOGOUT } from './actionTypes'
 import { API } from './apiConstants'
+
 const RESULT_RESTAURANTS = API.ENDPOINTS.GET_RESTAURANTS
 
 export function restaurantList(payload) {
@@ -16,6 +17,7 @@ export function restaurantList(payload) {
             })
     }
 }
+
 export function selectRetaurant(payload) {
     return {
         type: SELECT_RESTAURANT,
@@ -47,6 +49,12 @@ export function removeFromCart(payload) {
 export function clearCart() {
     return {
         type: CART_ITEMS.CLEAR
+    }
+}
+
+export function logOut() {
+    return {
+        type: LOGOUT
     }
 }
 

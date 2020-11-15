@@ -8,12 +8,14 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import SignIn from "../Components/SignIn";
+import { useSelector, useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     margin: "auto",
     paddingTop: "5%",
-    width: "30%",
+    width: "70%",
+    height:"100vh",
     background: "#F0F5F7",
     // border:"2px solid red",
     justifyContent: "center",
@@ -33,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  paper: {
-    background: "#F0F5F7",
+  paper: {    
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(2),
     padding: theme.spacing(1),
@@ -115,6 +116,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Thankyou() {
   const classes = useStyles();
+  const {
+    restaurantItems,
+    restaurantId,
+    restaurantName,
+    cartItems,
+    cartRestaurantId,
+    totalCartValue,
+    totalCartItems,
+  } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
   return (
     <>
       <AppBar
@@ -154,20 +165,61 @@ export default function Thankyou() {
         <div className={classes.root}>
           <Grid
             container
+            spacing={3}
             justify="center"
             alignItems="center"
             style={{ background: "#F0F5F7" }}
           >
-            <Grid item xs={12}>
+            <Grid item xs={6}>
               <Paper className={classes.paper} elevation={3}>
                 <Typography variant="h5" gutterBottom>
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
+                  Your order number is #{window.localStorage.getItem('transactionId')}. We have emailed your order
                   confirmation, and will send you an update when your order has
                   shipped.
                 </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={6}>
+              <Paper className={classes.paper} elevation={3}>
+              <div className="col-12">
+            <div
+              className="cart-header"
+              style={{
+                fontSize: "20px",
+                fontWeight: 600,
+                letterSpacing: "normal",
+              }}
+            >
+              Your Cart{" "}
+              {(cartItems && cartItems.length) > 0
+                ? "(" + totalCartItems + " " + "Items" + ")"
+                : null}
+            </div>
+            <div>{restaurantId === cartRestaurantId && cartItems.length > 0 ? restaurantName : null}</div>
+            <div>{window.localStorage.getItem('transactionDate')}</div>
+          </div>
+              <div>
+                        {
+                          cartItems.map(item => {
+                            return (
+                              <div style={{ display: 'flex', width: 'auto' ,marginBottom:"1px"}}>
+
+                                <div style={{ fontSize: '15px', textTransform: 'capitalize', width: '100%', padding: '5px', fontWeight: 500 }} class="col-10">
+                                  <p style={{ fontWeight: '500', color: 'rgb(23, 30, 48)', fontFamily: 'Open+Sans' }}>{item.itemName}</p></div>
+                                 
+                               
+                                <div style={{ fontSize: '15px', textTransform: 'capitalize', width: '100%', padding: '5px', fontWeight: 500 }} class="col-2">
+                                    <p style={{ fontWeight: '500', color: 'rgb(23, 30, 48)', fontFamily: 'Open+Sans' }}>&#8377;{item.itemPrice}</p>
+                                </div>
+
+                              </div>
+                            )
+                          })
+                        }
+                      </div>
               </Paper>
             </Grid>
           </Grid>

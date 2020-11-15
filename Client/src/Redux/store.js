@@ -5,13 +5,13 @@ import signinReducer from './User/reducer'
 const rootReducer = combineReducers({ app: reducer, user: signinReducer });
 
 const logger = (store) => (next) => (action) => {
-  console.log("logger 1 dispatching action:", action);
-  console.log("store", store);
+  //console.log("logger 1 dispatching action:", action);
+  //console.log("store", store);
   return next(action);
 };
 
 const thunk = (args) => ({ getState, dispatch }) => (next) => (action) => {
-  console.log("inside thunk");
+  //console.log("inside thunk");
   if (typeof action === "function") {
     return action(dispatch, getState, args);
   }
@@ -25,4 +25,4 @@ export const store = createStore(
   composeEnhancers(applyMiddleware(thunk(), logger))
 );
 
-console.log(store.getState());
+//console.log(store.getState());

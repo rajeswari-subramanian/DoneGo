@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { userAddress } from "../Redux/User/action";
 import AddNewAddress from "./AddNewAddress";
-import React, { useState, useEffect } from "react";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import { Box, Button, Grid, Paper } from "@material-ui/core";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import axios from 'axios'
 
 function HomeIcon(props) {
   return (
@@ -138,17 +139,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function AddressForm() {
   const classes = useStyles();
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] =useState(0);  
+  const [address, setAddress] = useState(useSelector((state) => state.user.userAddresses))
+  const place=window.localStorage.getItem('Place')  
   React.useEffect(() => {
-    dispatch(userAddress());
-  }, [index]);
-  console.log("showww", show);
-  const [address, setAddress] = React.useState(
-    useSelector((state) => state.user.userAddresses)
-  );
-  console.log("addressssss", address);
+    axios
+      .get("http://localhost:5000/user/userDetails", {
+        headers:{
+          id: window.localStorage.getItem('userId')
+        }
+      })
+      .then(res=> {
+        setAddress(res.data[0].address)       
+      })
+  
+  }, [address]);  
   return (
     <>
       <Grid container spacing={2}>
@@ -179,23 +186,21 @@ export default function AddressForm() {
       <p style={{ fontSize: "12px", color: "#87B2D8", textAlign: "left" }}>
         Choose your delivery address from address book or add new
       </p>
-      {!show && (
+      {!show && address.length !==0 && (
         <>
           {address.map((item, i) => (
             <div style={{ textAlign: "left" }} key={i}>
               {i === index && (
-                <p style={{ textAlign: "left" }}>
-                  {item.addressType}
-                  {item.street}
-                  {item.landmark}
-                  {item.place}
-                </p>
+                <pre style={{ textAlign: "left" }}>
+                  {item.addressType}, {item.street}, {item.landmark}, {place}
+                  {window.localStorage.setItem('currDeliveryAddress', `${item.addressType}, ${item.street}, ${item.landmark}, ${place}`)}
+                </pre>
               )}
             </div>
           ))}
         </>
       )}
-      {show && (
+      {show && address.length !==0 &&(
         <Grid container>
           <Grid item xs={6}>
             <AddNewAddress />

@@ -15,6 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
 import SignIn from "../Components/SignIn";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -118,8 +119,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Checkout() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [activeStep, setActiveStep] = React.useState(0);
-  //const isAuth = useSelector((state) => state.user.isAuth);
+  const [activeStep, setActiveStep] = useState(0); 
+  const [isAuth,seti] =React.useState(window.localStorage.getItem('isAuth'))
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -135,15 +136,9 @@ export default function Checkout() {
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
-  };
-  // React.useEffect(() => {
-  //   dispatch(userAddress())
-  //   }, []);
-  // const [address,setAddress]=React.useState(useSelector((state) => state.user.userAddresses));
-  //const isAuth = useSelector((state) => state.user.isAuth);
-  const temp = window.localStorage.getItem("isAuth");
-  const [isAuth, seti] = React.useState(temp);
-  console.log("isAuthincheckout", isAuth);
+  }; 
+  
+  //console.log("isAuthincheckout", isAuth);
   return (
     <>
       <AppBar
@@ -180,7 +175,7 @@ export default function Checkout() {
           </span>
         </Toolbar>
       </AppBar>
-      {isAuth && (
+      {isAuth === 'true' && (
         <div
           className={classes.root}
           style={{ background: "#F0F5F7", height: "100vh" }}
@@ -221,7 +216,7 @@ export default function Checkout() {
           </Grid>
         </div>
       )}
-      {!isAuth && (
+      {isAuth === 'false' && (
         <div
           style={{
             margin: "auto",

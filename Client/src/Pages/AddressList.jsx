@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   paper2: {
     border: "1px solid rgb(231, 232, 235)",
     minHeight: "108px",
-    marginBottom: "18px",
+    marginBottom: "10px",
     width: "95%",
     alignItems: "center",
     paddingTop: "35px",
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
   paper3: {
     border: "1px solid rgb(231, 232, 235)",
     minHeight: "108px",
-    marginBottom: "18px",
+    marginBottom: "10px",
     paddingTop: "0px",
     width: "95%",
     // alignItems:'center',
@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
   paper4: {
     border: "1px solid rgb(231, 232, 235)",
     minHeight: "78px",
-    marginBottom: "18px",
+    marginBottom: "10px",
     width: "200px",
     alignItems: "center",
     paddingTop: "25px",
@@ -149,7 +149,7 @@ export default function AddressList() {
   );
   return (
     <>
-      <Grid container>
+      <Grid container style={{height:"100vh"}}>
         <Grid item xs={6}>
           <AddNewAddress />
         </Grid>

@@ -1,10 +1,13 @@
-import { CART_ITEMS, GET_RESTAURANTS, SELECT_RESTAURANT, ADD_CART_RESTAURANT } from './actionTypes'
+import { CART_ITEMS, GET_RESTAURANTS, SELECT_RESTAURANT, ADD_CART_RESTAURANT, LOGOUT } from './actionTypes'
 import { loadData, saveData } from '../LocalStorage'
+import { selectRetaurant } from './action';
 
 const initState = {
   isLoading: false,
+  transactionId: 76700,
   restaurantData: loadData('restaurantData') || [],
   restaurantItems: loadData('restaurantItems') || [],
+  restaurantAddress: loadData('restaurantAddress') || '',
   cartItems: loadData('cartItems') || [],
   isError: false,
   restaurantName: loadData('restaurantName') || '',
@@ -55,9 +58,12 @@ const reducer = (state = initState, { type, payload }) => {
           }
         }
       }
+      saveData('transactionDate', new Date().toDateString())
+      saveData('transactionId', state.transactionId + 1)
       saveData('restaurantId', seletedRestaurant._id)
       saveData('restaurantName', seletedRestaurant.restaurentName)
       saveData('restaurantItems', seletedRestaurant.foodItems)
+      saveData('restaurantAddress', seletedRestaurant.restaurentAddress)
       saveData('restaurentImage', seletedRestaurant.avatar)
       saveData('restaurentDelivery', seletedRestaurant.deliveryTime)
       return {
@@ -65,6 +71,7 @@ const reducer = (state = initState, { type, payload }) => {
         restaurantId: seletedRestaurant._id,
         restaurantName: seletedRestaurant.restaurentName,
         restaurantItems: seletedRestaurant.foodItems,
+        restaurantAddress: selectRetaurant.restaurentAddress,
         restaurentImage: seletedRestaurant.avatar,
         restaurentDelivery: seletedRestaurant.deliveryTime
       }
@@ -120,13 +127,17 @@ const reducer = (state = initState, { type, payload }) => {
           saveData('totalCartItems', state.totalCartItems - 1)
           saveData('cartItems', newItems)
           saveData('restaurantItems', state.restaurantItems)
+          saveData('cartRestaurantId', state.totalCartItems === 1 ? '' : state.cartRestaurantId)
+          saveData('cartRestaurant', state.totalCartItems === 1 ? '' : state.cartRestaurant)
 
           return {
             ...state,
             totalCartValue: state.totalCartValue - removeItems.itemPrice,
             totalCartItems: state.totalCartItems - 1,
             cartItems: newItems,
-            restaurantItems: state.restaurantItems
+            restaurantItems: state.restaurantItems,
+            cartRestaurantId: state.totalCartItems === 1 ? '' : state.cartRestaurantId,
+            cartRestaurant: state.totalCartItems === 1 ? '' : state.cartRestaurant
           }
         }
         else {
@@ -147,7 +158,16 @@ const reducer = (state = initState, { type, payload }) => {
         }
       }
     }
-
+    case CART_ITEMS.CLEAR: {
+      return {
+        ...state,
+        cartItems: [],
+        cartRestaurant: '',
+        cartRestaurantId: '',
+        totalCartValue: 0,
+        totalCartItems: 0
+      }
+    }
     case ADD_CART_RESTAURANT: {
       saveData('cartRestaurantId', payload.id)
       saveData('cartRestaurant', payload.name)
@@ -155,6 +175,25 @@ const reducer = (state = initState, { type, payload }) => {
         ...state,
         cartRestaurant: payload.name,
         cartRestaurantId: payload.id,
+      }
+    }
+
+    case LOGOUT: {
+      window.localStorage.removeItem('cartItems')
+      window.localStorage.removeItem('totalCartItems')
+      window.localStorage.removeItem('totalCartValue')
+      window.localStorage.removeItem('cartRestaurantId')
+      window.localStorage.removeItem('cartRestaurant')
+      window.localStorage.removeItem('token')
+
+      return {
+        ...state,
+        cartItems: [],
+        restaurantId: '',
+        cartRestaurant: '',
+        cartRestaurantId: '',
+        totalCartValue: 0,
+        totalCartItems: 0
       }
     }
     default:

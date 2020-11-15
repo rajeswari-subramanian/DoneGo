@@ -3,6 +3,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -125,24 +126,25 @@ export default function PaymentForm({ funcLast }) {
       alert("Razorpay SDK failed to load. Are you online?");
       return;
     }
+    let data;
+    let temp = {
+      amount: totalCartValue,
+    };
+    await axios
+      .post("http://localhost:5000/razorpay", temp)
+      .then((t) => (data = t.data));
 
-    const data = await fetch("http://localhost:5000/razorpay", {
-      method: "POST",
-    }).then((t) => t.json());
-
-    console.log(data);
+    //console.log("Razordata", data);
 
     const options = {
       key: "rzp_test_8sYueDGWseWPkq",
       currency: data.currency,
+      //amount: 800,
       amount: data.amount.toString(),
       order_id: data.id,
-      name: "Donation",
+      name: "Razorpay",
       description: "Thank you for nothing. Please give us some money",
-      handler: function (response) {
-        // alert(response.razorpay_payment_id)
-        // alert(response.razorpay_order_id)
-        // alert(response.razorpay_signature)
+      handler: function (response) {       
         funcLast();
       },
       prefill: {
@@ -181,7 +183,7 @@ export default function PaymentForm({ funcLast }) {
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <Button
-            style={{ textTransform: "none", textDecoration: "none" }}
+            style={{ textTransform: "none", textDecoration: "none",outline:"none" }}
             onClick={displayRazorpay}
             target="_blank"
             rel="noopener noreferrer"

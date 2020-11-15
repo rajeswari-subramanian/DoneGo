@@ -3,7 +3,7 @@ import { loadData, saveData } from '../LocalStorage'
 const initState = {
     isLoading: false,
     isError: false,
-    isAuth: false,
+    isAuth: loadData('isAuth') || false,
     message: "",
     userAddresses: [],
     token: ""
@@ -19,29 +19,26 @@ const signinReducer = (state = initState, { type, payload }) => {
                 isAuth: false
             }
         case LOGIN_SUCCESS:
-            //saveData('isAuth', true)
+            saveData('isAuth', true)
             //window.localStorage.setItem('isAuth', "true")
             return {
                 ...state,
-                //isLoading: false,
-                //isError: payload.error,
-                isAuth: true,
-                // message: payload.message ? payload.message : "",
-                //token: payload.token ? payload.token : ""
+                isAuth: "true",
+
             }
         case LOGIN_FAILURE:
             return {
                 ...state,
                 isLoading: false,
                 isError: true,
-                isAuth: false
+                isAuth: "false"
             }
         case LOGOUT:
             window.localStorage.setItem('totalCartItems', 0)
             window.localStorage.clear()
-            //saveData('isAuth', false)
+            saveData('isAuth', false)
             return {
-                isAuth: false
+                isAuth: "false"
             }
         case USER_ADDRESS:
             console.log("reduceradd", payload)

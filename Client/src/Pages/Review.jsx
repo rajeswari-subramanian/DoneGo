@@ -58,14 +58,14 @@ export default function Review() {
     dispatch(removeFromCart(id));
     // dispatch(selectRetaurant({_id: restaurantId}))
   };
-  console.log(cartItems, restaurantItems, totalCartValue);
+  //console.log(cartItems, restaurantItems, totalCartValue);
 
   return (
     <>
       <Paper elevation={3} className={classes.paper1}>
         <div className="row">
           <div className="col-12">
-            <p
+            <div
               className="cart-header"
               style={{
                 fontSize: "20px",
@@ -77,7 +77,8 @@ export default function Review() {
               {(cartItems && cartItems.length) > 0
                 ? "(" + totalCartItems + " " + "Items" + ")"
                 : null}
-            </p>
+            </div>
+            <div>{restaurantId === cartRestaurantId && cartItems.length > 0 ? restaurantName : null}</div>
           </div>
           <div className="col-12 img-cart">
             {cartItems.length === 0 && (
@@ -85,7 +86,7 @@ export default function Review() {
                 alt=""
                 style={{
                   width: "205px",
-                  height: "100%",
+                  height: "90%",
                   alignItems: "center",
                 }}
                 src="https://ik.imagekit.io/dunzo/web-assets/images/no-items-in-cart-7e84056f44993b68d14184f9b2992af7.png?tr=w-410,cm-pad_resize"
@@ -105,7 +106,7 @@ export default function Review() {
                           padding: "24px",
                           fontWeight: 500,
                         }}
-                        class="col-7"
+                        class="col-5"
                       >
                         <p
                           style={{
@@ -118,6 +119,14 @@ export default function Review() {
                           {item.itemName}
                         </p>
                       </div>
+                      <div style={{ padding: '5px 5px', fontSize: '16px', textTransform: 'capitalize', width: '100%', fontWeight: 500, paddingTop: '20px', fontFamily: 'Open+Sans' }} class="col-5">
+                                  {
+                                    (item.quantity === undefined) || (item.quantity === 0) ?
+                                      <button style={{ borderRadius: '20px', padding: '5px 10px' }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
+                                      :
+                                      <button style={{ borderRadius: '20px', padding: '5px 10px' }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
+                                  }
+                                </div>
                       <div
                         style={{
                           padding: "3px 18px",
@@ -128,40 +137,8 @@ export default function Review() {
                           paddingTop: "25px",
                           fontFamily: "Open+Sans",
                         }}
-                        class="col-5"
-                      >
-                        {item.quantity === undefined || item.quantity === 0 ? (
-                          <button
-                            style={{
-                              borderRadius: "20px",
-                              padding: "3px 15px",
-                            }}
-                            type="button"
-                            class="btn btn-outline-success"
-                            onClick={() => handleAddToCart(item)}
-                          >
-                            + ADD
-                          </button>
-                        ) : (
-                          <button
-                            style={{
-                              borderRadius: "20px",
-                              padding: "3px 15px",
-                            }}
-                            type="button"
-                            class="btn btn-outline-success"
-                          >
-                            <span onClick={() => handleAddToCart(item)}>
-                              +{" "}
-                            </span>
-                            {item.quantity}{" "}
-                            <span
-                              onClick={() => handleRemoveFromCart(item._id)}
-                            >
-                              -{" "}
-                            </span>{" "}
-                          </button>
-                        )}
+                        class="col-2"
+                      >                       
                         <span
                           style={{
                             fontWeight: "500",
@@ -178,46 +155,21 @@ export default function Review() {
                 })}
               </div>
             ) : (
-              <div>
-                <p
+              <div>                
+                <div
                   style={{
                     opacity: "0.5",
                     fontSize: "16px",
+                    marginTop:"0px",
                     fontWeight: 600,
-                    textAlign: "center",
-                    color: "rgb(23, 30, 48);",
-                    textAlign: "center",
-                  }}
-                >
-                  Your cart is empty
-                </p>
-                <p
-                  style={{
-                    opacity: "0.5",
-                    fontSize: "16px",
-                    fontWeight: 600,
-                    textAlign: "center",
-                    color: "rgb(23, 30, 48);",
-                    textAlign: "center",
+                    textAlign: "center",                   
+                    color: "rgb(23, 30, 48);",                    
                   }}
                 >
                   Add items to get started
-                </p>
+                </div>
               </div>
-            )}
-            {/* {cartItems && cartItems.length > 0 && (
-              <div
-                style={{
-                  fontSize: "16px",
-                  fontFamily: "Open+Sans",
-                  fontWeight: "600",
-                  margin: "auto",
-                }}
-              >
-                {" "}
-                Item Total &#8377;{totalCartValue}
-              </div>
-            )} */}
+            )}           
           </div>
         </div>
       </Paper>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch()  
   const [mobile, setMobile] = React.useState("");
   const [isMobileValid, setIsMobileValid] = React.useState(false)
   const [isOtpSent, setIsOtpSent] = React.useState(false)
@@ -70,22 +70,7 @@ export default function SignIn() {
   const [full, setFull] = React.useState(undefined)
   const [timeLeft, setTimeLeft] = React.useState(30)
   const [isVerifyButton, setIsVerifyButton] = React.useState(false)
-  const [isAuth,seti] =React.useState(useSelector((state) => state.user.isAuth))
-
-  React.useEffect(() => {
-    if (isOtpSent) {
-      if (!timeLeft) return;
-      intervalId = setInterval(() => {
-        setTimeLeft(timeLeft - 1);
-      }, 1000);
-
-      return () => {
-        clearInterval(intervalId);
-      };
-    }
-
-  }, [timeLeft, isOtpSent]);
-
+  const [isAuth,seti] =React.useState(window.localStorage.getItem('isAuth'))
 
   const handleMobileChange = (e) => {
     setMobile(e.target.value)
@@ -114,7 +99,7 @@ export default function SignIn() {
           setIsOtpSent(true)
           setMobileDisabled(true)
         }
-        console.log(res.data)
+        //console.log(res.data)
       })
   }
 
@@ -136,7 +121,7 @@ export default function SignIn() {
           setIsOtpSent(true)
           setTimeLeft(30)
         }
-        console.log(res.data)
+        //console.log(res.data)
       })
   }
 
@@ -162,10 +147,9 @@ export default function SignIn() {
             window.localStorage.setItem('userId',res.data.userToken.id)// mongoid
             window.localStorage.setItem('mobileNo',res.data.userToken.mobile)
             setFull(false)
-            handleClose()
-            //alert(res.data.message)
+            handleClose()         
             dispatch(loginSuccess())
-            console.log("verify",res.data)
+            seti(window.localStorage.getItem('isAuth'))          
           }
         })
     }
@@ -190,15 +174,13 @@ export default function SignIn() {
         else {
           window.localStorage.setItem('token', res.data.accessToken)
           setFull(false)
-          handleClose()
-          //alert(res.data.message)
+          handleClose()        
           dispatch(loginSuccess())
-        
-          console.log(res.data)
+          seti(window.localStorage.getItem('isAuth'))           
         }
       })
   }
-
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -211,14 +193,25 @@ export default function SignIn() {
     setMobileDisabled(undefined)
     setIsVerifyButton(false)
     setPinValue('')
-  };
-  //const temp=React.useState(useSelector((state) => state.user.isAuth));
-  //const temp=window.localStorage.getItem('isAuth')
-  //const [isAuth,seti] =React.useState(window.localStorage.getItem('isAuth'))
+  }; 
+  React.useEffect(() => {
+  
+    if (isOtpSent) {     
+      if (!timeLeft) return;
+      intervalId = setInterval(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+    
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+
+  }, [timeLeft, isOtpSent,isAuth]);
   console.log("isAuthincsignin",isAuth)
   return (
     <>
-     {isAuth? 
+     {isAuth === 'true'? 
      (<Link to="/order/profile" ><IconButton style={{color:"rgb(0, 210, 144)",backgroundColor: "white",padding:"0px"}} aria-label="add to shopping cart"  >
      <AccountCircleIcon fontSize="large"/>
    </IconButton></Link>):
@@ -230,7 +223,6 @@ export default function SignIn() {
             Sign In
           </Button>)
            } 
-
      
       <Dialog open={open} aria-labelledby="form-dialog-title"  fullWidth
             maxWidth="xs"  >

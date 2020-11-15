@@ -234,7 +234,7 @@ export default function AddNewAddress() {
       addressType: addressType,
     };
     axios.put("http://localhost:5000/user/addAddress", payload).then((res) => {
-      console.log("inprofileuserdetail", res.data);
+      //console.log("inprofileuserdetail", res.data);
       dispatch(userAddress());
     });
 

@@ -80,7 +80,7 @@ export default function RestaurantList(props) {
   const [restaurantLen,setLen]=useState(restaurantData.length)  
   useEffect(() => {
     setLen(restaurantData.length)
-  }, [restaurantData],[restaurantLen])
+  }, [restaurantData],[restaurantLen])  
 
   return (
     <>  <AppBar
