@@ -16,11 +16,13 @@ const donegoSchema = new Schema({
     foodItems: [
         {
             itemName: String,
-            itemPrice: Number
+            itemPrice: Number,
+            catagoryFood: String
         },
         {
             itemName: String,
-            itemPrice: Number
+            itemPrice: Number,
+            catagoryFood: String
         }
     ]
 });

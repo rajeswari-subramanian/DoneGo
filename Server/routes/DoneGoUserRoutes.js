@@ -16,7 +16,7 @@ router.get("/loginOtp", (req, res) => {
             channel: "sms"
         })
         .then(data => {
-            console.log(data)
+            //console.log(data)
             res.status(200).send(data)
         })
 });
@@ -34,7 +34,7 @@ router.get('/verify', (req, res) => {
             if ((data.status === 'approved') && data.valid) {
                 DonegoUserModel.find({ mobile: req.query.mobile })
                     .then(user => {
-                        console.log(user)
+                        //console.log(user)
                         if (user.length > 0) {
                             const userToken = { id: user[0]._id, mobile: user[0].mobile }
                             const accessToken = jwt.sign(userToken, "DONEGO", { expiresIn: '3600s' });
@@ -43,7 +43,7 @@ router.get('/verify', (req, res) => {
                         else {
                             DonegoUserModel.insertMany({ "mobile": req.query.mobile })
                                 .then(newUser => {
-                                    console.log(newUser[0])
+                                    //console.log(newUser[0])
                                     const userToken = { id: newUser[0]._id, mobile: newUser[0].mobile }
                                     const accessToken = jwt.sign(userToken, "DONEGO", { expiresIn: '3600s' });
                                     res.status(200).json({ accessToken: accessToken, userToken: userToken, message: "Login Successful" });

@@ -11,11 +11,13 @@
         "foodItems": [
             {
                 "itemName": "Veg Burger Combo",
-                "itemPrice": 670
+                "itemPrice": 670,
+                "catagoryFood": "veg"
             },
             {
-                "itemName": "Popular Kheer Rice",
-                "itemPrice": 120
+                "itemName": "Popular Egg Rice",
+                "itemPrice": 120,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -31,11 +33,13 @@
         "foodItems": [
             {
                 "itemName": "Paneer Tikka Dry",
-                "itemPrice": 110
+                "itemPrice": 110,
+                "catagoryFood": "veg"
             },
             {
-                "itemName": "Paneer Burji",
-                "itemPrice": 120
+                "itemName": "Egg Burji",
+                "itemPrice": 120,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -51,11 +55,13 @@
         "foodItems": [
             {
                 "itemName": "Fries With Chilli Garlic Sauce",
-                "itemPrice": 110
+                "itemPrice": 110,
+                "catagoryFood": "veg"
             },
             {
-                "itemName": "Veg Cheesy House Fries",
-                "itemPrice": 130
+                "itemName": "Mutton Cheesy House Fries",
+                "itemPrice": 130,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -71,11 +77,13 @@
         "foodItems": [
             {
                 "itemName": "Aloo Samosa",
-                "itemPrice": 16
+                "itemPrice": 16,
+                "catagoryFood": "veg"
             },
             {
-                "itemName": "Chana Bhatura",
-                "itemPrice": 70
+                "itemName": "Chicken Bhatura",
+                "itemPrice": 70,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -91,11 +99,35 @@
         "foodItems": [
             {
                 "itemName": "Idli",
-                "itemPrice": 18
+                "itemPrice": 18,
+                "catagoryFood": "veg"
             },
             {
-                "itemName": "Idli (2 Pcs) + Vada (1 Pc)",
-                "itemPrice": 57
+                "itemName": "Idli (2 Pcs) + Chicken Gravy",
+                "itemPrice": 57,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Basmati Biryani Nation",
+        "restaurentAddress": "1, 120, 14th Main Rd, Sector 5, 1st Sector, HSR Layout 5th Sector, Bengaluru, Karnataka 560034",
+        "longitude": 77.6356669 ,
+        "latitude": 12.9163494,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/elZRdFlnL2IwcXFFdG9uOEcwMmQ0UT09-1587463413189-store_image.jpg",
+        "foodType":"South Indian",
+        "place": "btm",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Panner Tikka Masala",
+                "itemPrice": 155,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Boneless Chicken",
+                "itemPrice": 220,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -111,11 +143,13 @@
         "foodItems": [
             {
                 "itemName": "Meghana Special Biryani",
-                "itemPrice": 258
+                "itemPrice": 258,
+                "catagoryFood": "veg"
             },
             {
                 "itemName": "Chicken Boneless Biryani",
-                "itemPrice": 248
+                "itemPrice": 248,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -131,11 +165,13 @@
         "foodItems": [
             {
                 "itemName": "Parotta (2 Pcs)",
-                "itemPrice": 50
+                "itemPrice": 50,
+                "catagoryFood": "veg"
             },
             {
-                "itemName": "Chapati (2 Pcs)",
-                "itemPrice": 40
+                "itemName": "Chapati Chicken(2 Pcs)",
+                "itemPrice": 60,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -151,11 +187,13 @@
         "foodItems": [
             {
                 "itemName": "Chocolate Fudge Ice Cream",
-                "itemPrice": 90
+                "itemPrice": 90,
+                "catagoryFood": "veg"
             },
             {
                 "itemName": "Fruit Salad With Ice Cream",
-                "itemPrice": 90
+                "itemPrice": 90,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -171,11 +209,13 @@
         "foodItems": [
             {
                 "itemName": "Milk Bread (400 Gms)",
-                "itemPrice": 40
+                "itemPrice": 40,
+                "catagoryFood": "veg"
             },
             {
                 "itemName": "Brown Bread (400 Gms)",
-                "itemPrice": 45
+                "itemPrice": 45,
+                "catagoryFood": "non veg"
             }
         ]
     },
@@ -191,11 +231,35 @@
         "foodItems": [
             {
                 "itemName": "Thai Red Curry Chicken & Basmati Rice",
-                "itemPrice": 305
+                "itemPrice": 305,
+                "catagoryFood": "non veg"
             },
             {
                 "itemName": "Thai Green Curry Chicken & Basmati Rice",
-                "itemPrice": 305
+                "itemPrice": 305,
+                "catagoryFood": "veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Imperio Restaurant ",
+        "restaurentAddress": "ITPL Main Rd, AECS Layout, Brookefield, Bengaluru, Karnataka 560037",
+        "longitude": 77.7484841 ,
+        "latitude": 12.9619691,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/0b7c4cee-d05e-4ebe-9b8d-ad33032e7c37-1574917115770-store_image.jpg",
+        "foodType":"North Indian",
+        "place": "marathahalli",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Plain Dosa",
+                "itemPrice": 35,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Dosa Chicken",
+                "itemPrice": 175,
+                "catagoryFood": "non veg"
             }
         ]
     }
