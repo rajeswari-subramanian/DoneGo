@@ -108,6 +108,7 @@ export default function Navbar() {
               marginLeft: "10%",
               fontWeight: "1000",
               fontSize: "27px",
+              outline:'none'
             }}
             edge="start"
             className={classes.menuButton}
@@ -122,20 +123,21 @@ export default function Navbar() {
               marginLeft: "16%",
               textTransform: "none",
               fontFamily: "Open+Sans",
-              width: 'auto'
+              width: 'auto',
+              outline:'none'
 
             }}
             color="inherit"
           >
             Donego for Partners{" "}
           </Button>
-          <Button style={{ fontFamily: "Open+Sans", textTransform: "none" }}>
+          <Button style={{ fontFamily: "Open+Sans", textTransform: "none", outline:'none' }}>
             {" "}
             Donego for Business
           </Button>
-          <IconButton color="black" aria-label="add to shopping cart">
-            <ShoppingCartOutlinedIcon fontSize="large" style={{ position: "relative" }} /><span
-              style={{ position: "absolute", left: "30px", top: "2px", backgroundColor: "#ff2e56", color: "white", width: "18px", height: "18px", fontWeight: "bolder", cursor: "pointer", borderRadius: "50%", padding: "1px", fontSize: "12px" }}>{totalCartItems}</span>
+          <IconButton color="black" aria-label="add to shopping cart" style={{outline:'none'}}>
+            <ShoppingCartOutlinedIcon fontSize="large" style={{ position: "relative", outline:'none' }} /><span
+              style={{ position: "absolute", left: "30px", top: "2px", backgroundColor: "#ff2e56", color: "white", width: "18px", height: "18px", fontWeight: "bolder", cursor: "pointer", borderRadius: "50%", padding: "1px", fontSize: "12px" , outline :'none'}}>{totalCartItems}</span>
           </IconButton>
           <SignIn />
         </Toolbar>

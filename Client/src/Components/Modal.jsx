@@ -190,13 +190,14 @@ export default function Modal() {
     <>
       <div className={classes.search}>
         <div
-          style={{ color: "rgb(0, 210, 144)" }}
+          style={{ color: "rgb(0, 210, 144)", outline:'none', }}
           className={classes.searchIcon}
         >
           <LocationOnIcon />
         </div>
       </div>
       <Button
+      style={{outline:'none', }}
         onClick={handleClickOpen("paper")}
       >
         <span style={{ marginLeft: "20px", overflow: "hidden", textOverflow: "ellipsis", maxHeight: "20px", whiteSpace: "nowrap", textTransform: "none", maxWidth: "100px", minWidth: "130px" }}>{curr}</span>
@@ -207,18 +208,23 @@ export default function Modal() {
       <Dialog
         open={open}
         fullWidth
-        style={{ maxHeight: "450px" }}
-        maxWidth="sm"
+        style={{ maxHeight: "100%",maxWidth:'100%' }}
+       
         onClose={handleClose}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle style={{ textAlign: "center" }} id="scroll-dialog-title">
+        <DialogTitle style={{ textAlign: "center", width:'90%'}} id="scroll-dialog-title">
           Add your Location
         </DialogTitle>
-        <DialogContent dividers={scroll === "paper"}>
+        <DialogContent 
+        dividers={scroll === "paper"}
+        style={{height:'800px', width:'90%',}}
+        
+        >
           <TextField
+      
             autoFocus
             fullWidth
             className={classes.margin}
@@ -235,7 +241,7 @@ export default function Modal() {
           />
           <Typography color="text.disabled" onClick={() => handleCurrent()}>
             {" "}
-            <GpsFixedIcon style={{ color: "#00D290" }} /> Use Current Location
+            <GpsFixedIcon style={{ color: "#00D290"}} /> Use Current Location
           </Typography>
           <hr />
           <DialogContentText
@@ -251,11 +257,13 @@ export default function Modal() {
                     width: "100px",
                     marginTop: "10%",
                     border: "0px",
+                    marginLeft:'150px',
+                
                   }}
                 >
                   <img
-                    width="100"
-                    height="100"
+                    width="225px"
+                    height="175px"
                     src="https://ik.imagekit.io/dunzo/web-assets/images/partner_placeholder-f479db944bcaa4a7cc8451f617179d82.png?tr=w-450,h-350,cm-pad_resize"
                     alt=""
                   />
@@ -289,7 +297,7 @@ export default function Modal() {
           </DialogContentText>
         </DialogContent>
         <DialogActions
-          style={{ position: "absolute", top: "8px", left: "520px" }}
+          style={{ position: "absolute", top: "8px", left: "520px",}}
         >
           <Button onClick={handleClose} color="black">
             X

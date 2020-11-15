@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Minput = styled.input`
-    width: 42px;
-    height:28px;
-    padding: 13px;  
+    width: 52px;
+    height:48px;
+   
     margin: 10px;
     text-align: center;
     font-size:20px;  

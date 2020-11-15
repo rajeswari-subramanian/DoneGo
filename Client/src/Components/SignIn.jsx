@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '12px',
     cursor: 'pointer',
     color: 'white',
+    outline:'none'
   },
 }));
 
@@ -219,19 +220,20 @@ export default function SignIn() {
           className={classes.ButtonBackground}
           color="inherit"
           onClick={handleClickOpen}
+          style={{outline:'none'}}
         >
           Sign In
           </Button>
         : <Link to="/order/profile" ><IconButton style={{ color: "rgb(0, 210, 144)", backgroundColor: "white", padding: "0px" }} aria-label="add to shopping cart"  >
-          <AccountCircleIcon fontSize="large" />
+          <AccountCircleIcon fontSize="large" style={{outline:'none'}} />
         </IconButton></Link>}
 
       {/* <Button style={{ marginRight: '100px', textTransform: "none" }} className={classes.ButtonBackground} color="inherit" onClick={handleClickOpen}>
         Sign In</Button> */}
       <Dialog open={open} aria-labelledby="form-dialog-title" fullWidth
-        maxWidth="xs"  >
-        <DialogTitle id="form-dialog-title" style={{ textAlign: "center" }}>Signin/Signup</DialogTitle>
-        <DialogContent style={{ position: "relative" }}>
+        style={{width:'65%', margin:'auto'}}>
+        <DialogTitle id="form-dialog-title" style={{ textAlign: "center", borderRadius:'30px', width:'auto' }}>Signin/Signup</DialogTitle>
+        <DialogContent style={{ position: "relative", height:'450px',width:'auto', outline:'none', borderRadius:'30px' }}>
           <DialogContentText style={{ textAlign: "center" }}>
             Your 10 digit mobile number<span style={{ color: "red" }}>*</span>
           </DialogContentText>
@@ -239,8 +241,7 @@ export default function SignIn() {
             autoFocus
             id="number"
             type="number"
-            fullWidth
-            maxWidth="md"
+            style={{width:'48%',margin :'auto', marginLeft:'30%'}}
             value={mobile}
             disabled={isMobileDisabled}
             onChange={handleMobileChange}
@@ -252,16 +253,16 @@ export default function SignIn() {
 
           {
             !isMobileValid ?
-              <Button disabled color="primary" style={{ color: "white", background: "#00D290", borderRadius: "30px", position: "absolute", left: "320px", padding: "1px" }}>
+              <Button disabled color="primary" style={{ color: "white",background:'rgb(207, 209, 215)', borderRadius: "30px", position: "absolute", left: "365px", padding: "2px 15px",}}>
                 Send OTP
           </Button>
               :
               !isOtpSent ?
-                <Button onClick={handleSentOtp} color="primary" style={{ color: "white", background: "#00D290", borderRadius: "30px", position: "absolute", left: "320px", padding: "1px" }}>
+                <Button onClick={handleSentOtp} color="primary" style={{ color: "white", background: "#00D290", borderRadius: "30px", position: "absolute", left: "365px", padding: "2px 15px",outline:'none' }}>
                   Send OTP
             </Button>
                 :
-                <Button onClick={handleEditNumber} color="primary" style={{ color: "white", background: "#00D290", borderRadius: "30px", position: "absolute", left: "320px", padding: "1px" }}>
+                <Button onClick={handleEditNumber} color="primary" style={{ color: "white", background: "#00D290", borderRadius: "30px", position: "absolute", left: "390px", padding: "1px", outline:'none' }}>
                   Edit
           </Button>
           }
@@ -281,11 +282,11 @@ export default function SignIn() {
                 }
                 {
                   isVerifyButton ?
-                    <Button onClick={handleVerifyOtp} style={{ background: "#00D290", color: "white", borderRadius: "30px", marginLeft: "120px", padding: "1px" }}>
+                    <Button onClick={handleVerifyOtp} style={{ background: "rgb(0, 210, 144)", color: "white", borderRadius: "30px", marginLeft: "195px", padding: "3px",height:'40px', fontSize:'16px', }}>
                       Verify and continue
                   </Button>
                     :
-                    <Button disabled color="primary" style={{ background: "#D4D6DB", borderRadius: "30px", marginLeft: "120px", padding: "1p" }}>
+                    <Button disabled color="primary" style={{ background: "#D4D6DB", color:'white', borderRadius: "30px", marginLeft: "195px", padding: "3px", height:'40px', fontSize:'16px' }}>
                       Verify and continue
                   </Button>
                 }
@@ -295,9 +296,9 @@ export default function SignIn() {
           }
         </DialogContent>
         <DialogActions
-          style={{ position: "absolute", left: "350px" }}
+          style={{ position: "absolute", left: "500px", outline:'none' }}
         >
-          <Button onClick={handleClose} color="black">
+          <Button onClick={handleClose} color="black" style={{outline:'none'}}>
             X
           </Button>
         </DialogActions>

@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     width:'600px',
-    height:'40%',
+    height:'45%',
     borderRadius:'15px'
   },
   pStyle :{
@@ -163,7 +163,7 @@ function RestaurantTableDetails() {
 
     let id = window.localStorage.getItem('userId') // UserId
     let restaurantName = cartRestaurant  // Restaurant Name
-    let restaurentAddress = restaurantData.filter(f => f._id === cartRestaurantId)[0].restaurentAddress
+    let restaurentAddress = restaurantData.filter(f => f._id === cartRestaurantId).restaurentAddress
     let userAddress = selectedUserAddress  // Have to set userAddess
     let userAddressType = addressType  // Have to set userAddress Type
     let userMobileNumber = window.localStorage.getItem('mobileNo')
@@ -189,7 +189,7 @@ function RestaurantTableDetails() {
     axios
       .put("http://localhost:5000/user/placeOrder", payload)
       .then(res => {
-        alert(res.data.message)
+        // alert(res.data.message)
       })
 
   }
