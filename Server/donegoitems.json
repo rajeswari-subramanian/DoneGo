@@ -1,0 +1,266 @@
+[
+    {
+        "restaurentName": "Adyar Ananda Bhavan (A2B)",
+        "restaurentAddress": " BPCL. Petrol Bunk, #3, 100 Feet Road, I Stage, 16th Main Rd, I Phase, BTM Layout, Bengaluru, Karnataka 560068",
+        "longitude": 77.609745,
+        "latitude": 12.916653 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/MW5zWmlmVE1iZkRGTWpkOTBNQXpQUT09-1586361274591-store_image.jpg",
+        "foodType":"South Indian",
+        "place": "btm",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Veg Burger Combo",
+                "itemPrice": 670,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Popular Egg Rice",
+                "itemPrice": 120,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Chung Wah ",
+        "restaurentAddress": "770,16th Main Road, 2nd Stage, BTM Layout, near IAS Officers Colony, Bengaluru, Karnataka 560076",
+        "longitude": 77.610022,
+        "latitude": 12.913428 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/f62d48e1-5ff0-45a9-9d76-90ebe952cdda-1551026109146-store_image.jpg",
+        "foodType":"Chinese Food",
+        "place": "btm",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Paneer Tikka Dry",
+                "itemPrice": 110,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Egg Burji",
+                "itemPrice": 120,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Momoz ",
+        "restaurentAddress": "No.805/A, 16th Main, 7th Cross Rd, near Icici Bank, Stage 2, BTM Layout, Bengaluru, Karnataka 560076",
+        "longitude": 77.608928,
+        "latitude": 12.913854 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/SEkxSTVGVGJrNzZON0Y3N3Z2MW9Zdz09-1569920386985-store_image.jpg",
+        "foodType":"North Indian",
+        "place": "btm",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Fries With Chilli Garlic Sauce",
+                "itemPrice": 110,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Mutton Cheesy House Fries",
+                "itemPrice": 130,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "FRIENDS ",
+        "restaurentAddress": "Door No:12/11,20th Main Rd, BTM Layout, Bengaluru, Karnataka 560028",
+        "longitude": 77.612342,
+        "latitude": 12.91671 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/c516620a-5a20-441e-82e8-28d4626a609d-1559642944132-store_image.jpg",
+        "foodType":"Fast Food",
+        "place": "btm",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Aloo Samosa",
+                "itemPrice": 16,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Chicken Bhatura",
+                "itemPrice": 70,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Gud Dhani",
+        "restaurentAddress": "170, 16th Main Rd, Mahadeshwara Nagar, Stage 2, BTM 2nd Stage, Bengaluru, Karnataka 560076",
+        "longitude": 77.611399,
+        "latitude": 12.905415,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/ZzhWcGlZN01BTUlIeXJ1dWdDeDFFQT09-1596197570899-store_image.jpg",
+        "foodType":"South Indian",
+        "place": "btm",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Idli",
+                "itemPrice": 18,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Idli (2 Pcs) + Chicken Gravy",
+                "itemPrice": 57,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Basmati Biryani Nation",
+        "restaurentAddress": "1, 120, 14th Main Rd, Sector 5, 1st Sector, HSR Layout 5th Sector, Bengaluru, Karnataka 560034",
+        "longitude": 77.6356669 ,
+        "latitude": 12.9163494,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/elZRdFlnL2IwcXFFdG9uOEcwMmQ0UT09-1587463413189-store_image.jpg",
+        "foodType":"South Indian",
+        "place": "btm",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Panner Tikka Masala",
+                "itemPrice": 155,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Boneless Chicken",
+                "itemPrice": 220,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Biriyani Zone ",
+        "restaurentAddress": "92/5, Marathahalli - Sarjapur Outer Ring Rd, opposite Home Town, Bengaluru, Karnataka 560037",
+        "longitude": 77.717188,
+        "latitude": 12.955999 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/da0a06aa-1c63-43e8-86fa-13523037c00c-1574940298330-store_image.jpg",
+        "foodType":"North Indian",
+        "place": "marathahalli",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Meghana Special Biryani",
+                "itemPrice": 258,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Chicken Boneless Biryani",
+                "itemPrice": 248,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Hotel Mariya Circle",
+        "restaurentAddress": "459, 1st Cross Rd, Sanjay Nagar, Marathahalli, Bengaluru, Karnataka 560037",
+        "longitude": 77.699471,
+        "latitude": 12.958453  ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/7c9660a5-0fbf-4e3e-953c-1d9176ca6860-1552917497827-store_image.jpg",
+        "foodType":"South Indian",
+        "place": "marathahalli",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Parotta (2 Pcs)",
+                "itemPrice": 50,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Chapati Chicken(2 Pcs)",
+                "itemPrice": 60,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Meghana Foods ",
+        "restaurentAddress": "Outer Ring Rd, above Sony Centre, opposite Park Plaza, Kasavanahalli Village, Marathahalli, Bengaluru, Karnataka 560037",
+        "longitude": 77.699375,
+        "latitude": 12.949535  ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/65bfc2ef-d3b1-4367-bc14-c268aca85d41-1547799970654-store_image.jpg",
+        "foodType":"North Indian",
+        "place": "marathahalli",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Chocolate Fudge Ice Cream",
+                "itemPrice": 90,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Fruit Salad With Ice Cream",
+                "itemPrice": 90,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Krishna Vaibhava (A/C Vegetarian) ",
+        "restaurentAddress": "No: 90/6 Outer Ring Road, Service Rd, opp. Onnovative Multiplex, Sri Balaji Layout, Chandra Layout, Marathahalli, Bengaluru, Karnataka 560037",
+        "longitude": 77.70108,
+        "latitude": 12.957128  ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/7a258919-962d-452e-8bf8-c17a4195d5c3-1574658972638-store_image.jpg",
+        "foodType":"South Indian",
+        "place": "marathahalli",
+        "foodCategory": "veg",
+        "foodItems": [
+            {
+                "itemName": "Milk Bread (400 Gms)",
+                "itemPrice": 40,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Brown Bread (400 Gms)",
+                "itemPrice": 45,
+                "catagoryFood": "non veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Bageecha Restaurant ",
+        "restaurentAddress": "No.42/3, Whitefield Road, Marathahalli, Bangalore - 560037, Near Marathahalli Bridge & Ayoga Hospital, Opposite Navaprajna School",
+        "longitude": 77.711792,
+        "latitude": 12.955592 ,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/SmM4UktMY2I5alBlZ09RREFFSENsdz09-1596022663997-store_image.jpg",
+        "foodType":"North Indian",
+        "place": "marathahalli",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Thai Red Curry Chicken & Basmati Rice",
+                "itemPrice": 305,
+                "catagoryFood": "non veg"
+            },
+            {
+                "itemName": "Thai Green Curry Chicken & Basmati Rice",
+                "itemPrice": 305,
+                "catagoryFood": "veg"
+            }
+        ]
+    },
+    {
+        "restaurentName": "Imperio Restaurant ",
+        "restaurentAddress": "ITPL Main Rd, AECS Layout, Brookefield, Bengaluru, Karnataka 560037",
+        "longitude": 77.7484841 ,
+        "latitude": 12.9619691,
+        "avatar":"https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-320,h-320,cm-pad_resize_store_thumbnail/stores/0b7c4cee-d05e-4ebe-9b8d-ad33032e7c37-1574917115770-store_image.jpg",
+        "foodType":"North Indian",
+        "place": "marathahalli",
+        "foodCategory": "non veg",
+        "foodItems": [
+            {
+                "itemName": "Plain Dosa",
+                "itemPrice": 35,
+                "catagoryFood": "veg"
+            },
+            {
+                "itemName": "Dosa Chicken",
+                "itemPrice": 175,
+                "catagoryFood": "non veg"
+            }
+        ]
+    }
+]

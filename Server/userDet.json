@@ -1,0 +1,61 @@
+[
+    {
+        "name": "Madhurendra",
+        "mobile": 8709181793,
+        "email": "kmadhu1311@gmail.com",
+        "address": [
+            {
+                "street": "#34 sai baba nilya",
+                "landmark": "Near grand city hot and cold bakery",
+                "actualMapAddress":"32, Old Madiwala, Jay Bheema Nagar, 1st Stage, BTM Layout, Bengaluru, Karnataka 560068, India",
+                "longitude": 77.609745,
+                "latitude": 12.916653 ,
+                "contactPerson": "Madhurendra",
+                "contactDetail": 8709181793,
+                "addressType": "Home"
+            }
+        ],
+        "orderDetails": [
+            {
+                "dateOfOrder": "25-02-2020",
+                "transactionId": "abc@123",
+                "restaurentName":"Adyar Ananda Bhavan (A2B)",
+                "restaurentAddress": "BPCL. Petrol Bunk, #3, 100 Feet Road, I Stage, 16th Main Rd, I Phase, BTM Layout, Bengaluru, Karnataka 560068",
+                "userAddress": "#34 sai baba nilya, near grand city hot and cold bakery, Btm Layout, Bengaluru-68",
+                "userAddressType":"Home",
+                "userMobileNumber":8458687467,
+                "items": [
+                    {
+                        "itemName": "Veg Burger Combo",
+                        "itemPrice": 670,
+                        "itemQuantity" : 1
+                    },
+                    {
+                        "itemName": "Veg Momo",
+                        "itemPrice": 70,
+                        "itemQuantity" : 1
+                    }
+                ],
+                "totalAmount": 740,
+                "status": "Completed"
+            },
+            {
+                "dateOfOrder": "15-02-2020",
+                "restaurentName":"Chung Wah ",
+                "restaurentAddress": "770,16th Main Road, 2nd Stage, BTM Layout, near IAS Officers Colony, Bengaluru, Karnataka 560076",
+                "userAddress": "#34 sai baba nilya, near grand city hot and cold bakery, Btm Layout, Bengaluru-68",
+                "userAddressType":"Home",
+                "userMobileNumber":8458687467,
+                "items": [
+                    {
+                        "itemName": "Paneer Tikka Dry",
+                        "itemPrice": 110,
+                        "itemQuantity" : 1
+                    }
+                ],
+                "totalAmount": 110,
+                "status": "Cancelled"
+            }
+        ]
+    }
+]

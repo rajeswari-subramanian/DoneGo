@@ -1,0 +1,32 @@
+{
+  "name": "donego",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajeswari-subramanian/DoneGo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajeswari-subramanian/DoneGo/issues"
+  },
+  "homepage": "https://github.com/rajeswari-subramanian/DoneGo#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.11",
+    "razorpay": "^2.0.6",
+    "short-id": "0.1.0-1",
+    "shortid": "^2.2.16",
+    "twilio": "^3.51.0"
+  }
+}
