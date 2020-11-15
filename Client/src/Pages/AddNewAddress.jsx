@@ -217,8 +217,8 @@ export default function AddNewAddress() {
     setShowMap(true);
   };
   const handleAddressType = (e, str) => {
-    e.target.style.backgroundColor = "rgb(0, 210, 144)";
-    e.target.style.color = "white";
+    // e.target.style.backgroundColor = "rgb(0, 210, 144)";
+    // e.target.style.color = "white";
     setaddressType(str);
   };
   const handleAllAddress = (e) => {
@@ -248,7 +248,6 @@ export default function AddNewAddress() {
         onClick={handleClickOpen("paper")}
         style={{
           textAlign: "center",
-          color: "rgb(0, 179, 122)",
           fontSize: "16px",
           height: "18px",
           fontWeight: 600,
@@ -406,6 +405,8 @@ export default function AddNewAddress() {
                         borderRadius: "20px",
                         border: "0px",
                         marginLeft: "130px",
+                        padding:'10px 90px',
+                        outline:'none'
                       }}
                       onClick={(e) => handleAllAddress(e)}
                       color="inherit"
