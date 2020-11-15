@@ -1,11 +1,10 @@
 import React from 'react';
-// import { useSelector } from 'react-redux'
 import axios from 'axios'
 import styled from 'styled-components';
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import "bootstrap/dist/css/bootstrap.css";
 import { addToCart, removeFromCart, addCartRestaurant, selectRetaurant } from '../Redux/Restaurant/action'
 import { Divider } from '@material-ui/core';
@@ -36,26 +35,26 @@ const useStyles = makeStyles((theme) => ({
   },
   ButtonBackground: {
     backgroundColor: "rgb(0, 210, 144)",
-        borderRadius: "20px",
-        padding: "8px 55px",
-        fontWeight: "bold",
-        fontSize: "12px",
-        cursor: "pointer",
-        color: "white",
+    borderRadius: "20px",
+    padding: "8px 55px",
+    fontWeight: "bold",
+    fontSize: "12px",
+    cursor: "pointer",
+    color: "white",
   }
 }));
 
 function RestaurantTableDetails() {
-  const {restaurantData, cartRestaurant, restaurantItems, restaurantId, restaurantName, cartItems, cartRestaurantId, totalCartValue, totalCartItems } = useSelector((state) => state.app)
+  const { restaurantData, cartRestaurant, restaurantItems, restaurantId, restaurantName, cartItems, cartRestaurantId, totalCartValue, totalCartItems } = useSelector((state) => state.app)
   const classes = useStyles();
   const dispatch = useDispatch()
   const handleAddToCart = (item) => {
     dispatch(addToCart(item))
-    dispatch(addCartRestaurant({ id: restaurantId, name: restaurantName }))    
+    dispatch(addCartRestaurant({ id: restaurantId, name: restaurantName }))
   }
 
   const handleRemoveFromCart = (id) => {
-    dispatch(removeFromCart(id))    
+    dispatch(removeFromCart(id))
   }
 
   const [activeStep, setActiveStep] = React.useState(0);
@@ -66,14 +65,14 @@ function RestaurantTableDetails() {
   // const {restaurantData, cartItems, cartRestaurant, cartRestaurantId, totalCartValue, totalCartItems } = useSelector((state)=> state.app)
 
   React.useEffect(() => {
-      axios
+    axios
       .get("http://localhost:5000/user/userDetails", {
-        headers:{
+        headers: {
           id: window.localStorage.getItem('userId')
         }
       })
-      .then(res=> {
-        setAddress(res.data[0].address)
+      .then(res => {
+        setAddress(res.data.address)
       })
   }, [])
 
@@ -85,10 +84,10 @@ function RestaurantTableDetails() {
   };
 
   // Call this Function after Successful Payment
-  const handleShowAllOrder = ()=>{
+  const handleShowAllOrder = () => {
     let statuses = ["Order Accepted", "Order Placed", "On the Way", "Cancelled", "Delivered"]
     let items = []
-    for(let i = 0; i < cartItems.length; i++){
+    for (let i = 0; i < cartItems.length; i++) {
       let tempObj = {}
       tempObj.itemName = cartItems[i].itemName
       tempObj.itemPrice = cartItems[i].itemPrice
@@ -97,14 +96,14 @@ function RestaurantTableDetails() {
     }
     let id = window.localStorage.getItem('userId') // UserId
     let restaurantName = cartRestaurant  // Restaurant Name
-    let restaurentAddress = restaurantData.filter(f=> f._id === cartRestaurantId)[0].restaurentAddress
+    let restaurentAddress = restaurantData.filter(f => f._id === cartRestaurantId).restaurentAddress
     let userAddress = selectedUserAddress  // Have to set userAddess
     let userAddressType = addressType  // Have to set userAddress Type
     let userMobileNumber = window.localStorage.getItem('mobileNo')
     let totalAmount = totalCartValue
     let status = statuses[(Math.floor(Math.random() * 5))]  // Status is Random
     let dateOfOrder = new Date().toUTCString();
-    let payload ={
+    let payload = {
       id: id,
       dateOfOrder: dateOfOrder,
       items: items,
@@ -114,14 +113,14 @@ function RestaurantTableDetails() {
       userAddressType: userAddressType,
       userMobileNumber: userMobileNumber,
       totalAmount: totalAmount,
-      status:status
+      status: status
     }
     console.log(payload);
     axios
-    .put("http://localhost:5000/user/placeOrder", payload)
-    .then(res=> {
-      alert(res.data.message)
-    })
+      .put("http://localhost:5000/user/placeOrder", payload)
+      .then(res => {
+        alert(res.data.message)
+      })
     // Order Place API Call here
   }
 
@@ -162,7 +161,7 @@ function RestaurantTableDetails() {
 
               </div>
             </div>
-            <div style={{ overflow: 'auto',border: '1px solid #BDBDBD' }} class="col-6 col-md-7" >
+            <div style={{ overflow: 'auto', border: '1px solid #BDBDBD' }} class="col-6 col-md-7" >
               <div class="tab-content" id="v-pills-tabContent">
               </div>
               <div className="row">
@@ -211,28 +210,28 @@ function RestaurantTableDetails() {
               <div className="row">
                 <div className="col-12">
                   <p className="cart-header" style={{ fontSize: '20px', fontWeight: 600, letterSpacing: 'normal' }}>Your Cart {cartItems && cartItems.length > 0 ? totalCartItems : null}</p>
-                </div>                
+                </div>
                 <div className="col-12 img-cart">
-                {cartItems.length === 0 && (<img alt="" style={{ width: '205px', height: '100%', alignItems: 'center', }} src="https://ik.imagekit.io/dunzo/web-assets/images/no-items-in-cart-7e84056f44993b68d14184f9b2992af7.png?tr=w-410,cm-pad_resize" alt="" />)}
+                  {cartItems.length === 0 && (<img alt="" style={{ width: '205px', height: '100%', alignItems: 'center', }} src="https://ik.imagekit.io/dunzo/web-assets/images/no-items-in-cart-7e84056f44993b68d14184f9b2992af7.png?tr=w-410,cm-pad_resize" alt="" />)}
                   {
                     cartItems && cartItems.length > 0 ?
                       <div>
                         {
                           cartItems.map(item => {
                             return (
-                              <div style={{display:'flex', width:'auto'}}>
-                                <div style={{ fontSize: '15px', textTransform: 'capitalize',width:'180px',padding: '24px', fontWeight: 500}} class="col-7">
-                                  <p style={{ fontWeight: '500', color: 'rgb(23, 30, 48)', marginBottom: '4px', fontFamily:'Open+Sans' }}>{item.itemName}</p>
-                                  <p style={{ fontWeight: '500', color: 'rgb(23, 30, 48)', marginBottom: '4px',fontFamily:'Open+Sans' }}>&#8377;{item.itemPrice}</p>
+                              <div style={{ display: 'flex', width: 'auto' }}>
+                                <div style={{ fontSize: '15px', textTransform: 'capitalize', width: '180px', padding: '24px', fontWeight: 500 }} class="col-7">
+                                  <p style={{ fontWeight: '500', color: 'rgb(23, 30, 48)', marginBottom: '4px', fontFamily: 'Open+Sans' }}>{item.itemName}</p>
+                                  <p style={{ fontWeight: '500', color: 'rgb(23, 30, 48)', marginBottom: '4px', fontFamily: 'Open+Sans' }}>&#8377;{item.itemPrice}</p>
                                 </div>
-                                <div style={{ padding: '3px 18px', fontSize: '16px', textTransform: 'capitalize', width: '580px', fontWeight: 500, paddingTop:'25px',fontFamily:'Open+Sans'}} class="col-5">
+                                <div style={{ padding: '3px 18px', fontSize: '16px', textTransform: 'capitalize', width: '580px', fontWeight: 500, paddingTop: '25px', fontFamily: 'Open+Sans' }} class="col-5">
                                   {
                                     (item.quantity === undefined) || (item.quantity === 0) ?
-                                      <button style={{ borderRadius: '20px', padding:'3px 15px'}} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
+                                      <button style={{ borderRadius: '20px', padding: '3px 15px' }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
                                       :
-                                      <button style={{ borderRadius: '20px', padding:'3px 15px' }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
+                                      <button style={{ borderRadius: '20px', padding: '3px 15px' }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
                                   }
-                                </div>                               
+                                </div>
                               </div>
                             )
                           })
@@ -244,12 +243,12 @@ function RestaurantTableDetails() {
                         <p style={{ opacity: '0.5', fontSize: '16px', fontWeight: 600, textAlign: 'center', color: 'rgb(23, 30, 48);', textAlign: 'center' }}>Add items to get started</p>
                       </div>
                   }
-                  <Divider/>
+                  <Divider />
                   {
-                    cartItems && cartItems.length > 0 && <div style={{fontSize:'16px', fontFamily:'Open+Sans', fontWeight:'600',margin:'auto'}}> Item Total &#8377;{totalCartValue}</div>
+                    cartItems && cartItems.length > 0 && <div style={{ fontSize: '16px', fontFamily: 'Open+Sans', fontWeight: '600', margin: 'auto' }}> Item Total &#8377;{totalCartValue}</div>
                   }
-                  <div style={{ marginTop: "100px" }}>                  
-                        <Link to="/order/checkout" style={{ textDecoration: "none" }}>
+                  <div style={{ marginTop: "100px" }}>
+                    <Link to="/order/checkout" style={{ textDecoration: "none" }}>
                       <p>
                         {" "}
                         <Button
