@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     display: "flex",
+    outline:"none",
     justifyContent: "flex-end",
   },
   button: {

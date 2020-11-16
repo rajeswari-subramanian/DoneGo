@@ -253,7 +253,7 @@ React.useEffect(() => {
               marginLeft: "13%",
               fontWeight: "1000",
               fontSize: "27px",
-              outline:"none",
+              outline:"none",              
             }}
             edge="start"
             className={classes.menuButton}
@@ -261,18 +261,18 @@ React.useEffect(() => {
             aria-label="menu"
           >
             <Link to="/order">
-              <img width="122px" height="28px" alt="" src="/logo.png" />
+              <img width="122px" height="28px" alt="" src="/assets/images/logo.png" />
             </Link>
           </IconButton>
           <IconButton
             color="black"
             aria-label="add to shopping cart"
-            style={{ marginLeft: "57%" }}
+            style={{ marginLeft: "57%" , outline:"none"}}
           >
             <Link to="/order/checkout">
               <ShoppingCartOutlinedIcon
                 fontSize="large"
-                style={{ position: "relative", color: "black" }}
+                style={{ position: "relative", color: "black",outline:"none" }}
               />
               <span
                 style={{
@@ -341,7 +341,7 @@ React.useEffect(() => {
                         {" "}
                         <button
                           onClick={handleLogout}
-                          style={{ fontWeight: 600, fontFamily: "sans-serif" }}
+                          style={{ fontWeight: 600, fontFamily: "sans-serif" ,outline:"none"}}
                           type="button"
                           class="btn btn-outline-success"
                         >
@@ -416,7 +416,7 @@ React.useEffect(() => {
                         marginLeft: "30px",
                         fontFamily: "sans-serif",
                       }}
-                      src="https://ik.imagekit.io/dunzo/web-assets/images/delivery_bike-9ca8bf0483fbb3cf9af11fefb4d6272e.png?tr=w-572,h-322,cm-pad_resize"
+                      src="/assets/images/profileimg.png"
                     />
                     <p
                       style={{
@@ -576,6 +576,7 @@ React.useEffect(() => {
                               fontWeight: 600,
                               fontFamily: "sans-serif",
                               borderRadius: "20px",
+                              outline:"none"
                             }}
                             type="button"
                             class="btn btn-outline-success"

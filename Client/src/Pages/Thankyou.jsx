@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     display: "flex",
+    outline:"none",
     justifyContent: "flex-end",
   },
   button: {
@@ -146,6 +147,7 @@ export default function Thankyou() {
               marginLeft: "13%",
               fontWeight: "1000",
               fontSize: "27px",
+              outline:"none"
             }}
             edge="start"
             className={classes.menuButton}
@@ -153,7 +155,7 @@ export default function Thankyou() {
             aria-label="menu"
           >
             <Link to="/order">
-              <img width="122px" height="28px" alt="" src="/logo.png" />
+              <img width="122px" height="28px" alt="" src="/assets/images/logo.png" />
             </Link>
           </IconButton>
           <span style={{ marginLeft: "54%" }}>

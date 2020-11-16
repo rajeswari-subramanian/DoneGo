@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   ButtonBackground: {
     backgroundColor: "rgb(0, 210, 144)",
     borderRadius: "20px",
+    outline:"none",
     padding: "8px 20px",
     fontWeight: "bold",
     fontSize: "12px",
@@ -121,18 +122,18 @@ export default function LandingPage() {
               alignItems="center"
             >
               <Grid item xs={12} sm={3}>
-                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_grocery_secondary2_1605273256240.png" />
+                <BodyCard imgSrc="/assets/images/landimg1.png" />
               </Grid>
               <Grid item xs={12} sm={3}>
-                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_pnd_secondary2_1605273427965.png" />
+                <BodyCard imgSrc="/assets/images/landimg2.png" />
               </Grid>
               <Grid item xs={12} sm={3}>
                 <Link to="/order/restaurant">
-                  <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_food_secondary2_1605278787854.png" />
+                  <BodyCard imgSrc="/assets/images/landimg3.png" />
                 </Link>
               </Grid>
               <Grid item xs={12} sm={3}>
-                <BodyCard imgSrc="https://ik.imagekit.io/dunzo/tr:w-488,h-$h$_home_icon/dunzo/icons/newHome/promoBanner/kitImageUrl/largeIcons/default_fnv_secondary2_1605273307166.png" />
+                <BodyCard imgSrc="/assets/images/landimg4.png" />
               </Grid>
             </Grid>
           </Grid>
@@ -147,37 +148,37 @@ export default function LandingPage() {
               <Grid item xs={12} sm={2}>
                 <SmallCards
                   text="Meat and Fish"
-                  imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_meat_tertiary_grid_1597822164502.png"
+                  imgSrc="/assets/images/landimg5.png"
                 />
               </Grid>
               <Grid item xs={12} sm={2}>
                 <SmallCards
                   text="Pet Supplies"
-                  imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_pets_tertiary_grid_1597822149867.png"
+                  imgSrc="/assets/images/landimg6.png"
                 />
               </Grid>
               <Grid item xs={12} sm={2}>
                 <SmallCards
                   text="Paan Shop"
-                  imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/paan_grid_1597823647322.png"
+                  imgSrc="/assets/images/landimg7.png"
                 />
               </Grid>
               <Grid item xs={12} sm={2}>
                 <SmallCards
                   text="Gift and Lifestyle"
-                  imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_gifts_tertiary_grid_1597821878795.png"
+                  imgSrc="/assets/images/landimg8.png"
                 />
               </Grid>
               <Grid item xs={12} sm={2}>
                 <SmallCards
                   text="Medicines"
-                  imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_medical_tertiary_grid_1597821896720.png"
+                  imgSrc="/assets/images/landimg9.png"
                 />
               </Grid>
               <Grid item xs={12} sm={2}>
                 <SmallCards
                   text="Health and wellness"
-                  imgSrc="https://ik.imagekit.io/dunzo/tr:w-80,h-80_home_icon/icons/R4_Icons/Home/default_wellness_tertiary_grid_1597821915084.png"
+                  imgSrc="/assets/images/landimg10.png"
                 />
               </Grid>
             </Grid>            
@@ -228,16 +229,16 @@ export default function LandingPage() {
             spacing={2}           
           >
             <Grid item xs={12} sm={3}>
-              <TopPickCards imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/d4b.jpg?tr=w-488,h-326,cm-pad_resize" />
+              <TopPickCards imgSrc="/assets/images/landimg11.jpg" />
             </Grid>
             <Grid item xs={12} sm={3}>
-              <TopPickCards imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/grocery.jpg?tr=w-488,h-326,cm-pad_resize" />
+              <TopPickCards imgSrc="/assets/images/landimg12.jpg" />
             </Grid>
             <Grid item xs={12} sm={3}>
-              <TopPickCards imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/restaurants.jpg?tr=w-488,h-326,cm-pad_resize" />
+              <TopPickCards imgSrc="/assets/images/landimg13.jpg" />
             </Grid>
             <Grid item xs={12} sm={3}>
-              <TopPickCards imgSrc="https://ik.imagekit.io/dunzo/web-assets/images/send-packages.jpg?tr=w-488,h-326,cm-pad_resize" />
+              <TopPickCards imgSrc="/assets/images/landimg14.jpg" />
             </Grid>
           </Grid>
         </Grid>
@@ -258,7 +259,7 @@ export default function LandingPage() {
         <Box className={classes.MobilePic}>
           <img
             style={{ height: "280px" }}
-            src="https://ik.imagekit.io/dunzo/web-assets/images/dunzo-app-be5ce8c58d3ad0b183757f34179879b4.png?tr=w-352,h-480,cm-pad_resize"
+            src="/assets/images/landmobile.png"
             alt="mobile"
           />
         </Box>
@@ -286,11 +287,11 @@ export default function LandingPage() {
             }}
           >
             <img
-              src="https://ik.imagekit.io/dunzo/web-assets/images/playstore-fe053d8036d653fed3955cd2c2a1e7e2.svg"
+              src="/assets/images/landmobile1.svg"
               alt="mobile"
             />
             <img
-              src="https://ik.imagekit.io/dunzo/web-assets/images/appstore-43cd8d3a00a6ed32c485951de9b3af63.svg"
+              src="/assets/images/landmobile2.svg"
               alt="mobile"
             />
           </div>          

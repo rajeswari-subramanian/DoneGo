@@ -53,9 +53,11 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     display: "flex",
+    outline:"none",
     justifyContent: "flex-end",
   },
   button: {
+    outline:"none",
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
   },
@@ -159,6 +161,7 @@ export default function Checkout() {
               marginLeft: "10%",
               fontWeight: "1000",
               fontSize: "27px",
+              outline:"none"
             }}
             edge="start"
             className={classes.menuButton}
@@ -166,7 +169,7 @@ export default function Checkout() {
             aria-label="menu"
           >
             <Link to="/order">
-              <img width="122px" height="28px" alt="" src="/logo.png" />
+              <img width="122px" height="28px" alt="" src="/assets/images/logo.png" />
             </Link>
           </IconButton>
 
@@ -230,7 +233,7 @@ export default function Checkout() {
             width="100"
             height="130"
             alt=""
-            src="https://ik.imagekit.io/dunzo/web-assets/images/empty-cart-f69fe081c4f49106ac9eae054db33d89.png?tr=w-200,h-240,cm-pad_resize"
+            src="/assets/images/checkoutimg.png"
           />
           <br /> <br />
           <div style={{ fontWeight: "bolder" }}>Your cart is empty!</div>
@@ -242,7 +245,7 @@ export default function Checkout() {
             <p>
               {" "}
               <Button
-                style={{ textTransform: "none", textDecoration: "none" }}
+                style={{ textTransform: "none", textDecoration: "none",outline:"none" }}
                 className={classes.ButtonBackground}
                 color="inherit"
               >

@@ -369,7 +369,7 @@ export default function AddNewAddress() {
                     <Grid item xs={4}>
                       <button
                         onClick={(e) => handleAddressType(e, "HOME")}
-                        style={{ borderRadius: "20px", padding: "5px 20px" }}
+                        style={{ borderRadius: "20px", padding: "5px 20px",outline:"none" }}
                         type="button"
                         class="btn btn-outline-success"
                       >
@@ -379,7 +379,7 @@ export default function AddNewAddress() {
                     <Grid item xs={4}>
                       <button
                         onClick={(e) => handleAddressType(e, "OFFICE")}
-                        style={{ borderRadius: "20px", padding: "5px 20px" }}
+                        style={{ borderRadius: "20px", padding: "5px 20px",outline:"none" }}
                         type="button"
                         class="btn btn-outline-success"
                       >
@@ -389,7 +389,7 @@ export default function AddNewAddress() {
                     <Grid item xs={4}>
                       <button
                         onClick={(e) => handleAddressType(e, "OTHER")}
-                        style={{ borderRadius: "20px", padding: "5px 20px" }}
+                        style={{ borderRadius: "20px", padding: "5px 20px",outline:"none" }}
                         type="button"
                         class="btn btn-outline-success"
                       >
@@ -405,6 +405,7 @@ export default function AddNewAddress() {
                         width: "300px",
                         borderRadius: "20px",
                         border: "0px",
+                        outline:"none",
                         marginLeft: "130px",
                       }}
                       onClick={(e) => handleAllAddress(e)}
@@ -430,7 +431,7 @@ export default function AddNewAddress() {
                     <img
                       width="100"
                       height="100"
-                      src="https://ik.imagekit.io/dunzo/web-assets/images/partner_placeholder-f479db944bcaa4a7cc8451f617179d82.png?tr=w-450,h-350,cm-pad_resize"
+                      src="/assets/images/modalimg.png"
                       alt=""
                     />
                   </div>
@@ -464,7 +465,7 @@ export default function AddNewAddress() {
         <DialogActions
           style={{ position: "absolute", top: "8px", left: "520px" }}
         >
-          <Button onClick={handleClose} color="black">
+          <Button onClick={handleClose} color="black" style={{outline:"none"}}>
             X
           </Button>
         </DialogActions>

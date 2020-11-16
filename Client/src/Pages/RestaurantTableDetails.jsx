@@ -287,7 +287,7 @@ function RestaurantTableDetails() {
                   <p>{restaurantId === cartRestaurantId && cartItems.length > 0 ? restaurantName : null}</p>
                 </div>
                 <div className="col-12 img-cart">
-                {cartItems.length === 0 && (<img alt="" style={{ width: '205px', height: '100%', alignItems: 'center', }} src="https://ik.imagekit.io/dunzo/web-assets/images/no-items-in-cart-7e84056f44993b68d14184f9b2992af7.png?tr=w-410,cm-pad_resize" alt="" />)}
+                {cartItems.length === 0 && (<img alt="" style={{ width: '205px', height: '100%', alignItems: 'center', }} src="/assets/images/emptycart.png" alt="" />)}
                   {
                     cartItems && cartItems.length > 0 ?
                       <div>
@@ -302,9 +302,9 @@ function RestaurantTableDetails() {
                                 <div style={{ padding: '0px 5px', fontSize: '16px', textTransform: 'capitalize', width: '100%', fontWeight: 500, paddingTop: '5px', fontFamily: 'Open+Sans' }} class="col-5">
                                   {
                                     (item.quantity === undefined) || (item.quantity === 0) ?
-                                      <button style={{ borderRadius: '20px', padding: '0px 5px' }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
+                                      <button style={{ borderRadius: '20px', padding: '0px 5px', outline:"none" }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
                                       :
-                                      <button style={{ borderRadius: '20px', padding: '0px 5px' }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
+                                      <button style={{ borderRadius: '20px', padding: '0px 5px', outline:"none" }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
                                   }
                                 </div>
                                 <div style={{ fontSize: '15px', textTransform: 'capitalize', width: '100%', padding: '5px', fontWeight: 500 }} class="col-2">
@@ -334,7 +334,7 @@ function RestaurantTableDetails() {
                       <p>
                         {" "}
                         <Button
-                          style={{ textTransform: "none" }}
+                          style={{ textTransform: "none" , outline:"none"}}
                           className={classes.ButtonBackground}
                           color="inherit"
                           onClick={handleShowAllOrder}
@@ -369,7 +369,7 @@ function RestaurantTableDetails() {
             <div className={classes.paper1}>
               <div class="row">
                 <div class="col-12 mt-3" style={{ height: 'auto' }}>
-                  <img style={{ width: '50px' }} src="https://ik.imagekit.io/dunzo/web-assets/images/cart-83993a15229f3c90e28bd023dc4a5a8e.png?tr=w-96,h-72,cm-pad_resize" alt="logo"></img>
+                  <img style={{ width: '50px' }} src="/assets/images/cart.png" alt="logo"></img>
                   <div class="row">
                     <div class="col-12" style={{ marginTop: '10px' }}>
                       <p style={{ fontSize: '22px', fontWeight: '600', fontFamily: 'Open+Sans', textAlign: 'left' }}>Clear Cart?</p>
@@ -378,8 +378,8 @@ function RestaurantTableDetails() {
                     </div>
                     <div class="row">
                       <div class="col-12 mt-4" style={{ margin: 'auto' }}>
-                        <button type="button" class="btn btn-outline-success" style={{ borderRadius: '20px', padding: '10px 95px', marginRight: '20px', marginLeft: '20px', fontFamily: 'Open+Sans', }} onClick={handleClose}>Cancel</button>
-                        <button type="button" class="btn btn-success" style={{ borderRadius: '20px', padding: '10px 95px', fontFamily: 'Open+Sans' }} onClick={handleClearCart}>Clear Cart</button>
+                        <button type="button" class="btn btn-outline-success" style={{ borderRadius: '20px', padding: '10px 95px', marginRight: '20px', marginLeft: '20px', fontFamily: 'Open+Sans', outline:"none" }} onClick={handleClose}>Cancel</button>
+                        <button type="button" class="btn btn-success" style={{ borderRadius: '20px', padding: '10px 95px', fontFamily: 'Open+Sans', outline:"none" }} onClick={handleClearCart}>Clear Cart</button>
                       </div>
                     </div>
                   </div>

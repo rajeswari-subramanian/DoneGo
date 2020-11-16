@@ -158,7 +158,7 @@ export default function AddressList() {
             <div className={classes.paper3} style={{ display: "flex" }}>
               <div>
                 <IconButton>
-                  <HomeIcon fontSize="small" />
+                  <HomeIcon fontSize="small" style={{outline:"none"}}/>
                 </IconButton>
               </div>
               <p
@@ -183,14 +183,14 @@ export default function AddressList() {
               <div>
                 <IconButton
                   fontSize="small"
-                  style={{ color: "rgb(0, 179, 122)" }}
+                  style={{ color: "rgb(0, 179, 122)" ,outline:"none"}}
                 >
-                  <EditIcon fontSize="small" />
+                  <EditIcon fontSize="small" style={{outline:"none"}}/>
                 </IconButton>
               </div>
               <div>
-                <IconButton fontSize="small" color="rgb(231, 232, 235)">
-                  <DeleteIcon fontSize="small" />
+                <IconButton fontSize="small" color="rgb(231, 232, 235)" style={{outline:"none"}}>
+                  <DeleteIcon fontSize="small" style={{outline:"none"}}/>
                 </IconButton>
               </div>
             </div>

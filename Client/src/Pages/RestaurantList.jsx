@@ -95,18 +95,19 @@ export default function RestaurantList(props) {
           marginLeft: "10%",
           fontWeight: "1000",
           fontSize: "27px",
+          outline:"none"
         }}
         edge="start"
         className={classes.menuButton}
         color="inherit"
         aria-label="menu"                      
       >
-     <Link to="/order" ><img width="122px" height="28px" alt="" src='/logo.png'/></Link>
+     <Link to="/order" ><img width="122px" height="28px" alt="" src='/assets/images/logo.png'/></Link>
       </IconButton>
       <Modal />      
-      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"46%"}}>
+      <IconButton color="black" aria-label="add to shopping cart" style={{marginLeft:"46%", outline:"none"}}>
           <Link to='/order/checkout'  ><ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative",color:"black"}}/><span 
-            style={{position:"absolute",left:"30px",top:"5px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px"}}>{totalCartItems}</span></Link>
+            style={{position:"absolute",left:"30px",top:"5px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px", outline:"none"}}>{totalCartItems}</span></Link>
           </IconButton>
      <SignIn />         
     </Toolbar>
@@ -181,7 +182,7 @@ export default function RestaurantList(props) {
                 alignContent: "center",
                 marginTop: "15px",
               }}
-              src="https://ik.imagekit.io/dunzo/icons/website/bluegreen/category/restaurants.png?tr=w-88,h-88,cm-pad_resize"
+              src="/assets/images/restaurantlist.png"
               alt="logo"
             />
           </Box>
