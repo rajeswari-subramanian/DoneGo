@@ -212,12 +212,13 @@ export default function SignIn() {
   return (
     <>
      {isAuth === 'true'? 
-     (<Link to="/order/profile" ><IconButton style={{color:"rgb(0, 210, 144)",backgroundColor: "white",padding:"0px"}} aria-label="add to shopping cart"  >
-     <AccountCircleIcon fontSize="large"/>
+     (<Link to="/order/profile" ><IconButton style={{color:"rgb(0, 210, 144)",backgroundColor: "white",padding:"0px",outline:"none"}} aria-label="add to shopping cart"  >
+     <AccountCircleIcon fontSize="large" style={{outline:"none"}}/>
    </IconButton></Link>):
           (<Button          
             className={classes.ButtonBackground}
             color="inherit"
+            style={{outline:"none"}}
             onClick={handleClickOpen}
           >
             Sign In
@@ -248,16 +249,16 @@ export default function SignIn() {
        
         {
           !isMobileValid ?
-            <Button disabled color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
+            <Button disabled color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px", outline:"none"}}>
               Send OTP
           </Button>
             :
             !isOtpSent ?
-              <Button onClick={handleSentOtp} color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
+              <Button onClick={handleSentOtp} color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px", outline:"none"}}>
                 Send OTP
             </Button>
               :
-              <Button onClick={handleEditNumber} color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px"}}>
+              <Button onClick={handleEditNumber} color="primary" style={{color:"white",background:"#00D290",borderRadius:"30px",position:"absolute",left:"320px",padding:"1px", outline:"none"}}>
                 Edit 
           </Button>
         } 
@@ -277,11 +278,11 @@ export default function SignIn() {
               }
               {
                 isVerifyButton ?
-                  <Button onClick={handleVerifyOtp} style={{background:"#00D290",color:"white",borderRadius:"30px",marginLeft:"120px",padding:"1px"}}>
+                  <Button onClick={handleVerifyOtp} style={{background:"#00D290",color:"white",borderRadius:"30px",marginLeft:"120px",padding:"1px", outline:"none"}}>
                    Verify and continue
                   </Button>
                   :
-                  <Button disabled color="primary" style={{background:"#D4D6DB",borderRadius:"30px",marginLeft:"120px",padding:"1p"}}>
+                  <Button disabled color="primary" style={{background:"#D4D6DB",borderRadius:"30px",marginLeft:"120px",padding:"1p", outline:"none"}}>
                   Verify and continue
                   </Button>
               }
@@ -293,7 +294,7 @@ export default function SignIn() {
         <DialogActions
           style={{ position: "absolute", left: "350px" }}
         >
-          <Button onClick={handleClose} color="black">
+          <Button onClick={handleClose} color="black" style={{outline:"none"}}>
             X
           </Button>
         </DialogActions>          

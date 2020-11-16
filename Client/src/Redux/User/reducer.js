@@ -35,7 +35,8 @@ const signinReducer = (state = initState, { type, payload }) => {
             }
         case LOGOUT:
             window.localStorage.setItem('totalCartItems', 0)
-            window.localStorage.clear()
+            window.localStorage.setItem('cartItems', 0)
+            //window.localStorage.clear()
             saveData('isAuth', false)
             return {
                 isAuth: "false"

@@ -89,7 +89,7 @@ export default function Review() {
                   height: "90%",
                   alignItems: "center",
                 }}
-                src="https://ik.imagekit.io/dunzo/web-assets/images/no-items-in-cart-7e84056f44993b68d14184f9b2992af7.png?tr=w-410,cm-pad_resize"
+                src="/assets/images/emptycart.png"
                 alt=""
               />
             )}
@@ -122,9 +122,9 @@ export default function Review() {
                       <div style={{ padding: '5px 5px', fontSize: '16px', textTransform: 'capitalize', width: '100%', fontWeight: 500, paddingTop: '20px', fontFamily: 'Open+Sans' }} class="col-5">
                                   {
                                     (item.quantity === undefined) || (item.quantity === 0) ?
-                                      <button style={{ borderRadius: '20px', padding: '5px 10px' }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
+                                      <button style={{ borderRadius: '20px', padding: '5px 10px', outline:"none" }} type="button" class="btn btn-outline-success" onClick={() => handleAddToCart(item)}>+ ADD</button>
                                       :
-                                      <button style={{ borderRadius: '20px', padding: '5px 10px' }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
+                                      <button style={{ borderRadius: '20px', padding: '5px 10px', outline:"none" }} type="button" class="btn btn-outline-success"><span onClick={() => handleAddToCart(item)}>+ </span>{item.quantity} <span onClick={() => handleRemoveFromCart(item._id)}>- </span> </button>
                                   }
                                 </div>
                       <div

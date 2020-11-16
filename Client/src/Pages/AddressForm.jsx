@@ -174,7 +174,7 @@ export default function AddressForm() {
         <Grid item xs={6}>
           {" "}
           <button
-            style={{ borderRadius: "20px" }}
+            style={{ borderRadius: "20px",outline:"none" }}
             onClick={() => setShow(!show)}
             type="button"
             class="btn btn-outline-success"
@@ -217,7 +217,7 @@ export default function AddressForm() {
               >
                 <div>
                   <IconButton>
-                    <HomeIcon fontSize="small" />
+                    <HomeIcon fontSize="small" style={{outline:"none"}}/>
                   </IconButton>
                 </div>
                 <p

@@ -110,13 +110,14 @@ export default function Navbar() {
               marginLeft: "10%",
               fontWeight: "1000",
               fontSize: "27px",
+              outline:"none"
             }}
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"                      
           >
-         <Link to="/order" ><img width="122px" height="28px" alt="img" src='/logo.png'/></Link>
+         <Link to="/order" style={{outline:"none"}}><img width="122px" height="28px" alt="img" src='assets/images/logo.png'/></Link>
           </IconButton>
           <Modal />
           <Button
@@ -124,20 +125,21 @@ export default function Navbar() {
               marginLeft: "19%",
               textTransform: "none",
               fontFamily: "Open+Sans",
-              width:'auto'
+              width:'auto',
+              outline:"none"
               
             }}
             color="inherit"
           >
             Donego for Partners{" "}
           </Button>
-          <Button style={{  fontFamily: "Open+Sans", textTransform: "none" }}>
+          <Button style={{  fontFamily: "Open+Sans", textTransform: "none",outline:"none" }}>
             {" "}
             Donego for Business
           </Button>
-          <IconButton color="black" aria-label="add to shopping cart">
-          <Link to='/order/checkout'  ><ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative",color:"black"}}/><span 
-            style={{position:"absolute",left:"30px",top:"5px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px"}}>{totalCartItems}</span></Link>
+          <IconButton color="black" aria-label="add to shopping cart" style={{outline:"none"}}>
+          <Link to='/order/checkout'  ><ShoppingCartOutlinedIcon fontSize="large" style={{position:"relative",color:"black",outline:"none"}}/><span 
+            style={{position:"absolute",left:"30px",top:"5px",backgroundColor:"#ff2e56",color:"white",width:"18px",height:"18px",fontWeight:"bolder",cursor:"pointer",borderRadius:"50%",padding:"1px",fontSize:"12px",outline:"none"}}>{totalCartItems}</span></Link>
           </IconButton>
          <SignIn />         
         </Toolbar>

@@ -112,6 +112,7 @@ export default function PlaceOrder() {
               marginLeft: "10%",
               fontWeight: "1000",
               fontSize: "27px",
+              outline:"none"
             }}
             edge="start"
             className={classes.menuButton}
@@ -119,19 +120,19 @@ export default function PlaceOrder() {
             aria-label="menu"
           >
             <Link to="/order">
-              <img width="122px" height="28px" alt="" src="/logo.png" />
+              <img width="122px" height="28px" alt="" src="/assets/images/logo.png" />
             </Link>
           </IconButton>
           <Modal />
           <IconButton
             color="black"
             aria-label="add to shopping cart"
-            style={{ marginLeft: "46%" }}
+            style={{ marginLeft: "46%", outline:"none" }}
           >
             <Link to="/order/checkout">
               <ShoppingCartOutlinedIcon
                 fontSize="large"
-                style={{ position: "relative", color: "black" }}
+                style={{ position: "relative", color: "black" , outline:"none"}}
               />
               <span
                 style={{

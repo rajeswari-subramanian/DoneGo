@@ -73,7 +73,7 @@ export default function Footer() {
             >
               <img
                 style={{ height: "70px", width: "70px", cursor: "pointer" }}
-                src="https://ik.imagekit.io/dunzo/web-assets/images/logo-footer-2530fc0589c6b1f7c5e76c618e230276.png?tr=w-140,h-140,cm-pad_resize"
+                src="/assets/images/footerimg1.png"
                 alt="logo"
               />
             </Box>
@@ -423,7 +423,7 @@ export default function Footer() {
             >
               <img
                 style={{ height: "140px", width: "260px" }}
-                src="https://ik.imagekit.io/dunzo/web-assets/images/scooter-b23bc83b7ede14d87083594908ec3101.png?tr=w-520,h-280,cm-pad_resize"
+                src="/assets/images/footerimg2.png"
                 alt="logo"
               />
             </Box>

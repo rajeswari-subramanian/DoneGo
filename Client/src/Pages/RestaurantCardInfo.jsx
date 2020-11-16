@@ -54,7 +54,7 @@ export default function RestaurantCardInfo() {
               <Paper className={classes.paper} style={{margin:"auto",}}  elevation={1}  >
                 <Grid container item spacing={2} >
                   <Grid item>
-                    <ButtonBase className={classes.image}>
+                    <ButtonBase className={classes.image} style={{ outline:"none"}}>
                       <img
                         className={classes.img}
                         alt="complex"
