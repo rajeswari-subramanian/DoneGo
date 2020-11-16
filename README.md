@@ -31,6 +31,7 @@ Since, nothing in the world is free, we charge minimal rates for delivery accord
 ### LandingPage
 ![Landing-Page](./readme/landing.PNG)
 ### Map
+![Map-Page](./readme/maplocation1.PNG)
 ### OTP SignIn
 ### Add to Cart
 ### Clear Cart
