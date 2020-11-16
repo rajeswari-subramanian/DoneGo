@@ -7,7 +7,8 @@ There are a variety of things one can order, from food to groceries to desserts&
 It’s times like these that Dunzo comes to your rescue. You can order it from the app and the items will be at your doorstep.
 Since, nothing in the world is free, we charge minimal rates for delivery according to the rules.
 ### WorkFlow of the Project:
-### Components Used
+### Essential Features
+- Landing Page
 ### Technical Stuffs Included
 ### LandingPage
 ### Map
