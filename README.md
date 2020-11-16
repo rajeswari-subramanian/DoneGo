@@ -17,6 +17,17 @@ Since, nothing in the world is free, we charge minimal rates for delivery accord
 - User Order Details
 - Payment with razorpay
 ### Technical Stuffs Included
+- HTML
+- CSS
+- BOOTSTRAP
+- MATERIAL-UI
+- REACT(REACT HOOKS)
+- REDUX
+- MongoDB
+- Node Js
+- Express.js
+- MAPBOX
+- RazorPay
 ### LandingPage
 ### Map
 ### OTP SignIn
