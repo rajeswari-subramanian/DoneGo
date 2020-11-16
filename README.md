@@ -37,7 +37,7 @@ Since, nothing in the world is free, we charge minimal rates for delivery accord
 ### Restaurant List
 ![Restaurant-Page](./readme/restaulist.PNG)
 ### Add to Cart
-![cart-Page](./readme/cart.PNG)
+![addCart-Page](./readme/cart.PNG)
 ### Clear Cart
 ![clear-cart-Page](./readme/clearcart.PNG)
 ### Address Feature
