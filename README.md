@@ -9,6 +9,13 @@ Since, nothing in the world is free, we charge minimal rates for delivery accord
 ### WorkFlow of the Project:
 ### Essential Features
 - Landing Page
+- Map Location 
+- OTP SignIn
+- Add to Cart
+- Clear Cart
+- User Address 
+- User Order Details
+- Payment with razorpay
 ### Technical Stuffs Included
 ### LandingPage
 ### Map
