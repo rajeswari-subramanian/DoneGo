@@ -46,3 +46,5 @@ Since, nothing in the world is free, we charge minimal rates for delivery accord
 ![Order-Page](./readme/checkout.PNG)
 ### Payment with razorpay
 ![Payment-Page](./readme/razorpay.PNG)
+### Order Details
+![Order-Details-Page](./readme/thankyou.PNG)
