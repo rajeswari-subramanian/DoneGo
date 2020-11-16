@@ -31,10 +31,18 @@ Since, nothing in the world is free, we charge minimal rates for delivery accord
 ### LandingPage
 ![Landing-Page](./readme/landing.PNG)
 ### Map
-![Map-Page](./readme/maplocation1.PNG)
+![Map-Page](./readme/maplocation2.PNG)
 ### OTP SignIn
+![Otp-Page](./readme/login.PNG)
+### Restaurant List
+![Restaurant-Page](./readme/restaulist.PNG)
 ### Add to Cart
+![cart-Page](./readme/cart.PNG)
 ### Clear Cart
+![clear-cart-Page](./readme/clearcart.PNG)
 ### Address Feature
+![Address-Page](./readme/addaddress.PNG)
 ### Order Details
+![Order-Page](./readme/checkout.PNG)
 ### Payment with razorpay
+![Payment-Page](./readme/razorpay.PNG)
