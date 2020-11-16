@@ -29,7 +29,7 @@ Since, nothing in the world is free, we charge minimal rates for delivery accord
 - MAPBOX
 - RazorPay
 ### LandingPage
-![Image ](./readme/cart.PNG)
+![Landing-Page](./readme/cart.PNG)
 ### Map
 ### OTP SignIn
 ### Add to Cart
