@@ -39,7 +39,7 @@ Since, nothing in the world is free, we charge minimal rates for delivery accord
 ### Add to Cart
 ![addCart-Page](./readme/cart.PNG)
 ### Clear Cart
-![clear-cart-Page](./readme/clearcart.PNG)
+![Clear-cart-Page](./readme/clearcart.PNG)
 ### Address Feature
 ![Address-Page](./readme/addaddress.PNG)
 ### Order Details
