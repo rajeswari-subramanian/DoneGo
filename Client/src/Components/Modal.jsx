@@ -95,7 +95,7 @@ export default function Modal() {
 
   var config1 = {
     method: "get",
-    url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${throttledText}.json?country=in&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`,
+    url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${throttledText}.json?country=in&access_token=${process.env.MAP_BOX}`,
     headers: {},
   };  
 
@@ -107,7 +107,7 @@ export default function Modal() {
   function handleCurrent() {   
     navigator.geolocation.getCurrentPosition(function success(pos) {
       var crd = pos.coords;
-      axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${crd.longitude},${crd.latitude}.json?types=locality&access_token=pk.eyJ1IjoicmFqZXN3YXJpLXN1YnJhbWFuaWFuIiwiYSI6ImNraDBrdjc2aTB5YWIzMHF2MnB1MmlvZmEifQ.WfdLqj4cqkuK8C764Xn2VQ`)
+      axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${crd.longitude},${crd.latitude}.json?types=locality&access_token=${process.env.MAP_BOX}`,)
         .then(function (response) {
           //console.log(response);
           let temp = response.data.features[0].place_name.split(",");
